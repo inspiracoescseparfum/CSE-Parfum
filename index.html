@@ -242,6 +242,68 @@
             color: var(--text-muted);
         }
 
+        /* ===== Frasco utilizado ===== */
+        .bottle-section {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .bottle-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 35px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.08);
+            border: 1px solid #eee;
+        }
+
+        .bottle-card img {
+            width: 240px;
+            max-width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .bottle-info {
+            flex: 1;
+        }
+
+        .bottle-info h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #121212;
+        }
+
+        .bottle-info p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .bottle-alert {
+            background: #fff8e6;
+            border-left: 5px solid #d4af37;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        @media(max-width: 768px) {
+            .bottle-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .bottle-card img {
+                width: 190px;
+            }
+        }
+
         /* Container & Filters */
         .container {
             max-width: 1200px;
@@ -548,6 +610,27 @@
             margin-right: auto;
             line-height: 1.5;
         }
+
+        /* Barra de Pesquisa */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 40px;
+            font-size: 16px;
+            outline: none;
+            transition: .3s;
+        }
+
+        #searchInput:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, .2);
+        }
     </style>
 </head>
 <body>
@@ -608,10 +691,38 @@
         </div>
     </section>
 
+    <!-- Frasco Utilizado -->
+    <section class="bottle-section">
+        <div class="bottle-card">
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ3A4mZzYUCDMT_v2axNNPVmcP9GhYsBFG5F3XHSZ-RBZ7_J7wBDhyxXvpzDi-JOwFw2dbM9B92lgvkknFkcxo01SF3H3-QflX7qm-zHHMhlnuLxQr04KiuvZWZ6MYcLVwatO8t7Kay&usqp=CAc" alt="Frasco utilizado pela CSE Parfum">
+            <div class="bottle-info">
+                <h2>Este é o frasco que você receberá</h2>
+                <p>
+                    Todas as fragrâncias são entregues neste frasco de perfumaria de <strong>50 ml</strong>.
+                </p>
+                <p>
+                    As imagens dos perfumes exibidas no catálogo servem apenas como referência da fragrância inspirada.
+                </p>
+                <div class="bottle-alert">
+                    ⚠️ O produto será enviado exatamente neste modelo de frasco.
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Catalog Container -->
     <div class="container">
         <h2 class="section-title">Nosso Catálogo</h2>
         
+        <!-- Barra de Pesquisa -->
+        <div class="search-container">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Procurar perfume..."
+                onkeyup="searchProducts()">
+        </div>
+
         <!-- Filters -->
         <div class="filters">
             <button class="filter-btn active" onclick="filterProducts('all')">Todos</button>
@@ -671,22 +782,24 @@
             { id: 12, name: "INSPIRAÇÃO: Scandal By Night", category: "feminino", price: 60.00, originalPrice: "R$ 560", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWrEIEVFlqf8kcHCfLNf7zaCuFQ0HD2zILNH1AOv7o9kmyhI09-vbHaVA&s=10", available: false },
             { id: 13, name: "INSPIRAÇÃO: Invictus Victory Elixir", category: "masculino", price: 60.00, originalPrice: "R$ 1.000", image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw91a34d30/images/hi-res-BR/3349668614523.1_1500px.jpg?sw=556&sh=680&sm=fit", available: false },
             { id: 14, name: "INSPIRAÇÃO: Royal Amber", category: "feminino", price: 60.00, originalPrice: "R$ 1.300", image: "https://fimgs.net/mdimg/perfume-thumbs/375x500.69362.jpg", available: false }
-            
-            
-            
         ];
 
         let cart = [];
+        let currentCategory = 'all';
 
-        function renderProducts(filteredCategory = 'all') {
+        function renderProducts(filteredCategory = currentCategory) {
+            currentCategory = filteredCategory;
             const grid = document.getElementById('productGrid');
-            grid.innerHTML = '';
+            grid.innerHTML = "";
 
-            let filtered = filteredCategory === 'all' 
-                ? [...products] 
-                : products.filter(p => p.category === filteredCategory);
+            const pesquisa = document.getElementById("searchInput") ? document.getElementById("searchInput").value.toLowerCase() : "";
 
-            // Ordena para garantir que os produtos disponíveis fiquem no topo e os esgotados embaixo
+            let filtered = products.filter(product => {
+                const categoria = currentCategory === "all" || product.category === currentCategory;
+                const nome = product.name.toLowerCase().includes(pesquisa);
+                return categoria && nome;
+            });
+
             filtered.sort((a, b) => (b.available === a.available) ? 0 : b.available ? 1 : -1);
 
             filtered.forEach(product => {
@@ -694,13 +807,13 @@
                     <div class="product-card">
                         <div class="img-container">
                             <span class="badge-insp">Inspiração Olfativa</span>
-                           <img
-    src="${product.image}"
-    alt="${product.name}"
-    class="product-img"
-    ${product.available ? `onclick="addToCart(${product.id})"` : ""}
-    style="${product.available ? "cursor:pointer;" : ""}"
->
+                            <img
+                                src="${product.image}"
+                                alt="${product.name}"
+                                class="product-img"
+                                ${product.available ? `onclick="addToCart(${product.id})"` : ""}
+                                style="${product.available ? "cursor:pointer;" : ""}"
+                            >
                         </div>
 
                         <div class="product-info">
@@ -738,8 +851,14 @@
 
         function filterProducts(category) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
             renderProducts(category);
+        }
+
+        function searchProducts() {
+            renderProducts(currentCategory);
         }
 
         function addToCart(productId) {
@@ -801,37 +920,36 @@
             document.getElementById('overlay').classList.toggle('active');
         }
 
-  function checkoutWhatsApp() {
-    if (cart.length === 0) {
-        alert("Seu carrinho está vazio!");
-        return;
-    }
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
 
-    // Aviso antes de abrir o WhatsApp
-    const confirmar = confirm(
-          "⚠️ As imagens são utilizadas apenas como referência visual.\n\n" +
-    "A fragrância será entregue em um frasco de perfumaria, diferente do apresentado nas imagens.\n\n" +
-    "Deseja continuar?"
-    );
+            const confirmar = confirm(
+                "⚠️ As imagens são utilizadas apenas como referência visual.\n\n" +
+                "A fragrância será entregue em um frasco de perfumaria, diferente do apresentado nas imagens.\n\n" +
+                "Deseja continuar?"
+            );
 
-    if (!confirmar) {
-        return;
-    }
+            if (!confirmar) {
+                return;
+            }
 
-    let message = "Olá! Gostaria de fazer o seguinte pedido:%0A%0A";
-    let total = 0;
+            let message = "Olá! Gostaria de fazer o seguinte pedido:%0A%0A";
+            let total = 0;
 
-    cart.forEach(item => {
-        let subtotal = item.price * item.quantity;
-        total += subtotal;
-        message += `▪️ *${item.quantity}x* ${item.name} - R$ ${subtotal.toFixed(2).replace('.', ',')}%0A`;
-    });
+            cart.forEach(item => {
+                let subtotal = item.price * item.quantity;
+                total += subtotal;
+                message += `▪️ *${item.quantity}x* ${item.name} - R$ ${subtotal.toFixed(2).replace('.', ',')}%0A`;
+            });
 
-    message += `%0A💰 *Total do Pedido: R$ ${total.toFixed(2).replace('.', ',')}*%0A%0APode confirmar a disponibilidade?`;
+            message += `%0A💰 *Total do Pedido: R$ ${total.toFixed(2).replace('.', ',')}*%0A%0APode confirmar a disponibilidade?`;
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-    window.open(url, '_blank');
-}
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+            window.open(url, '_blank');
+        }
 
         renderProducts('all');
     </script>
