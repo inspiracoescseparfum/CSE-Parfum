@@ -796,7 +796,15 @@
                 return;
             }
 
-            let message = "Olá! i
+                    function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+
+            let message = "Olá! Gostaria de fazer o seguinte pedido:%0A%0A";
+            let total = 0;
+
             cart.forEach(item => {
                 let subtotal = item.price * item.quantity;
                 total += subtotal;
@@ -808,6 +816,7 @@
             const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
             window.open(url, '_blank');
         }
+
 
         // Inicializa mostrando todos os produtos por padrão
         renderProducts('all');
