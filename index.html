@@ -723,6 +723,76 @@
                     </div>
                 `;
             });
+    <script>
+        const WHATSAPP_NUMBER = "5514996878508";
+
+        const products = [
+            { id: 1, name: "INSPIRAÇÃO: 212 VIP Black", category: "masculino", price: 60.00, originalPrice: "R$ 650", image: "https://img.lojasrenner.com.br/item/544934750/zoom/1.jpg", available: true },
+            { id: 2, name: "INSPIRAÇÃO: Good Girl", category: "feminino", price: 60.00, originalPrice: "R$ 750", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaXOkj_2yCSyLK_-YoI8dd9yQViIwhpaiceWBIXPmNkA&s", available: true },
+            { id: 3, name: "INSPIRAÇÃO: La Vie Est Belle", category: "feminino", price: 60.00, originalPrice: "R$ 690", image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw5d8f77a7/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3605533286555.01_1000px.jpg?sw=556&sh=680&sm=fit", available: true },
+            { id: 4, name: "INSPIRAÇÃO: Olympéa", category: "feminino", price: 60.00, originalPrice: "R$ 620", image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/334843-800-800/olympea-eau-de-parfum-paco-rabanne-perfume-feminino-30ml.jpg?v=636924839904430000", available: true },
+            { id: 5, name: "INSPIRAÇÃO: Ferrari Black", category: "masculino", price: 60.00, originalPrice: "R$ 280", image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQLn7gXqw-1MIUFFsOfSo1VdSXlO767QWCUvdelnbcPP829H_BFkrTaJvLCQuKAUAEYPEfYd-WJefrunSQh4wTuyDKsZSwgDsyd_uM1mxHrwjvbYtkn3B2U", available: true },
+            { id: 6, name: "INSPIRAÇÃO: Fakhar Rose", category: "feminino", price: 60.00, originalPrice: "R$ 350", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInkuVyrG-tAAiB4cAm5oJVFogQuPix-iqk68GPu0BtXPTO3Is2tDKzm8&s=10", available: true },
+            { id: 7, name: "INSPIRAÇÃO: Lady Million", category: "feminino", price: 60.00, originalPrice: "R$ 640", image: "https://fimgs.net/mdimg/perfume/o.9045.jpg", available: true },
+            { id: 8, name: "INSPIRAÇÃO: Fame", category: "feminino", price: 60.00, originalPrice: "R$ 680", image: "https://www.sephora.com.br/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw167b8a94/images/hi-res-BR/3349668594412.1_1500px.jpg", available: true },
+            { id: 9, name: "INSPIRAÇÃO: Tom Ford Lost Cherry", category: "feminino", price: 60.00, originalPrice: "R$ 2.500", image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw711c39e5/images/hi-res-BR/8-88066-08234-1_lost_cherry_50ml_v4_1500px.jpg?sw=556&sh=680&sm=fit", available: false },
+            { id: 10, name: "INSPIRAÇÃO: Green Irish Tweed", category: "masculino", price: 60.00, originalPrice: "R$ 2.800", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGKM2dBbeDMIwHA97Rt5rQIjjNndxcXEpHTVnDZZhnmA&s=10", available: true },
+            { id: 11, name: "INSPIRAÇÃO: Sauvage Dior", category: "masculino", price: 60.00, originalPrice: "R$ 820", image: "https://lojadior.vtexassets.com/arquivos/ids/196440/3348901608053_00-thumbnew-sauvage-edp.jpg?v=638596910589130000", available: true },
+            { id: 12, name: "INSPIRAÇÃO: Hacivat Nishane", category: "masculino", price: 60.00, originalPrice: "R$ 2.200", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLGjHr-frIAi1lHJPimR26qcKQsVSWKK0RLmahIxO86w&s=10", available: false },
+            { id: 13, name: "INSPIRAÇÃO: Turathi Blue Afnan", category: "masculino", price: 60.00, originalPrice: "R$ 450", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsTliMLtaOaICJcNZRC7iNG5kCO-xV7F1E8ffYjeZWtQ&s=10", available: true },
+            { id: 14, name: "INSPIRAÇÃO: Tygar", category: "masculino", price: 60.00, originalPrice: "R$ 3.200", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMfjdV-_wCFLyKGc-zkrmpss9KGyzW15FSdzjpiVmBB9yMYvr6b0Uzsoc&s=10", available: false },
+            { id: 15, name: "INSPIRAÇÃO: Poggia by Tiziana Terenzi", category: "feminino", price: 60.00, originalPrice: "R$ 3.450", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRZJ378HLfe__yLRX9QUgRohObzd0TSKF7oJQON4Na_g&s=10", available: false }
+        ];
+
+        let cart = [];
+
+        function renderProducts(filteredCategory = 'all') {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+
+            const filtered = filteredCategory === 'all' 
+                ? products 
+                : products.filter(p => p.category === filteredCategory);
+
+            filtered.forEach(product => {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <div class="img-container">
+                            <span class="badge-insp">Inspiração Olfativa</span>
+                            <img src="${product.image}" alt="${product.name}" class="product-img">
+                        </div>
+
+                        <div class="product-info">
+                            <div>
+                                <span class="product-category">${product.category}</span>
+                                <h3 class="product-title">${product.name}</h3>
+                            </div>
+
+                            <div>
+                                <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2px;">
+                                    Valor original de referência: <span style="text-decoration: line-through;">${product.originalPrice}</span>
+                                </div>
+
+                                <div class="product-price">
+                                    Inspiração: R$ ${product.price.toFixed(2).replace('.', ',')}
+                                </div>
+
+                                <div class="stock-status ${product.available ? 'in-stock' : 'out-stock'}">
+                                    ${product.available ? '✅ Disponível' : '❌ Esgotado'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <button
+                            class="buy-btn"
+                            onclick="${product.available ? `addToCart(${product.id})` : ''}"
+                            ${!product.available ? 'disabled' : ''}>
+                            <i class="fas fa-shopping-cart"></i>
+                            ${product.available ? 'Adicionar ao carrinho' : 'Produto esgotado'}
+                        </button>
+                    </div>
+                `;
+            });
         }
 
         function filterProducts(category) {
@@ -796,12 +866,6 @@
                 return;
             }
 
-                    function checkoutWhatsApp() {
-            if (cart.length === 0) {
-                alert("Seu carrinho está vazio!");
-                return;
-            }
-
             let message = "Olá! Gostaria de fazer o seguinte pedido:%0A%0A";
             let total = 0;
 
@@ -817,9 +881,5 @@
             window.open(url, '_blank');
         }
 
-
-        // Inicializa mostrando todos os produtos por padrão
         renderProducts('all');
     </script>
-</body>
-</html>
