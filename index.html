@@ -801,26 +801,37 @@
             document.getElementById('overlay').classList.toggle('active');
         }
 
-        function checkoutWhatsApp() {
-            if (cart.length === 0) {
-                alert("Seu carrinho está vazio!");
-                return;
-            }
+  function checkoutWhatsApp() {
+    if (cart.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+    }
 
-            let message = "Olá! Gostaria de fazer o seguinte pedido:%0A%0A";
-            let total = 0;
+    // Aviso antes de abrir o WhatsApp
+    const confirmar = confirm(
+          "⚠️ As imagens são utilizadas apenas como referência visual.\n\n" +
+    "A fragrância será entregue em um frasco de perfumaria, diferente do apresentado nas imagens.\n\n" +
+    "Deseja continuar?"
+    );
 
-            cart.forEach(item => {
-                let subtotal = item.price * item.quantity;
-                total += subtotal;
-                message += `▪️ *${item.quantity}x* ${item.name} - R$ ${subtotal.toFixed(2).replace('.', ',')}%0A`;
-            });
+    if (!confirmar) {
+        return;
+    }
 
-            message += `%0A💰 *Total do Pedido: R$ ${total.toFixed(2).replace('.', ',')}*%0A%0APode confirmar a disponibilidade?`;
+    let message = "Olá! Gostaria de fazer o seguinte pedido:%0A%0A";
+    let total = 0;
 
-            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-            window.open(url, '_blank');
-        }
+    cart.forEach(item => {
+        let subtotal = item.price * item.quantity;
+        total += subtotal;
+        message += `▪️ *${item.quantity}x* ${item.name} - R$ ${subtotal.toFixed(2).replace('.', ',')}%0A`;
+    });
+
+    message += `%0A💰 *Total do Pedido: R$ ${total.toFixed(2).replace('.', ',')}*%0A%0APode confirmar a disponibilidade?`;
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    window.open(url, '_blank');
+}
 
         renderProducts('all');
     </script>
