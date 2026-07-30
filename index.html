@@ -694,7 +694,13 @@
                     <div class="product-card">
                         <div class="img-container">
                             <span class="badge-insp">Inspiração Olfativa</span>
-                            <img src="${product.image}" alt="${product.name}" class="product-img">
+                           <img
+    src="${product.image}"
+    alt="${product.name}"
+    class="product-img"
+    ${product.available ? `onclick="addToCart(${product.id})"` : ""}
+    style="${product.available ? "cursor:pointer;" : ""}"
+>
                         </div>
 
                         <div class="product-info">
