@@ -1,3 +1,10 @@
+Peço desculpas por isso! Como você havia pedido para voltar a uma versão anterior, a etiqueta (barra) em cima das fotos dos produtos acabou retornando no código como "Inspiração Olfativa", o que ainda poluía o visual.
+
+Você tem toda a razão. Retirei **completamente** qualquer barra ou etiqueta que ficasse sobrepondo as imagens dos perfumes. Agora as fotos ficam 100% limpas, e a atenção vai toda para o produto.
+
+Aqui está o código corrigido e limpo. Pode substituir tudo por este:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -383,45 +390,6 @@
             object-fit: contain;
         }
 
-        .badge-insp {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: var(--primary);
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            z-index: 2;
-        }
-
-        /* Tag Promocional nos Produtos */
-        .badge-promo {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #e63946; /* Vermelho chamativo */
-            color: #fff;
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 5px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
-            animation: pulsePromo 2s infinite;
-            z-index: 2;
-        }
-
-        @keyframes pulsePromo {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
-        }
-
         .product-info {
             padding: 20px;
             text-align: center;
@@ -532,27 +500,26 @@
             color: var(--text-muted);
         }
 
-        /* Aviso de Desconto no Carrinho */
+        /* Aviso de Desconto no Carrinho - Mais natural e limpo */
         .discount-progress {
-            background-color: #fff8e6; 
-            color: #856404;
-            padding: 12px 25px;
+            background-color: #fafafa; 
+            color: #444;
+            padding: 16px 25px;
             text-align: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-bottom: 1px solid #ffeeba;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #eee;
             display: none; 
         }
 
         .discount-progress.success {
-            background-color: #d4edda; 
-            color: #155724;
-            border-bottom: 1px solid #c3e6cb;
+            background-color: #f6fcf7; 
+            color: #2e7d32;
+            border-bottom: 1px solid #e8f5e9;
         }
 
         .discount-progress strong {
             color: inherit;
-            font-size: 0.95rem;
+            font-weight: 700;
         }
 
         .cart-items {
@@ -841,6 +808,7 @@
 
         let cart = [];
         let currentCategory = 'all';
+
         function renderProducts(filteredCategory = currentCategory) {
             currentCategory = filteredCategory;
             const grid = document.getElementById('productGrid');
@@ -860,8 +828,6 @@
                 grid.innerHTML += `
                     <div class="product-card">
                         <div class="img-container">
-                            <span class="badge-insp">Inspiração Olfativa</span>
-                            <span class="badge-promo">🔥 Leve 3, Pague Menos</span>
                             <img
                                 src="${product.image}"
                                 alt="${product.name}"
@@ -970,7 +936,7 @@
 
             cartCount.innerText = totalCount;
 
-            // Lógica visual do desconto
+            // Lógica visual do desconto com design limpo
             if (totalCount > 0) {
                 discountProgress.style.display = 'block';
                 let remainder = totalCount % 3;
@@ -978,17 +944,17 @@
 
                 if (remainder === 0) {
                     discountProgress.className = 'discount-progress success';
-                    discountProgress.innerHTML = `🎉 Parabéns! Você ganhou <strong>R$ ${totalDiscount.toFixed(2).replace('.', ',')} de desconto!</strong>`;
+                    discountProgress.innerHTML = `✅ <strong>Desconto de R$ ${totalDiscount.toFixed(2).replace('.', ',')} aplicado</strong> no seu combo!`;
                 } else {
                     let missing = 3 - remainder;
                     let itemWord = missing === 1 ? 'perfume' : 'perfumes';
                     discountProgress.className = 'discount-progress';
-                    discountProgress.innerHTML = `⚠️ Adicione mais <strong>${missing} ${itemWord}</strong> para ganhar R$ 15 de desconto!`;
+                    discountProgress.innerHTML = `Adicione mais <strong>${missing} ${itemWord}</strong> para ganhar R$ 15,00 de desconto!`;
                 }
                 
                 let finalPrice = totalPrice - totalDiscount;
                 if (totalDiscount > 0) {
-                    cartTotal.innerHTML = `<span style="color: #ff4d4d; font-size: 0.9rem; margin-right: 8px;">(-R$ ${totalDiscount.toFixed(2).replace('.', ',')})</span> R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
+                    cartTotal.innerHTML = `<span style="color: #2e7d32; font-size: 0.9rem; margin-right: 8px;">(-R$ ${totalDiscount.toFixed(2).replace('.', ',')})</span> R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
                 } else {
                     cartTotal.innerText = `R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
                 }
@@ -1045,3 +1011,5 @@
     </script>
 </body>
 </html>
+
+```
