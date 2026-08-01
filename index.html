@@ -395,6 +395,31 @@
             border-radius: 20px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        /* Tag Promocional nos Produtos */
+        .badge-promo {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e63946; /* Vermelho chamativo */
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 5px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.4);
+            animation: pulsePromo 2s infinite;
+            z-index: 2;
+        }
+
+        @keyframes pulsePromo {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
         }
 
         .product-info {
@@ -505,6 +530,29 @@
             font-size: 1.2rem;
             cursor: pointer;
             color: var(--text-muted);
+        }
+
+        /* Aviso de Desconto no Carrinho */
+        .discount-progress {
+            background-color: #fff8e6; 
+            color: #856404;
+            padding: 12px 25px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-bottom: 1px solid #ffeeba;
+            display: none; 
+        }
+
+        .discount-progress.success {
+            background-color: #d4edda; 
+            color: #155724;
+            border-bottom: 1px solid #c3e6cb;
+        }
+
+        .discount-progress strong {
+            color: inherit;
+            font-size: 0.95rem;
         }
 
         .cart-items {
@@ -743,6 +791,10 @@
             <h3>Seu Carrinho</h3>
             <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
         </div>
+        
+        <!-- Barra de Progresso de Desconto -->
+        <div id="discountProgress" class="discount-progress"></div>
+        
         <div class="cart-items" id="cartItems"></div>
         <div class="cart-footer">
             <div class="cart-total">
@@ -809,6 +861,7 @@
                     <div class="product-card">
                         <div class="img-container">
                             <span class="badge-insp">Inspiração Olfativa</span>
+                            <span class="badge-promo">🔥 Leve 3, Pague Menos</span>
                             <img
                                 src="${product.image}"
                                 alt="${product.name}"
@@ -886,6 +939,7 @@
             const cartCount = document.getElementById('cartCount');
             const cartItems = document.getElementById('cartItems');
             const cartTotal = document.getElementById('cartTotal');
+            const discountProgress = document.getElementById('discountProgress');
 
             let totalCount = 0;
             let totalPrice = 0;
@@ -894,6 +948,7 @@
 
             if (cart.length === 0) {
                 cartItems.innerHTML = '<p style="text-align:center; color:#888; margin-top:20px;">Seu carrinho está vazio.</p>';
+                discountProgress.style.display = 'none'; 
             }
 
             cart.forEach(item => {
@@ -913,17 +968,30 @@
                 `;
             });
 
-            // Lógica do desconto: a cada 3 itens, dá R$ 15 de desconto
-            let totalDiscount = Math.floor(totalCount / 3) * 15;
-            let finalPrice = totalPrice - totalDiscount;
-
             cartCount.innerText = totalCount;
-            
-            // Se tiver desconto, exibe o valor abatido no carrinho
-            if (totalDiscount > 0) {
-                cartTotal.innerHTML = `<span style="color: #ff4d4d; font-size: 0.9rem; margin-right: 8px;">(-R$ ${totalDiscount.toFixed(2).replace('.', ',')})</span> R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
-            } else {
-                cartTotal.innerText = `R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
+
+            // Lógica visual do desconto
+            if (totalCount > 0) {
+                discountProgress.style.display = 'block';
+                let remainder = totalCount % 3;
+                let totalDiscount = Math.floor(totalCount / 3) * 15;
+
+                if (remainder === 0) {
+                    discountProgress.className = 'discount-progress success';
+                    discountProgress.innerHTML = `🎉 Parabéns! Você ganhou <strong>R$ ${totalDiscount.toFixed(2).replace('.', ',')} de desconto!</strong>`;
+                } else {
+                    let missing = 3 - remainder;
+                    let itemWord = missing === 1 ? 'perfume' : 'perfumes';
+                    discountProgress.className = 'discount-progress';
+                    discountProgress.innerHTML = `⚠️ Adicione mais <strong>${missing} ${itemWord}</strong> para ganhar R$ 15 de desconto!`;
+                }
+                
+                let finalPrice = totalPrice - totalDiscount;
+                if (totalDiscount > 0) {
+                    cartTotal.innerHTML = `<span style="color: #ff4d4d; font-size: 0.9rem; margin-right: 8px;">(-R$ ${totalDiscount.toFixed(2).replace('.', ',')})</span> R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
+                } else {
+                    cartTotal.innerText = `R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
+                }
             }
         }
 
