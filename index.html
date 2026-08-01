@@ -786,6 +786,9 @@
             { id: 16, name: "INSPIRAÇÃO: Sauvage Dior", category: "masculino", price: 60.00, originalPrice: "R$ 1.115", image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw86e71062/images/hi-res-BR/p1_100ml_3348901368247_1500px.jpg?sw=1200&sh=1200&sm=fit", available: false},
             { id: 17, name: "INSPIRAÇÃO: Prada Paradoxe", category: "feminino", price: 60.00, originalPrice: "1.036", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStdYiOP8x3VVT3YMKytMwcY1rf63ULlab4pqWn7DEodQ&s", available: false}
          ];
+
+        let cart = [];
+        let currentCategory = 'all';
         function renderProducts(filteredCategory = currentCategory) {
             currentCategory = filteredCategory;
             const grid = document.getElementById('productGrid');
