@@ -488,7 +488,6 @@
             display: inline-block;
         }
 
-        /* Estilo da Família Olfativa no Card (Sem emojis/imagens) */
         .product-family {
             font-size: 0.75rem;
             color: #555;
@@ -698,12 +697,31 @@
             font-size: 0.9rem;
             color: var(--text-muted);
             line-height: 1.5;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             background: #f8f9fa;
             padding: 12px 15px;
             border-radius: 10px;
             border-left: 4px solid var(--accent);
             text-align: left;
+        }
+
+        /* Lista de Ingredientes / Composição */
+        .details-modal-ingredients {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            background: #fafbfc;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            text-align: left;
+        }
+
+        .details-modal-ingredients strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
         }
 
         .details-modal-btn {
@@ -988,7 +1006,7 @@
             .product-price { font-size: 1.1rem; }
             .buy-btn { padding: 12px; font-size: 0.82rem; }
             .cart-modal { max-width: 100%; }
-            .view-details-overlay { display: none; } /* Oculta hover no mobile para evitar toque duplo */
+            .view-details-overlay { display: none; }
             .disclaimer-box { flex-direction: column; text-align: center; align-items: center; }
         }
 
@@ -1086,7 +1104,7 @@
         </div>
     </div>
 
-    <!-- Modal de Detalhes do Produto -->
+    <!-- Modal de Detalhes do Produto (Com Lista de Ingredientes) -->
     <div class="details-modal-overlay" id="detailsModal" onclick="closeDetailsModal()">
         <div class="details-modal-content" onclick="event.stopPropagation()">
             <button class="details-modal-close" onclick="closeDetailsModal()">
@@ -1100,6 +1118,13 @@
                 <div><span id="modalProductFamily" class="details-modal-family"></span></div>
                 <h3 id="modalProductTitle" class="details-modal-title"></h3>
                 <div id="modalProductDesc" class="details-modal-desc"></div>
+                
+                <!-- Lista de Ingredientes solicitada -->
+                <div class="details-modal-ingredients">
+                    <strong>Composição / Ingredientes:</strong>
+                    Alcool, Essencia, Propilemoglicol, Hexametilindamopirano
+                </div>
+
                 <button id="modalBuyBtn" class="details-modal-btn">
                     <i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho
                 </button>
@@ -1149,7 +1174,6 @@
     <script>
         const WHATSAPP_NUMBER = "5514996878508";
 
-        // Array de produtos sem emojis na propriedade 'family' para um visual limpo e profissional
         const products = [
             { 
                 id: 1, 
@@ -1426,9 +1450,6 @@
             renderProducts(currentCategory);
         }
 
-        // ==========================================
-        // SISTEMA DO MODAL DE DETALHES
-        // ==========================================
         function openDetailsModal(productId) {
             const product = products.find(p => p.id === productId);
             if(!product) return;
@@ -1458,7 +1479,6 @@
         function closeDetailsModal() {
             document.getElementById('detailsModal').classList.remove('active');
         }
-        // ==========================================
 
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
@@ -1606,7 +1626,6 @@
             window.open(url, '_blank');
         }
 
-        // Init
         renderProducts('all');
     </script>
 </body>
