@@ -1010,10 +1010,18 @@
             .disclaimer-box { flex-direction: column; text-align: center; align-items: center; }
         }
 
+        /* ALTERAÇÃO APLICADA AQUI: Garante 2 colunas mesmo em celulares menores (telas abaixo de 480px) */
         @media(max-width: 480px) {
-            .product-grid { grid-template-columns: 1fr; gap: 15px; }
-            .img-container { height: 240px; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .img-container { height: 140px; padding: 8px; }
             .hero h1 { font-size: 1.5rem; }
+            .product-info { padding: 10px 6px; }
+            .product-title { font-size: 0.8rem; }
+            .product-price { font-size: 0.95rem; }
+            .buy-btn { padding: 10px 4px; font-size: 0.75rem; }
+            .product-category { font-size: 0.6rem; }
+            .product-family { font-size: 0.65rem; padding: 2px 6px; }
+            .price-reference { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -1122,7 +1130,7 @@
                 <!-- Lista de Ingredientes solicitada -->
                 <div class="details-modal-ingredients">
                     <strong>Composição / Ingredientes:</strong>
-                    Alcool, Essencia, Propilemoglicol, Hexametilindamopirano
+                    Álcool, Essência, Propilenoglicol, Hexametilindanopirano
                 </div>
 
                 <button id="modalBuyBtn" class="details-modal-btn">
@@ -1431,7 +1439,7 @@
                             onclick="${product.available ? `addToCart(${product.id})` : ''}"
                             ${!product.available ? 'disabled' : ''}>
                             <i class="fas fa-shopping-cart"></i>
-                            ${product.available ? 'Adicionar ao carrinho' : 'Produto esgotado'}
+                            ${product.available ? 'Adicionar' : 'Esgotado'}
                         </button>
                     </div>
                 `;
