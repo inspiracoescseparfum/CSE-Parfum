@@ -245,7 +245,7 @@
         /* ===== Frasco utilizado ===== */
         .bottle-section {
             max-width: 1100px;
-            margin: 50px auto;
+            margin: 50px auto 30px auto;
             padding: 0 20px;
         }
 
@@ -291,6 +291,48 @@
             border-radius: 10px;
             font-weight: 600;
             color: #444;
+        }
+
+        /* ===== Composição e Ingredientes ===== */
+        .product-composition-section {
+            max-width: 1100px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+        }
+
+        .composition-card {
+            background-color: var(--card-bg, #ffffff);
+            border: 1px solid #eee;
+            border-radius: 18px;
+            padding: 25px 35px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+
+        .composition-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary, #121212);
+            margin-bottom: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .composition-card h3 i {
+            color: var(--accent);
+        }
+
+        .composition-card p {
+            margin-bottom: 10px;
+            color: var(--text-dark, #212529);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .composition-card small {
+            display: block;
+            color: var(--text-muted, #6c757d);
+            font-size: 0.82rem;
         }
 
         /* Container & Filters */
@@ -742,6 +784,10 @@
                 font-size: 1.5rem;
             }
 
+            .composition-card {
+                padding: 20px;
+            }
+
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -865,6 +911,15 @@
                     ⚠️ O produto será enviado exatamente neste modelo de frasco.
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Seção de Composição e Ingredientes -->
+    <section class="product-composition-section">
+        <div class="composition-card">
+            <h3><i class="fas fa-flask"></i> Composição e Ingredientes</h3>
+            <p><strong>Alcohol</strong> (Álcool), <strong>Parfum</strong> (Essência), <strong>Aqua</strong> (Água), <strong>Propylene Glycol</strong> (Propilenoglicol), <strong>Hexamethylindanopyran</strong> (Hexametilindanopirano).</p>
+            <small>*Uso externo. Mantenha fora do alcance de crianças e ao abrigo da luz solar direta.</small>
         </div>
     </section>
 
