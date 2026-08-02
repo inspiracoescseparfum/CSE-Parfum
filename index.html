@@ -475,8 +475,20 @@
             color: var(--accent);
             letter-spacing: 1.5px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             display: inline-block;
+        }
+
+        /* Estilo da Família Olfativa no Card */
+        .product-family {
+            font-size: 0.78rem;
+            color: #555;
+            background: #f1f3f5;
+            padding: 3px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .product-title {
@@ -643,8 +655,19 @@
             text-transform: uppercase;
             font-weight: 800;
             letter-spacing: 2px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: block;
+        }
+
+        .details-modal-family {
+            font-size: 0.85rem;
+            color: #444;
+            background: #f1f3f5;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
         .details-modal-title {
@@ -949,7 +972,7 @@
             .product-price { font-size: 1.15rem; }
             .buy-btn { padding: 12px; font-size: 0.85rem; }
             .cart-modal { max-width: 100%; }
-            .view-details-overlay { display: none; /* Hide hover on mobile */ }
+            .view-details-overlay { display: none; }
         }
 
         @media(max-width: 480px) {
@@ -1056,6 +1079,7 @@
             </div>
             <div class="details-modal-body">
                 <span id="modalProductCategory" class="details-modal-category"></span>
+                <div><span id="modalProductFamily" class="details-modal-family"></span></div>
                 <h3 id="modalProductTitle" class="details-modal-title"></h3>
                 <div id="modalProductDesc" class="details-modal-desc"></div>
                 <button id="modalBuyBtn" class="details-modal-btn">
@@ -1107,26 +1131,195 @@
     <script>
         const WHATSAPP_NUMBER = "5514996878508";
 
-        // Array de produtos enriquecido com descrições e novos produtos unissex
+        // Array de produtos com a propriedade 'family' adicionada para indicar se é doce, amadeirado, frutal, etc.
         const products = [
-            { id: 1, name: "INSPIRAÇÃO: 212 VIP Black", category: "masculino", price: 60.00, originalPrice: "R$ 777", image: "https://img.lojasrenner.com.br/item/544934750/zoom/1.jpg", available: false, description: "<b>Família Olfativa:</b> Aromático Fougère.<br><br>Uma explosão energética de absinto, anis e lavanda, finalizada com o toque sedutor e irresistível da baunilha preta. Feito para o homem que domina a noite." },
-            { id: 2, name: "INSPIRAÇÃO: Good Girl", category: "feminino", price: 60.00, originalPrice: "R$ 939", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaXOkj_2yCSyLK_-YoI8dd9yQViIwhpaiceWBIXPmNkA&s", available: true, description: "<b>Família Olfativa:</b> Oriental Floral.<br><br>Audacioso e sexy. Mescla a doçura e leveza do jasmim sambac e tuberosa com as notas ricas e misteriosas de cacau e fava tonka. Para a mulher dona de si." },
-            { id: 3, name: "INSPIRAÇÃO: La Vie Est Belle", category: "feminino", price: 60.00, originalPrice: "R$ 1.187", image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw5d8f77a7/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3605533286555.01_1000px.jpg?sw=556&sh=680&sm=fit", available: true, description: "<b>Família Olfativa:</b> Floral Gourmand.<br><br>Irresistivelmente doce e elegante. Traz a nobreza da íris pallida entrelaçada com a doçura viciante do pralinê, baunilha e patchouli." },
-            { id: 4, name: "INSPIRAÇÃO: Olympéa", category: "feminino", price: 60.00, originalPrice: "R$ 939", image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/334843-800-800/olympea-eau-de-parfum-paco-rabanne-perfume-feminino-30ml.jpg?v=636924839904430000", available: true, description: "<b>Família Olfativa:</b> Oriental Floral.<br><br>Um contraste fascinante e divino entre o frescor do jasmim aquático e a sensualidade viciante da baunilha salgada. O perfume de uma deusa." },
-            { id: 5, name: "INSPIRAÇÃO: Ferrari Black", category: "masculino", price: 60.00, originalPrice: "R$ 280", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBAYPyH6Oge_MTGGMC7qLRUNIoDaxTQ5Gt3QRx-bSz7gqMfBkhJ5kd0udU&s=10", available: true, description: "<b>Família Olfativa:</b> Amadeirado Especiado.<br><br>Um clássico absoluto. Notas cítricas de maçã e ameixa na saída evoluem para um coração de canela e jasmim, com um fundo misterioso de cedro e baunilha." },
-            { id: 6, name: "INSPIRAÇÃO: Fakhar Rose", category: "feminino", price: 60.00, originalPrice: "R$ 350", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInkuVyrG-tAAiB4cAm5oJVFogQuPix-iqk68GPu0BtXPTO3Is2tDKzm8&s=10", available: true, description: "<b>Família Olfativa:</b> Floral Branco.<br><br>Exuberante e romântico. Destaca a delicadeza luxuosa das flores brancas, tuberosa e rosas, com uma base levemente amadeirada que exala elegância." },
-            { id: 7, name: "INSPIRAÇÃO: Lady Million", category: "feminino", price: 60.00, originalPrice: "R$ 939", image: "https://fimgs.net/mdimg/perfume/o.9045.jpg", available: true, description: "<b>Família Olfativa:</b> Floral Frutado.<br><br>Luxuoso e radiante. Inicia com um toque de framboesa, abrindo para um buquê de néroli e jasmim, finalizando com o rastro sensual do mel e patchouli." },
-            { id: 8, name: "INSPIRAÇÃO: Fame", category: "feminino", price: 60.00, originalPrice: "R$ 1.240", image: "https://www.sephora.com.br/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw167b8a94/images/hi-res-BR/3349668594412.1_1500px.jpg", available: true, description: "<b>Família Olfativa:</b> Chipre Floral Frutado.<br><br>Tropical, vanguardista e irresistível. Traz o frescor exótico da manga, a pureza do jasmim e a sensualidade cremosa do incenso e sândalo." },
-            { id: 9, name: "INSPIRAÇÃO: Green Irish Tweed", category: "masculino", price: 60.00, originalPrice: "R$ 2.900", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGKM2dBbeDMIwHA97Rt5rQIjjNndxcXEpHTVnDZZhnmA&s=10", available: true, description: "<b>Família Olfativa:</b> Amadeirado Floral Almiscarado.<br><br>Evoca a frescura do campo e a sofisticação da realeza. Notas clássicas de limão, verbena, folhas de violeta e sândalo." },
-            { id: 10, name: "INSPIRAÇÃO: Sauvage Dior Elixir", category: "masculino", price: 60.00, originalPrice: "R$ 1.943", image: "https://www.sephora.com.br/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw3bcf0330/images/hi-res-BR/P1.%203348901567572-SAUVAGE_ELIXIR_60ML_3348901567572_1500px.jpg", available: false, description: "<b>Família Olfativa:</b> Aromático Especiado.<br><br>Extremamente concentrado e noturno. Uma mistura inebriante de toranja picante, noz-moscada, lavanda e madeiras ricas com um toque de alcaçuz." },
-            { id: 11, name: "INSPIRAÇÃO: Turathi Blue Afnan", category: "masculino", price: 60.00, originalPrice: "R$ 380", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsTliMLtaOaICJcNZRC7iNG5kCO-xV7F1E8ffYjeZWtQ&s=10", available: true, description: "<b>Família Olfativa:</b> Cítrico Aromático.<br><br>Vibrante e fresco. Combina uma explosão de cítricos com notas amadeiradas de fundo, âmbar e especiarias elegantes para o dia a dia." },
-            { id: 12, name: "INSPIRAÇÃO: Scandal By Night", category: "feminino", price: 60.00, originalPrice: "R$ 1.004", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWrEIEVFlqf8kcHCfLNf7zaCuFQ0HD2zILNH1AOv7o9kmyhI09-vbHaVA&s=10", available: true, description: "<b>Família Olfativa:</b> Oriental Floral.<br><br>Escandalosamente sedutor. A doçura marcante do mel e tuberosa se misturam à fava tonka e sândalo, criando uma aura noturna irresistível." },
-            { id: 13, name: "INSPIRAÇÃO: Invictus Victory Elixir", category: "masculino", price: 60.00, originalPrice: "R$ 971", image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRX7jmk9KhWiRaTiIx4VePXTWmivzInX3T5OgRuGCDAF1ImkJB1SMcMBLoCy7ejJez5n0et4-3wdH44aWGwNNS4-J_lXk_DT5HobWGlsF9234NErbK4uRS2yfgiMz2lFXW6sj8wyJ4dPA&usqp=CAc", available: true, description: "<b>Família Olfativa:</b> Amadeirado Especiado Doce.<br><br>O perfume de um vencedor. Traz o frescor intenso do lavandim colidindo com o calor do incenso, baunilha e fava tonka." },
-            // AQUI ESTÁ A MUDANÇA: O Royal Amber agora aceita as 3 categorias!
-            { id: 14, name: "INSPIRAÇÃO: Royal Amber", category: ["masculino", "feminino", "unissex"], price: 60.00, originalPrice: "R$ 1.300", image: "https://fimgs.net/mdimg/perfume-thumbs/375x500.69362.jpg", available: true, description: "<b>Família Olfativa:</b> Oriental Baunilha (Unissex).<br><br>Luxo em forma de perfume. Combina notas doces e ricas de âmbar, melão, abacaxi e baunilha, perfeitamente equilibradas em uma base de almíscar." },
-            { id: 15, name: "INSPIRAÇÃO: Asad Lataffa", category: "masculino", price: 60.00, originalPrice: "R$ 300", image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1292446-800-800/17581402186111.jpg?v=638998664977700000", available: true, description: "<b>Família Olfativa:</b> Amadeirado Especiado Quente.<br><br>Marcante e opulento. Traz pimenta preta, notas frutadas de abacaxi e café, com um fundo intenso de madeiras secas e baunilha." },
-            { id: 16, name: "INSPIRAÇÃO: Sauvage Dior", category: "masculino", price: 60.00, originalPrice: "R$ 1.115", image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw86e71062/images/hi-res-BR/p1_100ml_3348901368247_1500px.jpg?sw=1200&sh=1200&sm=fit", available: false, description: "<b>Família Olfativa:</b> Aromático Fougère.<br><br>Atemporal e selvagem. O frescor radiante da bergamota da Calábria é fortemente contrastado com o rastro amadeirado, poderoso e viril do ambroxan." },
-            { id: 17, name: "INSPIRAÇÃO: Prada Paradoxe", category: "feminino", price: 60.00, originalPrice: "1.036", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStdYiOP8x3VVT3YMKytMwcY1rf63ULlab4pqWn7DEodQ&s", available: true, description: "<b>Família Olfativa:</b> Floral Ambarado.<br><br>Moderno, vibrante e feminino. Reinventa os clássicos combinando frescor do néroli, notas de pera e um rastro vibrante de almíscar e âmbar." }
+            { 
+                id: 1, 
+                name: "INSPIRAÇÃO: 212 VIP Black", 
+                category: "masculino", 
+                family: "🌿 Aromático • Especiado", 
+                price: 60.00, 
+                originalPrice: "R$ 777", 
+                image: "https://img.lojasrenner.com.br/item/544934750/zoom/1.jpg", 
+                available: false, 
+                description: "Uma explosão energética de absinto, anis e lavanda, finalizada com o toque sedutor e irresistível da baunilha preta. Feito para o homem que domina a noite." 
+            },
+            { 
+                id: 2, 
+                name: "INSPIRAÇÃO: Good Girl", 
+                category: "feminino", 
+                family: "🌸 Doce • Oriental Floral", 
+                price: 60.00, 
+                originalPrice: "R$ 939", 
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaXOkj_2yCSyLK_-YoI8dd9yQViIwhpaiceWBIXPmNkA&s", 
+                available: true, 
+                description: "Audacioso e sexy. Mescla a doçura e leveza do jasmim sambac e tuberosa com as notas ricas e misteriosas de cacau e fava tonka. Para a mulher dona de si." 
+            },
+            { 
+                id: 3, 
+                name: "INSPIRAÇÃO: La Vie Est Belle", 
+                category: "feminino", 
+                family: "🍬 Doce • Floral Gourmand", 
+                price: 60.00, 
+                originalPrice: "R$ 1.187", 
+                image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw5d8f77a7/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3605533286555.01_1000px.jpg?sw=556&sh=680&sm=fit", 
+                available: true, 
+                description: "Irresistivelmente doce e elegante. Traz a nobreza da íris pallida entrelaçada com a doçura viciante do pralinê, baunilha e patchouli." 
+            },
+            { 
+                id: 4, 
+                name: "INSPIRAÇÃO: Olympéa", 
+                category: "feminino", 
+                family: "🌸 Floral • Baunilha Salgada", 
+                price: 60.00, 
+                originalPrice: "R$ 939", 
+                image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/334843-800-800/olympea-eau-de-parfum-paco-rabanne-perfume-feminino-30ml.jpg?v=636924839904430000", 
+                available: true, 
+                description: "Um contraste fascinante e divino entre o frescor do jasmim aquático e a sensualidade viciante da baunilha salgada. O perfume de uma deusa." 
+            },
+            { 
+                id: 5, 
+                name: "INSPIRAÇÃO: Ferrari Black", 
+                category: "masculino", 
+                family: "🪵 Amadeirado • Especiado", 
+                price: 60.00, 
+                originalPrice: "R$ 280", 
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBAYPyH6Oge_MTGGMC7qLRUNIoDaxTQ5Gt3QRx-bSz7gqMfBkhJ5kd0udU&s=10", 
+                available: true, 
+                description: "Um clássico absoluto. Notas cítricas de maçã e ameixa na saída evoluem para um coração de canela e jasmim, com um fundo misterioso de cedro e baunilha." 
+            },
+            { 
+                id: 6, 
+                name: "INSPIRAÇÃO: Fakhar Rose", 
+                category: "feminino", 
+                family: "💐 Floral • Frutal Suave", 
+                price: 60.00, 
+                originalPrice: "R$ 350", 
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInkuVyrG-tAAiB4cAm5oJVFogQuPix-iqk68GPu0BtXPTO3Is2tDKzm8&s=10", 
+                available: true, 
+                description: "Exuberante e romântico. Destaca a delicadeza luxuosa das flores brancas, tuberosa e rosas, com uma base levemente amadeirada que exala elegância." 
+            },
+            { 
+                id: 7, 
+                name: "INSPIRAÇÃO: Lady Million", 
+                category: "feminino", 
+                family: "🍓 Frutal • Doce Floral", 
+                price: 60.00, 
+                originalPrice: "R$ 939", 
+                image: "https://fimgs.net/mdimg/perfume/o.9045.jpg", 
+                available: true, 
+                description: "Luxuoso e radiante. Inicia com um toque de framboesa, abrindo para um buquê de néroli e jasmim, finalizando com o rastro sensual do mel e patchouli." 
+            },
+            { 
+                id: 8, 
+                name: "INSPIRAÇÃO: Fame", 
+                category: "feminino", 
+                family: "🥭 Frutal • Tropical Doce", 
+                price: 60.00, 
+                originalPrice: "R$ 1.240", 
+                image: "https://www.sephora.com.br/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw167b8a94/images/hi-res-BR/3349668594412.1_1500px.jpg", 
+                available: true, 
+                description: "Tropical, vanguardista e irresistível. Traz o frescor exótico da manga, a pureza do jasmim e a sensualidade cremosa do incenso e sândalo." 
+            },
+            { 
+                id: 9, 
+                name: "INSPIRAÇÃO: Green Irish Tweed", 
+                category: "masculino", 
+                family: "🌿 Amadeirado • Verde Cítrico", 
+                price: 60.00, 
+                originalPrice: "R$ 2.900", 
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGKM2dBbeDMIwHA97Rt5rQIjjNndxcXEpHTVnDZZhnmA&s=10", 
+                available: true, 
+                description: "Evoca a frescura do campo e a sofisticação da realeza. Notas clássicas de limão, verbena, folhas de violeta e sândalo." 
+            },
+            { 
+                id: 10, 
+                name: "INSPIRAÇÃO: Sauvage Dior Elixir", 
+                category: "masculino", 
+                family: "🪵 Amadeirado • Especiado Quente", 
+                price: 60.00, 
+                originalPrice: "R$ 1.943", 
+                image: "https://www.sephora.com.br/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw3bcf0330/images/hi-res-BR/P1.%203348901567572-SAUVAGE_ELIXIR_60ML_3348901567572_1500px.jpg", 
+                available: false, 
+                description: "Extremamente concentrado e noturno. Uma mistura inebriante de toranja picante, noz-moscada, lavanda e madeiras ricas com um toque de alcaçuz." 
+            },
+            { 
+                id: 11, 
+                name: "INSPIRAÇÃO: Turathi Blue Afnan", 
+                category: "masculino", 
+                family: "🍋 Cítrico • Aromático Fresco", 
+                price: 60.00, 
+                originalPrice: "R$ 380", 
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsTliMLtaOaICJcNZRC7iNG5kCO-xV7F1E8ffYjeZWtQ&s=10", 
+                available: true, 
+                description: "Vibrante e fresco. Combina uma explosão de cítricos com notas amadeiradas de fundo, âmbar e especiarias elegantes para o dia a dia." 
+            },
+            { 
+                id: 12, 
+                name: "INSPIRAÇÃO: Scandal By Night", 
+                category: "feminino", 
+                family: "🍯 Doce • Mel e Tuberosa", 
+                price: 60.00, 
+                originalPrice: "R$ 1.004", 
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWrEIEVFlqf8kcHCfLNf7zaCuFQ0HD2zILNH1AOv7o9kmyhI09-vbHaVA&s=10", 
+                available: true, 
+                description: "Escandalosamente sedutor. A doçura marcante do mel e tuberosa se misturam à fava tonka e sândalo, criando uma aura noturna irresistível." 
+            },
+            { 
+                id: 13, 
+                name: "INSPIRAÇÃO: Invictus Victory Elixir", 
+                category: "masculino", 
+                family: "🍫 Doce • Amadeirado Baunilha", 
+                price: 60.00, 
+                originalPrice: "R$ 971", 
+                image: "https://encrypted-tbn0.shopping?q=tbn:ANd9GcRX7jmk9KhWiRaTiIx4VePXTWmivzInX3T5OgRuGCDAF1ImkJB1SMcMBLoCy7ejJez5n0et4-3wdH44aWGwNNS4-J_lXk_DT5HobWGlsF9234NErbK4uRS2yfgiMz2lFXW6sj8wyJ4dPA&usqp=CAc", 
+                available: true, 
+                description: "O perfume de um vencedor. Traz o frescor intenso do lavandim colidindo com o calor do incenso, baunilha e fava tonka." 
+            },
+            { 
+                id: 14, 
+                name: "INSPIRAÇÃO: Royal Amber", 
+                category: ["masculino", "feminino", "unissex"], 
+                family: "✨ Doce • Oriental Baunilha", 
+                price: 60.00, 
+                originalPrice: "R$ 1.300", 
+                image: "https://fimgs.net/mdimg/perfume-thumbs/375x500.69362.jpg", 
+                available: true, 
+                description: "Luxo em forma de perfume. Combina notas doces e ricas de âmbar, melão, abacaxi e baunilha, perfeitamente equilibradas em uma base de almíscar." 
+            },
+            { 
+                id: 15, 
+                name: "INSPIRAÇÃO: Asad Lataffa", 
+                category: "masculino", 
+                family: "☕ Amadeirado • Especiado Quente", 
+                price: 60.00, 
+                originalPrice: "R$ 300", 
+                image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1292446-800-800/17581402186111.jpg?v=638998664977700000", 
+                available: true, 
+                description: "Marcante e opulento. Traz pimenta preta, notas frutadas de abacaxi e café, com um fundo intenso de madeiras secas e baunilha." 
+            },
+            { 
+                id: 16, 
+                name: "INSPIRAÇÃO: Sauvage Dior", 
+                category: "masculino", 
+                family: "🌿 Aromático • Cítrico Fresco", 
+                price: 60.00, 
+                originalPrice: "R$ 1.115", 
+                image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw86e71062/images/hi-res-BR/p1_100ml_3348901368247_1500px.jpg?sw=1200&sh=1200&sm=fit", 
+                available: false, 
+                description: "Atemporal e selvagem. O frescor radiante da bergamota da Calábria é fortemente contrastado com o rastro amadeirado, poderoso e viril do ambroxan." 
+            },
+            { 
+                id: 17, 
+                name: "INSPIRAÇÃO: Prada Paradoxe", 
+                category: "feminino", 
+                family: "🌸 Floral • Âmbar Suave", 
+                price: 60.00, 
+                originalPrice: "1.036", 
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStdYiOP8x3VVT3YMKytMwcY1rf63ULlab4pqWn7DEodQ&s", 
+                available: true, 
+                description: "Moderno, vibrante e feminino. Reinventa os clássicos combinando frescor do néroli, notas de pera e um rastro vibrante de almíscar e âmbar." 
+            }
         ];
 
         let cart = [];
@@ -1140,7 +1333,6 @@
             const pesquisa = document.getElementById("searchInput") ? document.getElementById("searchInput").value.toLowerCase() : "";
 
             let filtered = products.filter(product => {
-                // AQUI ESTÁ A NOVA LÓGICA DO FILTRO: Aceita Array ou String
                 const categoria = currentCategory === "all" || 
                     (Array.isArray(product.category) 
                         ? product.category.includes(currentCategory) 
@@ -1158,7 +1350,6 @@
             }
 
             filtered.forEach(product => {
-                // AQUI ESTÁ O AJUSTE VISUAL: Formata a categoria com vírgula e espaço se for uma lista
                 const displayCategory = Array.isArray(product.category) ? product.category.join(", ") : product.category;
 
                 grid.innerHTML += `
@@ -1174,6 +1365,7 @@
                         <div class="product-info">
                             <div>
                                 <span class="product-category">${displayCategory}</span>
+                                <div><span class="product-family">${product.family}</span></div>
                                 <h3 class="product-title">${product.name}</h3>
                             </div>
 
@@ -1223,13 +1415,13 @@
             const product = products.find(p => p.id === productId);
             if(!product) return;
 
-            // Ajuste visual para o modal também
             const displayCategory = Array.isArray(product.category) ? product.category.join(", ") : product.category;
 
             document.getElementById('modalProductImg').src = product.image;
             document.getElementById('modalProductCategory').innerText = displayCategory;
+            document.getElementById('modalProductFamily').innerText = product.family;
             document.getElementById('modalProductTitle').innerText = product.name;
-            document.getElementById('modalProductDesc').innerHTML = product.description;
+            document.getElementById('modalProductDesc').innerText = product.description;
             
             const btn = document.getElementById('modalBuyBtn');
             if (product.available) {
