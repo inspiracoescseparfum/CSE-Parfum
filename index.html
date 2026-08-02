@@ -1122,7 +1122,8 @@
             { id: 11, name: "INSPIRAÇÃO: Turathi Blue Afnan", category: "masculino", price: 60.00, originalPrice: "R$ 380", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsTliMLtaOaICJcNZRC7iNG5kCO-xV7F1E8ffYjeZWtQ&s=10", available: true, description: "<b>Família Olfativa:</b> Cítrico Aromático.<br><br>Vibrante e fresco. Combina uma explosão de cítricos com notas amadeiradas de fundo, âmbar e especiarias elegantes para o dia a dia." },
             { id: 12, name: "INSPIRAÇÃO: Scandal By Night", category: "feminino", price: 60.00, originalPrice: "R$ 1.004", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWrEIEVFlqf8kcHCfLNf7zaCuFQ0HD2zILNH1AOv7o9kmyhI09-vbHaVA&s=10", available: true, description: "<b>Família Olfativa:</b> Oriental Floral.<br><br>Escandalosamente sedutor. A doçura marcante do mel e tuberosa se misturam à fava tonka e sândalo, criando uma aura noturna irresistível." },
             { id: 13, name: "INSPIRAÇÃO: Invictus Victory Elixir", category: "masculino", price: 60.00, originalPrice: "R$ 971", image: "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRX7jmk9KhWiRaTiIx4VePXTWmivzInX3T5OgRuGCDAF1ImkJB1SMcMBLoCy7ejJez5n0et4-3wdH44aWGwNNS4-J_lXk_DT5HobWGlsF9234NErbK4uRS2yfgiMz2lFXW6sj8wyJ4dPA&usqp=CAc", available: true, description: "<b>Família Olfativa:</b> Amadeirado Especiado Doce.<br><br>O perfume de um vencedor. Traz o frescor intenso do lavandim colidindo com o calor do incenso, baunilha e fava tonka." },
-            { id: 14, name: "INSPIRAÇÃO: Royal Amber", category: "unissex", price: 60.00, originalPrice: "R$ 1.300", image: "https://fimgs.net/mdimg/perfume-thumbs/375x500.69362.jpg", available: true, description: "<b>Família Olfativa:</b> Oriental Baunilha (Unissex).<br><br>Luxo em forma de perfume. Combina notas doces e ricas de âmbar, melão, abacaxi e baunilha, perfeitamente equilibradas em uma base de almíscar." },
+            // AQUI ESTÁ A MUDANÇA: O Royal Amber agora aceita as 3 categorias!
+            { id: 14, name: "INSPIRAÇÃO: Royal Amber", category: ["masculino", "feminino", "unissex"], price: 60.00, originalPrice: "R$ 1.300", image: "https://fimgs.net/mdimg/perfume-thumbs/375x500.69362.jpg", available: true, description: "<b>Família Olfativa:</b> Oriental Baunilha (Unissex).<br><br>Luxo em forma de perfume. Combina notas doces e ricas de âmbar, melão, abacaxi e baunilha, perfeitamente equilibradas em uma base de almíscar." },
             { id: 15, name: "INSPIRAÇÃO: Asad Lataffa", category: "masculino", price: 60.00, originalPrice: "R$ 300", image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1292446-800-800/17581402186111.jpg?v=638998664977700000", available: true, description: "<b>Família Olfativa:</b> Amadeirado Especiado Quente.<br><br>Marcante e opulento. Traz pimenta preta, notas frutadas de abacaxi e café, com um fundo intenso de madeiras secas e baunilha." },
             { id: 16, name: "INSPIRAÇÃO: Sauvage Dior", category: "masculino", price: 60.00, originalPrice: "R$ 1.115", image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw86e71062/images/hi-res-BR/p1_100ml_3348901368247_1500px.jpg?sw=1200&sh=1200&sm=fit", available: false, description: "<b>Família Olfativa:</b> Aromático Fougère.<br><br>Atemporal e selvagem. O frescor radiante da bergamota da Calábria é fortemente contrastado com o rastro amadeirado, poderoso e viril do ambroxan." },
             { id: 17, name: "INSPIRAÇÃO: Prada Paradoxe", category: "feminino", price: 60.00, originalPrice: "1.036", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStdYiOP8x3VVT3YMKytMwcY1rf63ULlab4pqWn7DEodQ&s", available: true, description: "<b>Família Olfativa:</b> Floral Ambarado.<br><br>Moderno, vibrante e feminino. Reinventa os clássicos combinando frescor do néroli, notas de pera e um rastro vibrante de almíscar e âmbar." }
@@ -1139,7 +1140,12 @@
             const pesquisa = document.getElementById("searchInput") ? document.getElementById("searchInput").value.toLowerCase() : "";
 
             let filtered = products.filter(product => {
-                const categoria = currentCategory === "all" || product.category === currentCategory;
+                // AQUI ESTÁ A NOVA LÓGICA DO FILTRO: Aceita Array ou String
+                const categoria = currentCategory === "all" || 
+                    (Array.isArray(product.category) 
+                        ? product.category.includes(currentCategory) 
+                        : product.category === currentCategory);
+                        
                 const nome = product.name.toLowerCase().includes(pesquisa);
                 return categoria && nome;
             });
@@ -1152,6 +1158,9 @@
             }
 
             filtered.forEach(product => {
+                // AQUI ESTÁ O AJUSTE VISUAL: Formata a categoria com vírgula e espaço se for uma lista
+                const displayCategory = Array.isArray(product.category) ? product.category.join(", ") : product.category;
+
                 grid.innerHTML += `
                     <div class="product-card">
                         <div class="img-container" onclick="openDetailsModal(${product.id})" title="Clique para ver notas olfativas">
@@ -1164,7 +1173,7 @@
 
                         <div class="product-info">
                             <div>
-                                <span class="product-category">${product.category}</span>
+                                <span class="product-category">${displayCategory}</span>
                                 <h3 class="product-title">${product.name}</h3>
                             </div>
 
@@ -1214,8 +1223,11 @@
             const product = products.find(p => p.id === productId);
             if(!product) return;
 
+            // Ajuste visual para o modal também
+            const displayCategory = Array.isArray(product.category) ? product.category.join(", ") : product.category;
+
             document.getElementById('modalProductImg').src = product.image;
-            document.getElementById('modalProductCategory').innerText = product.category;
+            document.getElementById('modalProductCategory').innerText = displayCategory;
             document.getElementById('modalProductTitle').innerText = product.name;
             document.getElementById('modalProductDesc').innerHTML = product.description;
             
