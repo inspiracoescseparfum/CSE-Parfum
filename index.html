@@ -211,34 +211,97 @@
             color: var(--accent);
         }
 
-        /* Notice Box (Disclaimer) */
-        .disclaimer-box {
-            max-width: 1100px;
+        /* Notice Box & Standard Bottle Banner (Centralizados) */
+        .info-section-wrapper {
+            max-width: 850px;
             margin: -25px auto 30px auto;
-            padding: 20px 25px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .disclaimer-box {
             background: #fff;
             border-left: 5px solid var(--accent);
             border-radius: 12px;
             box-shadow: var(--shadow-soft);
+            padding: 20px 25px;
             display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            position: relative;
-            z-index: 10;
-            width: 90%;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: center;
         }
 
         .disclaimer-box i {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: var(--accent);
-            margin-top: 2px;
             flex-shrink: 0;
         }
 
         .disclaimer-box p {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
             line-height: 1.6;
+        }
+
+        /* Seção do Frasco Padrão Centralizada */
+        .bottle-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .bottle-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fcfbf9 100%);
+            border: 1px solid rgba(201, 160, 60, 0.3);
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            padding: 25px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .bottle-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.08));
+        }
+
+        .bottle-info h2 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .bottle-info p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+
+        .bottle-alert {
+            margin-top: 10px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(201, 160, 60, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
         }
 
         /* Features Section */
@@ -705,7 +768,6 @@
             text-align: left;
         }
 
-        /* Lista de Ingredientes / Composição */
         .details-modal-ingredients {
             font-size: 0.82rem;
             color: var(--text-muted);
@@ -988,7 +1050,7 @@
             line-height: 1.6;
         }
 
-        /* Media Queries otimizadas para Celular / Tablet / Desktop */
+        /* Media Queries para 2 colunas no celular */
         @media(max-width: 768px) {
             header { padding: 12px 4%; }
             .logo-title { font-size: 1.35rem; }
@@ -1007,10 +1069,8 @@
             .buy-btn { padding: 12px; font-size: 0.82rem; }
             .cart-modal { max-width: 100%; }
             .view-details-overlay { display: none; }
-            .disclaimer-box { flex-direction: column; text-align: center; align-items: center; }
         }
 
-        /* ALTERAÇÃO APLICADA AQUI: Garante 2 colunas mesmo em celulares menores (telas abaixo de 480px) */
         @media(max-width: 480px) {
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .img-container { height: 140px; padding: 8px; }
@@ -1056,12 +1116,32 @@
         </div>
     </section>
 
-    <!-- Aviso de Isenção Transparente -->
-    <div class="disclaimer-box">
-        <i class="fas fa-shield-alt"></i>
-        <p>
-            <strong>Aviso de Transparência:</strong> Os produtos comercializados pela <strong>CSE Parfum</strong> são contratipos (fragrâncias inspiradas). Não possuímos nenhum vínculo com as marcas citadas nem comercializamos perfumes originais. As referências visuais e nomes servem estritamente para orientação da família e perfil olfativo. O frasco enviado é o padrão da nossa marca.
-        </p>
+    <!-- Aviso e Apresentação do Frasco Padrão Centralizados -->
+    <div class="info-section-wrapper">
+        <div class="disclaimer-box">
+            <i class="fas fa-shield-alt"></i>
+            <p>
+                <strong>Aviso de Transparência:</strong> Os produtos comercializados pela <strong>CSE Parfum</strong> são contratipos (fragrâncias inspiradas). Não possuímos nenhum vínculo com as marcas citadas nem comercializamos perfumes originais. As referências visuais e nomes servem estritamente para orientação da família e perfil olfativo.
+            </p>
+        </div>
+
+        <section class="bottle-section">
+            <div class="bottle-card">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ3A4mZzYUCDMT_v2axNNPVmcP9GhYsBFG5F3XHSZ-RBZ7_J7wBDhyxXvpzDi-JOwFw2dbM9B92lgvkknFkcxo01SF3H3-QflX7qm-zHHMhlnuLxQr04KiuvZWZ6MYcLVwatO8t7Kay&usqp=CAc" alt="Frasco utilizado pela CSE Parfum">
+                <div class="bottle-info">
+                    <h2>Este é o frasco que você receberá</h2>
+                    <p>
+                        Todas as fragrâncias são entregues neste frasco de perfumaria de <strong>50 ml</strong>.
+                    </p>
+                    <p>
+                        As imagens dos perfumes exibidas no catálogo servem apenas como referência da fragrância inspirada.
+                    </p>
+                    <div class="bottle-alert">
+                        ⚠️ O produto será enviado exatamente neste modelo de frasco.
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Destaque de Qualidade -->
@@ -1112,7 +1192,7 @@
         </div>
     </div>
 
-    <!-- Modal de Detalhes do Produto (Com Lista de Ingredientes) -->
+    <!-- Modal de Detalhes do Produto -->
     <div class="details-modal-overlay" id="detailsModal" onclick="closeDetailsModal()">
         <div class="details-modal-content" onclick="event.stopPropagation()">
             <button class="details-modal-close" onclick="closeDetailsModal()">
@@ -1127,10 +1207,9 @@
                 <h3 id="modalProductTitle" class="details-modal-title"></h3>
                 <div id="modalProductDesc" class="details-modal-desc"></div>
                 
-                <!-- Lista de Ingredientes solicitada -->
                 <div class="details-modal-ingredients">
                     <strong>Composição / Ingredientes:</strong>
-                    Álcool, Essência, Propilenoglicol, Hexametilindanopirano
+                    Alcool, Essencia, Propilemoglicol, Hexametilindamopirano
                 </div>
 
                 <button id="modalBuyBtn" class="details-modal-btn">
@@ -1148,7 +1227,6 @@
             <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
         </div>
         
-        <!-- Barra de Progresso de Desconto -->
         <div id="discountProgress" class="discount-progress"></div>
         
         <div class="cart-items" id="cartItems"></div>
@@ -1158,7 +1236,6 @@
                 <span id="cartTotal">R$ 0,00</span>
             </div>
 
-            <!-- ORIENTAÇÃO DE FINALIZAÇÃO -->
             <div class="checkout-guidance">
                 <i class="fas fa-shield-alt"></i> Compra 100% segura. Finalize pelo WhatsApp para checar <strong>disponibilidade</strong> e <strong>prazo de entrega</strong>.
             </div>
@@ -1174,11 +1251,11 @@
         <div style="font-size: 2rem; margin-bottom: 15px; color: var(--accent);"><i class="fas fa-gem"></i></div>
         <p>&copy; 2026 CSE Parfum. Todos os direitos reservados.</p>
         <p class="disclaimer-footer">
-            As marcas mencionadas e imagens de referência são de propriedade de seus respectivos fabricantes. A CSE Parfum fabrica e vende fragrâncias próprias inspiradas nestas referências olfativas.
+            As marcas mencionadas e imagens de referência são de propriedade de seus respectivos fabricantes. A CSE Parfum fabrica e vende fragrâncias inspiradas nestas referências olfativas.
         </p>
     </footer>
 
-    <!-- Script de Funcionalidade -->
+    <!-- Script -->
     <script>
         const WHATSAPP_NUMBER = "5514996878508";
 
