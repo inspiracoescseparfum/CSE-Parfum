@@ -293,17 +293,6 @@
             color: #444;
         }
 
-        @media(max-width: 768px) {
-            .bottle-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .bottle-card img {
-                width: 190px;
-            }
-        }
-
         /* Container & Filters */
         .container {
             max-width: 1200px;
@@ -672,6 +661,105 @@
         #searchInput:focus {
             border-color: #d4af37;
             box-shadow: 0 0 10px rgba(212, 175, 55, .2);
+        }
+
+        /* ===== ADAPTAÇÕES RESPONSIVAS PARA CELULAR (MEDIA QUERIES) ===== */
+        @media(max-width: 768px) {
+            header {
+                padding: 12px 4%;
+            }
+
+            .logo-title {
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+            }
+
+            .logo-subtitle {
+                font-size: 0.6rem;
+                letter-spacing: 2px;
+            }
+
+            .hero {
+                padding: 45px 15px;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero-sub {
+                font-size: 0.9rem;
+            }
+
+            .disclaimer-box {
+                margin: 20px 15px;
+                padding: 14px 16px;
+                flex-direction: column;
+                gap: 10px;
+                text-align: left;
+            }
+
+            .bottle-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .bottle-card img {
+                width: 180px;
+            }
+
+            .bottle-info h2 {
+                font-size: 1.5rem;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .img-container {
+                height: 180px;
+                padding: 10px;
+            }
+
+            .product-info {
+                padding: 12px;
+            }
+
+            .product-title {
+                font-size: 0.9rem;
+            }
+
+            .product-price {
+                font-size: 1.1rem;
+            }
+
+            .buy-btn {
+                padding: 10px;
+                font-size: 0.8rem;
+            }
+
+            .cart-modal {
+                max-width: 100%;
+            }
+
+            .filters {
+                gap: 6px;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Ajustes extras para telas muito pequenas (smartphones compactos) */
+        @media(max-width: 400px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
