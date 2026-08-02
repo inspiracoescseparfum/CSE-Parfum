@@ -29,12 +29,14 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* Top Bar Promo */
@@ -43,7 +45,7 @@
             color: #fff;
             text-align: center;
             padding: 12px 15px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-bottom: 2px solid var(--accent);
             letter-spacing: 0.5px;
         }
@@ -63,7 +65,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 6%;
+            padding: 16px 5%;
             transition: var(--transition);
         }
 
@@ -74,7 +76,7 @@
         }
 
         .logo-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             letter-spacing: 2px;
             color: var(--primary);
@@ -86,10 +88,10 @@
         }
 
         .logo-subtitle {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             font-weight: 600;
             margin-top: 2px;
         }
@@ -97,13 +99,13 @@
         .cart-btn {
             background: var(--bg-light);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             cursor: pointer;
             position: relative;
             color: var(--primary);
@@ -119,13 +121,13 @@
 
         .cart-count {
             position: absolute;
-            top: -3px;
-            right: -3px;
+            top: -2px;
+            right: -2px;
             background-color: var(--primary);
             color: #fff;
-            font-size: 0.75rem;
-            width: 22px;
-            height: 22px;
+            font-size: 0.7rem;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -139,7 +141,7 @@
         .hero {
             background: linear-gradient(135deg, #0a0a0a 0%, #222 100%);
             color: #fff;
-            padding: 80px 20px;
+            padding: 70px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -154,11 +156,12 @@
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 2.3rem;
             font-weight: 800;
             margin-bottom: 15px;
             letter-spacing: -1px;
             position: relative;
+            padding: 0 10px;
         }
 
         .hero h1 span {
@@ -167,28 +170,30 @@
 
         .hero-sub {
             color: #d1d5db;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 400;
             max-width: 600px;
             margin: 0 auto 25px auto;
             position: relative;
+            padding: 0 15px;
         }
 
         .hero-badges {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
             position: relative;
+            padding: 0 10px;
         }
 
         .badge-item {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(201, 160, 60, 0.4);
-            padding: 8px 20px;
+            padding: 8px 18px;
             border-radius: 30px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: #fff;
             display: flex;
@@ -209,27 +214,29 @@
         /* Notice Box (Disclaimer) */
         .disclaimer-box {
             max-width: 1100px;
-            margin: -30px auto 30px auto;
-            padding: 20px 30px;
+            margin: -25px auto 30px auto;
+            padding: 20px 25px;
             background: #fff;
             border-left: 5px solid var(--accent);
             border-radius: 12px;
             box-shadow: var(--shadow-soft);
             display: flex;
             align-items: flex-start;
-            gap: 20px;
+            gap: 15px;
             position: relative;
             z-index: 10;
+            width: 90%;
         }
 
         .disclaimer-box i {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--accent);
             margin-top: 2px;
+            flex-shrink: 0;
         }
 
         .disclaimer-box p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             line-height: 1.6;
         }
@@ -237,16 +244,16 @@
         /* Features Section */
         .features-grid {
             max-width: 1100px;
-            margin: 50px auto;
+            margin: 40px auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
             padding: 0 20px;
         }
 
         .feature-card {
             background: var(--card-bg);
-            padding: 35px 25px;
+            padding: 30px 20px;
             border-radius: var(--border-radius);
             text-align: center;
             border: 1px solid rgba(0,0,0,0.03);
@@ -255,74 +262,75 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
             border-color: rgba(201, 160, 60, 0.2);
         }
 
         .feature-card i {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--accent);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .feature-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: var(--primary);
         }
 
         .feature-card p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
         /* Container & Filters */
         .container {
             max-width: 1200px;
-            margin: 60px auto;
+            margin: 50px auto;
             padding: 0 20px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--primary);
         }
 
         .section-subtitle {
             text-align: center;
             color: var(--text-muted);
-            margin-bottom: 35px;
-            font-size: 1.05rem;
+            margin-bottom: 30px;
+            font-size: 1rem;
         }
 
         /* Barra de Pesquisa */
         .search-container {
-            max-width: 550px;
-            margin: 0 auto 35px;
+            max-width: 500px;
+            margin: 0 auto 30px;
             position: relative;
+            padding: 0 10px;
         }
 
         .search-container i {
             position: absolute;
-            left: 20px;
+            left: 28px;
             top: 50%;
             transform: translateY(-50%);
             color: #a0aab2;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         #searchInput {
             width: 100%;
-            padding: 16px 20px 16px 50px;
+            padding: 15px 20px 15px 48px;
             border: 2px solid transparent;
             background: #fff;
             border-radius: 40px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
             transition: var(--transition);
             box-shadow: var(--shadow-soft);
@@ -343,18 +351,19 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 45px;
+            gap: 10px;
+            margin-bottom: 35px;
+            padding: 0 10px;
         }
 
         .filter-btn {
-            padding: 12px 28px;
+            padding: 10px 24px;
             border: 1px solid rgba(0,0,0,0.05);
             background-color: var(--card-bg);
             border-radius: 40px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: var(--transition);
             color: var(--text-muted);
             box-shadow: 0 2px 10px rgba(0,0,0,0.02);
@@ -364,7 +373,7 @@
             background-color: var(--primary);
             color: #fff;
             border-color: var(--primary);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
 
         .filter-btn:hover:not(.active) {
@@ -376,8 +385,8 @@
         /* Product Grid & Cards */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
         }
 
         .product-card {
@@ -393,15 +402,15 @@
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
         }
 
         .img-container {
             position: relative;
             background: linear-gradient(to bottom, #ffffff, #f8f9fa);
-            padding: 30px;
-            height: 300px;
+            padding: 25px;
+            height: 260px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -414,13 +423,13 @@
             bottom: -50px;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(5px);
-            padding: 12px 0;
+            padding: 10px 0;
             text-align: center;
             font-weight: 700;
             color: var(--primary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: var(--transition);
             box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
             display: flex;
@@ -435,15 +444,15 @@
 
         .inspiration-badge {
             position: absolute;
-            top: 15px;
-            left: 15px;
+            top: 12px;
+            left: 12px;
             background-color: var(--primary);
             color: var(--accent);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 800;
-            padding: 6px 12px;
-            border-radius: 8px;
-            letter-spacing: 1.5px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             z-index: 2;
@@ -457,11 +466,11 @@
         }
 
         .img-container:hover .product-img {
-            transform: scale(1.08);
+            transform: scale(1.06);
         }
 
         .product-info {
-            padding: 25px 20px;
+            padding: 20px 18px;
             text-align: center;
             flex-grow: 1;
             display: flex;
@@ -470,18 +479,18 @@
         }
 
         .product-category {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             color: var(--accent);
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
             font-weight: 700;
             margin-bottom: 4px;
             display: inline-block;
         }
 
-        /* Estilo da Família Olfativa no Card */
+        /* Estilo da Família Olfativa no Card (Sem emojis/imagens) */
         .product-family {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: #555;
             background: #f1f3f5;
             padding: 3px 10px;
@@ -489,20 +498,21 @@
             display: inline-block;
             margin-bottom: 10px;
             font-weight: 600;
+            letter-spacing: 0.3px;
         }
 
         .product-title {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 800;
-            margin-bottom: 12px;
-            line-height: 1.4;
+            margin-bottom: 10px;
+            line-height: 1.3;
             color: var(--primary);
         }
 
         .price-reference {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .price-reference span {
@@ -511,21 +521,21 @@
         }
 
         .product-price {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .stock-status {
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
@@ -547,15 +557,16 @@
             background-color: var(--primary);
             color: #fff;
             border: none;
-            padding: 16px;
+            padding: 14px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
         }
 
         .buy-btn:hover {
@@ -581,7 +592,7 @@
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
-            padding: 20px;
+            padding: 15px;
         }
 
         .details-modal-overlay.active {
@@ -592,13 +603,16 @@
         .details-modal-content {
             background: #fff;
             width: 100%;
-            max-width: 480px;
+            max-width: 450px;
             border-radius: 24px;
             position: relative;
-            transform: translateY(30px) scale(0.95);
+            transform: translateY(20px) scale(0.95);
             transition: var(--transition);
             box-shadow: 0 25px 50px rgba(0,0,0,0.25);
             overflow: hidden;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .details-modal-overlay.active .details-modal-content {
@@ -607,21 +621,21 @@
 
         .details-modal-header {
             background: #f8f9fa;
-            padding: 30px;
+            padding: 25px;
             text-align: center;
             position: relative;
         }
 
         .details-modal-close {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 12px;
+            right: 12px;
             background: #fff;
             border: none;
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -629,6 +643,7 @@
             color: var(--text-dark);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: var(--transition);
+            z-index: 5;
         }
 
         .details-modal-close:hover {
@@ -638,54 +653,55 @@
         }
 
         .details-modal-img {
-            width: 160px;
-            height: 160px;
+            width: 140px;
+            height: 140px;
             object-fit: contain;
-            filter: drop-shadow(0 15px 15px rgba(0,0,0,0.15));
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.15));
         }
 
         .details-modal-body {
-            padding: 30px;
+            padding: 25px;
             text-align: center;
+            overflow-y: auto;
         }
 
         .details-modal-category {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--accent);
             text-transform: uppercase;
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             margin-bottom: 6px;
             display: block;
         }
 
         .details-modal-family {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #444;
             background: #f1f3f5;
             padding: 4px 12px;
             border-radius: 20px;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-weight: 600;
         }
 
         .details-modal-title {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             line-height: 1.3;
         }
 
         .details-modal-desc {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 25px;
+            line-height: 1.5;
+            margin-bottom: 20px;
             background: #f8f9fa;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
             border-left: 4px solid var(--accent);
             text-align: left;
         }
@@ -695,16 +711,16 @@
             background: var(--primary);
             color: #fff;
             border: none;
-            padding: 16px;
+            padding: 14px;
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .details-modal-btn:hover {
@@ -717,7 +733,7 @@
             top: 0;
             right: -100%;
             width: 100%;
-            max-width: 420px;
+            max-width: 400px;
             height: 100%;
             background-color: #fff;
             box-shadow: -10px 0 40px rgba(0,0,0,0.15);
@@ -730,7 +746,7 @@
         .cart-modal.open { right: 0; }
 
         .cart-header {
-            padding: 25px;
+            padding: 20px 25px;
             border-bottom: 1px solid #f1f1f1;
             display: flex;
             justify-content: space-between;
@@ -740,7 +756,7 @@
         }
 
         .cart-header h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -753,7 +769,7 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             color: #fff;
             transition: var(--transition);
@@ -770,9 +786,9 @@
         .discount-progress {
             background-color: #fffbeb; 
             color: #b45309;
-            padding: 16px 25px;
+            padding: 14px 20px;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-bottom: 1px solid #fef3c7;
             display: none; 
         }
@@ -788,7 +804,7 @@
         }
 
         .cart-items {
-            padding: 20px 25px;
+            padding: 15px 20px;
             flex-grow: 1;
             overflow-y: auto;
         }
@@ -797,14 +813,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
             border-bottom: 1px solid #f1f1f1;
         }
 
         .cart-item-info h4 {
-            font-size: 0.95rem;
-            margin-bottom: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 3px;
             font-weight: 700;
             color: var(--text-dark);
         }
@@ -812,28 +828,28 @@
         .cart-item-info p {
             color: var(--accent);
             font-weight: 800;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .cart-item-controls {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             background: #f8f9fa;
-            padding: 5px;
+            padding: 4px;
             border-radius: 30px;
         }
 
         .qty-btn {
             background: #fff;
             border: 1px solid #e5e7eb;
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             cursor: pointer;
             color: var(--primary);
             transition: var(--transition);
@@ -850,8 +866,8 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 1.1rem;
-            margin-left: 8px;
+            font-size: 1rem;
+            margin-left: 6px;
             transition: var(--transition);
         }
         
@@ -861,7 +877,7 @@
         }
 
         .cart-footer {
-            padding: 25px;
+            padding: 20px 25px;
             border-top: 1px solid #eee;
             background-color: #fff;
             box-shadow: 0 -5px 15px rgba(0,0,0,0.02);
@@ -870,28 +886,27 @@
         .cart-total {
             display: flex;
             justify-content: space-between;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--primary);
         }
 
         .checkout-guidance {
             background: #f8f9fa;
             color: var(--text-muted);
-            font-size: 0.85rem;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            line-height: 1.5;
+            font-size: 0.8rem;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            line-height: 1.4;
             text-align: center;
             border: 1px solid #e5e7eb;
         }
 
         .checkout-guidance i {
             color: var(--accent);
-            margin-right: 5px;
-            font-size: 1rem;
+            margin-right: 4px;
         }
 
         .whatsapp-checkout {
@@ -899,15 +914,15 @@
             background-color: var(--whatsapp);
             color: #fff;
             border: none;
-            padding: 18px;
+            padding: 16px;
             border-radius: 12px;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 800;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             transition: var(--transition);
             box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
         }
@@ -937,47 +952,50 @@
         /* Footer */
         footer {
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
             background-color: var(--primary);
             color: #fff;
-            margin-top: 60px;
+            margin-top: 50px;
         }
 
-        footer p { font-size: 0.95rem; }
+        footer p { font-size: 0.9rem; }
 
         footer .disclaimer-footer {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #9ca3af;
-            margin-top: 20px;
+            margin-top: 15px;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.6;
         }
 
-        /* Media Queries */
+        /* Media Queries otimizadas para Celular / Tablet / Desktop */
         @media(max-width: 768px) {
-            header { padding: 15px 5%; }
-            .logo-title { font-size: 1.4rem; }
-            .logo-subtitle { font-size: 0.65rem; }
-            .hero { padding: 50px 20px; }
-            .hero h1 { font-size: 2rem; }
-            .section-title { font-size: 1.8rem; }
-            .filters { gap: 8px; }
-            .filter-btn { padding: 10px 20px; font-size: 0.85rem; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .img-container { height: 200px; padding: 15px; }
-            .product-info { padding: 15px 12px; }
-            .product-title { font-size: 0.95rem; }
-            .product-price { font-size: 1.15rem; }
-            .buy-btn { padding: 12px; font-size: 0.85rem; }
+            header { padding: 12px 4%; }
+            .logo-title { font-size: 1.35rem; }
+            .logo-subtitle { font-size: 0.6rem; letter-spacing: 2px; }
+            .hero { padding: 50px 15px; }
+            .hero h1 { font-size: 1.75rem; }
+            .hero-sub { font-size: 0.9rem; }
+            .section-title { font-size: 1.6rem; }
+            .filters { gap: 6px; }
+            .filter-btn { padding: 8px 16px; font-size: 0.82rem; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .img-container { height: 180px; padding: 12px; }
+            .product-info { padding: 15px 10px; }
+            .product-title { font-size: 0.9rem; }
+            .product-price { font-size: 1.1rem; }
+            .buy-btn { padding: 12px; font-size: 0.82rem; }
             .cart-modal { max-width: 100%; }
-            .view-details-overlay { display: none; }
+            .view-details-overlay { display: none; } /* Oculta hover no mobile para evitar toque duplo */
+            .disclaimer-box { flex-direction: column; text-align: center; align-items: center; }
         }
 
         @media(max-width: 480px) {
-            .product-grid { grid-template-columns: 1fr; }
-            .img-container { height: 250px; }
+            .product-grid { grid-template-columns: 1fr; gap: 15px; }
+            .img-container { height: 240px; }
+            .hero h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -990,7 +1008,7 @@
 
     <!-- Header -->
     <header>
-        <div class="logo" onclick="window.scrollTo(0,0)">
+        <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
             <div class="logo-title">CSE <span>PARFUM</span></div>
             <div class="logo-subtitle">Fragrâncias Inspiradas</div>
         </div>
@@ -1003,7 +1021,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <h1>Sua Fragrância Favorita com <span>Alta Fixação</span></h1>
-        <p class="hero-sub">Desenvolvemos inspirações olfativas incrivelmente fieis aos grandes clássicos e lançamentos da perfumaria mundial.</p>
+        <p class="hero-sub">Desenvolvemos inspirações olfativas incrivelmente fiéis aos grandes clássicos e lançamentos da perfumaria mundial.</p>
 
         <div class="hero-badges">
             <div class="badge-item"><i class="fas fa-check-circle"></i> Frascos de 50ml</div>
@@ -1109,7 +1127,7 @@
 
             <!-- ORIENTAÇÃO DE FINALIZAÇÃO -->
             <div class="checkout-guidance">
-                <i class="fas fa-shield-check"></i> Compra 100% segura. Finalize pelo WhatsApp para checar <strong>disponibilidade</strong> e <strong>prazo de entrega</strong>.
+                <i class="fas fa-shield-alt"></i> Compra 100% segura. Finalize pelo WhatsApp para checar <strong>disponibilidade</strong> e <strong>prazo de entrega</strong>.
             </div>
 
             <button class="whatsapp-checkout" onclick="checkoutWhatsApp()">
@@ -1131,13 +1149,13 @@
     <script>
         const WHATSAPP_NUMBER = "5514996878508";
 
-        // Array de produtos com a propriedade 'family' adicionada para indicar se é doce, amadeirado, frutal, etc.
+        // Array de produtos sem emojis na propriedade 'family' para um visual limpo e profissional
         const products = [
             { 
                 id: 1, 
                 name: "INSPIRAÇÃO: 212 VIP Black", 
                 category: "masculino", 
-                family: "🌿 Aromático • Especiado", 
+                family: "Aromático • Especiado", 
                 price: 60.00, 
                 originalPrice: "R$ 777", 
                 image: "https://img.lojasrenner.com.br/item/544934750/zoom/1.jpg", 
@@ -1148,7 +1166,7 @@
                 id: 2, 
                 name: "INSPIRAÇÃO: Good Girl", 
                 category: "feminino", 
-                family: "🌸 Doce • Oriental Floral", 
+                family: "Doce • Oriental Floral", 
                 price: 60.00, 
                 originalPrice: "R$ 939", 
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaXOkj_2yCSyLK_-YoI8dd9yQViIwhpaiceWBIXPmNkA&s", 
@@ -1159,7 +1177,7 @@
                 id: 3, 
                 name: "INSPIRAÇÃO: La Vie Est Belle", 
                 category: "feminino", 
-                family: "🍬 Doce • Floral Gourmand", 
+                family: "Doce • Floral Gourmand", 
                 price: 60.00, 
                 originalPrice: "R$ 1.187", 
                 image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw5d8f77a7/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3605533286555.01_1000px.jpg?sw=556&sh=680&sm=fit", 
@@ -1170,7 +1188,7 @@
                 id: 4, 
                 name: "INSPIRAÇÃO: Olympéa", 
                 category: "feminino", 
-                family: "🌸 Floral • Baunilha Salgada", 
+                family: "Floral • Baunilha Salgada", 
                 price: 60.00, 
                 originalPrice: "R$ 939", 
                 image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/334843-800-800/olympea-eau-de-parfum-paco-rabanne-perfume-feminino-30ml.jpg?v=636924839904430000", 
@@ -1181,7 +1199,7 @@
                 id: 5, 
                 name: "INSPIRAÇÃO: Ferrari Black", 
                 category: "masculino", 
-                family: "🪵 Amadeirado • Especiado", 
+                family: "Amadeirado • Especiado", 
                 price: 60.00, 
                 originalPrice: "R$ 280", 
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBAYPyH6Oge_MTGGMC7qLRUNIoDaxTQ5Gt3QRx-bSz7gqMfBkhJ5kd0udU&s=10", 
@@ -1192,7 +1210,7 @@
                 id: 6, 
                 name: "INSPIRAÇÃO: Fakhar Rose", 
                 category: "feminino", 
-                family: "💐 Floral • Frutal Suave", 
+                family: "Floral • Frutal Suave", 
                 price: 60.00, 
                 originalPrice: "R$ 350", 
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInkuVyrG-tAAiB4cAm5oJVFogQuPix-iqk68GPu0BtXPTO3Is2tDKzm8&s=10", 
@@ -1203,7 +1221,7 @@
                 id: 7, 
                 name: "INSPIRAÇÃO: Lady Million", 
                 category: "feminino", 
-                family: "🍓 Frutal • Doce Floral", 
+                family: "Frutal • Doce Floral", 
                 price: 60.00, 
                 originalPrice: "R$ 939", 
                 image: "https://fimgs.net/mdimg/perfume/o.9045.jpg", 
@@ -1214,7 +1232,7 @@
                 id: 8, 
                 name: "INSPIRAÇÃO: Fame", 
                 category: "feminino", 
-                family: "🥭 Frutal • Tropical Doce", 
+                family: "Frutal • Tropical Doce", 
                 price: 60.00, 
                 originalPrice: "R$ 1.240", 
                 image: "https://www.sephora.com.br/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw167b8a94/images/hi-res-BR/3349668594412.1_1500px.jpg", 
@@ -1225,7 +1243,7 @@
                 id: 9, 
                 name: "INSPIRAÇÃO: Green Irish Tweed", 
                 category: "masculino", 
-                family: "🌿 Amadeirado • Verde Cítrico", 
+                family: "Amadeirado • Verde Cítrico", 
                 price: 60.00, 
                 originalPrice: "R$ 2.900", 
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGKM2dBbeDMIwHA97Rt5rQIjjNndxcXEpHTVnDZZhnmA&s=10", 
@@ -1236,10 +1254,10 @@
                 id: 10, 
                 name: "INSPIRAÇÃO: Sauvage Dior Elixir", 
                 category: "masculino", 
-                family: "🪵 Amadeirado • Especiado Quente", 
+                family: "Amadeirado • Especiado Quente", 
                 price: 60.00, 
                 originalPrice: "R$ 1.943", 
-                image: "https://www.sephora.com.br/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw3bcf0330/images/hi-res-BR/P1.%203348901567572-SAUVAGE_ELIXIR_60ML_3348901567572_1500px.jpg", 
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlFs3HYdzezoAGYyBDeGn5G-7PFALvhBlWvHJPCSD9RQ&s", 
                 available: false, 
                 description: "Extremamente concentrado e noturno. Uma mistura inebriante de toranja picante, noz-moscada, lavanda e madeiras ricas com um toque de alcaçuz." 
             },
@@ -1247,7 +1265,7 @@
                 id: 11, 
                 name: "INSPIRAÇÃO: Turathi Blue Afnan", 
                 category: "masculino", 
-                family: "🍋 Cítrico • Aromático Fresco", 
+                family: "Cítrico • Aromático Fresco", 
                 price: 60.00, 
                 originalPrice: "R$ 380", 
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsTliMLtaOaICJcNZRC7iNG5kCO-xV7F1E8ffYjeZWtQ&s=10", 
@@ -1258,7 +1276,7 @@
                 id: 12, 
                 name: "INSPIRAÇÃO: Scandal By Night", 
                 category: "feminino", 
-                family: "🍯 Doce • Mel e Tuberosa", 
+                family: "Doce • Mel e Tuberosa", 
                 price: 60.00, 
                 originalPrice: "R$ 1.004", 
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWrEIEVFlqf8kcHCfLNf7zaCuFQ0HD2zILNH1AOv7o9kmyhI09-vbHaVA&s=10", 
@@ -1269,7 +1287,7 @@
                 id: 13, 
                 name: "INSPIRAÇÃO: Invictus Victory Elixir", 
                 category: "masculino", 
-                family: "🍫 Doce • Amadeirado Baunilha", 
+                family: "Doce • Amadeirado Baunilha", 
                 price: 60.00, 
                 originalPrice: "R$ 971", 
                 image: "https://encrypted-tbn0.shopping?q=tbn:ANd9GcRX7jmk9KhWiRaTiIx4VePXTWmivzInX3T5OgRuGCDAF1ImkJB1SMcMBLoCy7ejJez5n0et4-3wdH44aWGwNNS4-J_lXk_DT5HobWGlsF9234NErbK4uRS2yfgiMz2lFXW6sj8wyJ4dPA&usqp=CAc", 
@@ -1280,7 +1298,7 @@
                 id: 14, 
                 name: "INSPIRAÇÃO: Royal Amber", 
                 category: ["masculino", "feminino", "unissex"], 
-                family: "✨ Doce • Oriental Baunilha", 
+                family: "Doce • Oriental Baunilha", 
                 price: 60.00, 
                 originalPrice: "R$ 1.300", 
                 image: "https://fimgs.net/mdimg/perfume-thumbs/375x500.69362.jpg", 
@@ -1291,7 +1309,7 @@
                 id: 15, 
                 name: "INSPIRAÇÃO: Asad Lataffa", 
                 category: "masculino", 
-                family: "☕ Amadeirado • Especiado Quente", 
+                family: "Amadeirado • Especiado Quente", 
                 price: 60.00, 
                 originalPrice: "R$ 300", 
                 image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1292446-800-800/17581402186111.jpg?v=638998664977700000", 
@@ -1302,7 +1320,7 @@
                 id: 16, 
                 name: "INSPIRAÇÃO: Sauvage Dior", 
                 category: "masculino", 
-                family: "🌿 Aromático • Cítrico Fresco", 
+                family: "Aromático • Cítrico Fresco", 
                 price: 60.00, 
                 originalPrice: "R$ 1.115", 
                 image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw86e71062/images/hi-res-BR/p1_100ml_3348901368247_1500px.jpg?sw=1200&sh=1200&sm=fit", 
@@ -1313,7 +1331,7 @@
                 id: 17, 
                 name: "INSPIRAÇÃO: Prada Paradoxe", 
                 category: "feminino", 
-                family: "🌸 Floral • Âmbar Suave", 
+                family: "Floral • Âmbar Suave", 
                 price: 60.00, 
                 originalPrice: "1.036", 
                 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStdYiOP8x3VVT3YMKytMwcY1rf63ULlab4pqWn7DEodQ&s", 
@@ -1488,7 +1506,7 @@
             cartItems.innerHTML = '';
 
             if (cart.length === 0) {
-                cartItems.innerHTML = '<div style="text-align:center; padding: 40px 20px; color:#9ca3af;"><i class="fas fa-shopping-basket" style="font-size:3rem; margin-bottom:15px; opacity:0.5;"></i><p>Seu carrinho está vazio.</p></div>';
+                cartItems.innerHTML = '<div style="text-align:center; padding: 40px 20px; color:#9ca3af;"><i class="fas fa-shopping-basket" style="font-size:2.5rem; margin-bottom:12px; opacity:0.5;"></i><p>Seu carrinho está vazio.</p></div>';
                 discountProgress.style.display = 'none';
                 if(checkoutGuidance) checkoutGuidance.style.display = 'none';
             }
@@ -1505,7 +1523,7 @@
                         </div>
                         <div class="cart-item-controls">
                             <button class="qty-btn" onclick="changeQuantity(${item.id}, -1)"><i class="fas fa-minus"></i></button>
-                            <span style="font-weight: 800; font-size: 0.95rem; min-width: 20px; text-align: center;">${item.quantity}</span>
+                            <span style="font-weight: 800; font-size: 0.9rem; min-width: 18px; text-align: center;">${item.quantity}</span>
                             <button class="qty-btn" onclick="changeQuantity(${item.id}, 1)"><i class="fas fa-plus"></i></button>
                             <button class="remove-item" onclick="removeFromCart(${item.id})" title="Remover item">
                                 <i class="fas fa-trash-alt"></i>
@@ -1536,7 +1554,7 @@
                 
                 let finalPrice = totalPrice - totalDiscount;
                 if (totalDiscount > 0) {
-                    cartTotal.innerHTML = `<span style="color: #059669; font-size: 0.95rem; margin-right: 10px;">(-R$ ${totalDiscount.toFixed(2).replace('.', ',')})</span> R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
+                    cartTotal.innerHTML = `<span style="color: #059669; font-size: 0.9rem; margin-right: 8px;">(-R$ ${totalDiscount.toFixed(2).replace('.', ',')})</span> R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
                 } else {
                     cartTotal.innerText = `R$ ${finalPrice.toFixed(2).replace('.', ',')}`;
                 }
