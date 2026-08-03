@@ -13,15 +13,16 @@
             --secondary: #1a1a1a;
             --accent: #c9a03c;
             --accent-hover: #b58b29;
-            --bg-light: #f4f5f7;
+            --bg-light: #f8f9fa;
             --card-bg: #ffffff;
-            --text-dark: #1f2328;
-            --text-muted: #656d76;
+            --text-dark: #111827;
+            --text-muted: #6b7280;
             --whatsapp: #25d366;
-            --border-radius: 20px;
-            --shadow-soft: 0 10px 30px rgba(0,0,0,0.04);
-            --shadow-hover: 0 20px 40px rgba(0,0,0,0.08);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 24px;
+            --border-radius-sm: 12px;
+            --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.05);
+            --shadow-hover: 0 20px 40px -10px rgba(201, 160, 60, 0.15);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -41,31 +42,32 @@
 
         /* Top Bar Promo */
         .promo-bar {
-            background: linear-gradient(90deg, #0a0a0a, #2a2a2a, #0a0a0a);
+            background: linear-gradient(90deg, #111, #222, #111);
             color: #fff;
             text-align: center;
-            padding: 12px 15px;
+            padding: 10px 15px;
             font-size: 0.85rem;
-            border-bottom: 2px solid var(--accent);
+            font-weight: 500;
             letter-spacing: 0.5px;
         }
 
-        .promo-bar strong {
+        .promo-bar strong, .promo-bar b {
             color: var(--accent);
         }
 
-        /* Header */
+        /* Header (Glassmorphism) */
         header {
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 5%;
+            padding: 15px 5%;
             transition: var(--transition);
         }
 
@@ -76,11 +78,11 @@
         }
 
         .logo-title {
-            font-size: 1.6rem;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: var(--primary);
-            line-height: 1.1;
+            line-height: 1;
         }
 
         .logo-title span {
@@ -88,19 +90,19 @@
         }
 
         .logo-subtitle {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 600;
-            margin-top: 2px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            margin-top: 4px;
         }
 
         .cart-btn {
-            background: var(--bg-light);
-            border: none;
-            width: 48px;
-            height: 48px;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.08);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -110,92 +112,81 @@
             position: relative;
             color: var(--primary);
             transition: var(--transition);
-            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
         .cart-btn:hover {
-            background: var(--accent);
-            color: #fff;
-            transform: scale(1.05);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 160, 60, 0.15);
         }
 
         .cart-count {
             position: absolute;
-            top: -2px;
-            right: -2px;
+            top: -5px;
+            right: -5px;
             background-color: var(--primary);
             color: #fff;
-            font-size: 0.7rem;
-            width: 20px;
-            height: 20px;
+            font-size: 0.75rem;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
             border: 2px solid #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* Hero Section */
+        /* Hero Section Premium */
         .hero {
-            background: linear-gradient(135deg, #0a0a0a 0%, #222 100%);
+            background: var(--primary);
+            background-image: radial-gradient(circle at 50% 0%, #2a2210 0%, var(--primary) 70%);
             color: #fff;
-            padding: 70px 20px;
+            padding: 80px 20px 100px;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at center, rgba(201, 160, 60, 0.15) 0%, transparent 70%);
-            pointer-events: none;
         }
 
         .hero h1 {
-            font-size: 2.3rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 800;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             letter-spacing: -1px;
-            position: relative;
-            padding: 0 10px;
+            line-height: 1.2;
         }
 
         .hero h1 span {
             color: var(--accent);
+            display: inline-block;
+            position: relative;
         }
 
         .hero-sub {
-            color: #d1d5db;
-            font-size: 1rem;
+            color: #9ca3af;
+            font-size: clamp(1rem, 2vw, 1.15rem);
             font-weight: 400;
-            max-width: 600px;
-            margin: 0 auto 25px auto;
-            position: relative;
-            padding: 0 15px;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
         }
 
         .hero-badges {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
-            position: relative;
-            padding: 0 10px;
         }
 
         .badge-item {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(201, 160, 60, 0.4);
-            padding: 8px 18px;
-            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 40px;
             font-size: 0.85rem;
-            font-weight: 500;
-            color: #fff;
+            font-weight: 600;
+            color: #e5e7eb;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -203,205 +194,147 @@
         }
         
         .badge-item:hover {
-            background: rgba(201, 160, 60, 0.2);
-            transform: translateY(-2px);
+            border-color: var(--accent);
+            background: rgba(201, 160, 60, 0.1);
+            transform: translateY(-3px);
         }
 
-        .badge-item i {
-            color: var(--accent);
-        }
+        .badge-item i { color: var(--accent); }
 
-        /* Notice Box & Standard Bottle Banner (Centralizados) */
+        /* Information Section Overlap */
         .info-section-wrapper {
-            max-width: 850px;
-            margin: -25px auto 30px auto;
+            max-width: 900px;
+            margin: -50px auto 40px auto;
             padding: 0 20px;
             position: relative;
             z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
         }
 
         .disclaimer-box {
-            background: #fff;
-            border-left: 5px solid var(--accent);
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(201, 160, 60, 0.2);
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow-soft);
-            padding: 20px 25px;
+            padding: 25px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            width: 100%;
-            text-align: center;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
         }
 
         .disclaimer-box i {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--accent);
-            flex-shrink: 0;
+            margin-top: 3px;
         }
 
         .disclaimer-box p {
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.6;
+            text-align: left;
         }
 
-        /* Seção do Frasco Padrão Centralizada */
-        .bottle-section {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
+        .disclaimer-box strong { color: var(--text-dark); }
 
+        /* Frasco Padrão Card */
         .bottle-card {
-            background: linear-gradient(135deg, #ffffff 0%, #fcfbf9 100%);
-            border: 1px solid rgba(201, 160, 60, 0.3);
-            border-radius: 16px;
+            background: var(--card-bg);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: var(--border-radius);
             box-shadow: var(--shadow-soft);
-            padding: 25px 30px;
+            padding: 30px;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            text-align: center;
-            gap: 20px;
-            width: 100%;
+            gap: 30px;
+            transition: var(--transition);
         }
+
+        .bottle-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
 
         .bottle-card img {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             object-fit: contain;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.08));
+            filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1));
         }
 
-        .bottle-info h2 {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .bottle-info p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 6px;
-        }
-
+        .bottle-info { text-align: left; }
+        .bottle-info h2 { font-size: 1.4rem; color: var(--primary); margin-bottom: 10px; }
+        .bottle-info p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; }
+        
         .bottle-alert {
-            margin-top: 10px;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            color: var(--accent);
-            background: rgba(201, 160, 60, 0.1);
-            padding: 6px 14px;
+            color: #92400e;
+            background: #fef3c7;
+            padding: 8px 16px;
             border-radius: 20px;
             display: inline-block;
         }
 
         /* Features Section */
         .features-grid {
-            max-width: 1100px;
-            margin: 40px auto;
+            max-width: 1200px;
+            margin: 60px auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             padding: 0 20px;
         }
 
         .feature-card {
-            background: var(--card-bg);
-            padding: 30px 20px;
-            border-radius: var(--border-radius);
+            background: transparent;
+            padding: 20px;
             text-align: center;
-            border: 1px solid rgba(0,0,0,0.03);
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(201, 160, 60, 0.2);
         }
 
         .feature-card i {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--accent);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            background: rgba(201, 160, 60, 0.1);
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            border-radius: 50%;
         }
 
-        .feature-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
+        .feature-card h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 12px; }
+        .feature-card p { font-size: 0.95rem; color: var(--text-muted); }
 
-        .feature-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
+        /* Container & Catalog */
+        .container { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+        .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; }
 
-        /* Container & Filters */
-        .container {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            font-size: 1rem;
-        }
-
-        /* Barra de Pesquisa */
+        /* Barra de Pesquisa Modificada */
         .search-container {
-            max-width: 500px;
-            margin: 0 auto 30px;
+            max-width: 600px;
+            margin: 0 auto 40px;
             position: relative;
-            padding: 0 10px;
         }
 
         .search-container i {
             position: absolute;
-            left: 28px;
+            left: 20px;
             top: 50%;
             transform: translateY(-50%);
-            color: #a0aab2;
-            font-size: 1rem;
+            color: #9ca3af;
+            font-size: 1.2rem;
         }
 
         #searchInput {
             width: 100%;
-            padding: 15px 20px 15px 48px;
-            border: 2px solid transparent;
-            background: #fff;
-            border-radius: 40px;
-            font-size: 0.95rem;
+            padding: 18px 20px 18px 55px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: var(--card-bg);
+            border-radius: 50px;
+            font-size: 1rem;
             outline: none;
             transition: var(--transition);
-            box-shadow: var(--shadow-soft);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
             color: var(--text-dark);
-        }
-
-        #searchInput::placeholder {
-            color: #a0aab2;
         }
 
         #searchInput:focus {
@@ -414,54 +347,56 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 35px;
-            padding: 0 10px;
+            gap: 12px;
+            margin-bottom: 40px;
         }
 
         .filter-btn {
-            padding: 10px 24px;
-            border: 1px solid rgba(0,0,0,0.05);
+            padding: 10px 25px;
+            border: 1px solid rgba(0,0,0,0.08);
             background-color: var(--card-bg);
-            border-radius: 40px;
+            border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: var(--transition);
             color: var(--text-muted);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
 
         .filter-btn.active {
             background-color: var(--primary);
             color: #fff;
             border-color: var(--primary);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
 
         .filter-btn:hover:not(.active) {
             border-color: var(--accent);
-            color: var(--primary);
-            transform: translateY(-2px);
+            color: var(--accent);
         }
 
-        /* Product Grid & Cards */
+        /* Product Grid & Cards Modernos */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
+            gap: 30px;
         }
 
         .product-card {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
             overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.04);
             box-shadow: var(--shadow-soft);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            animation: fadeIn 0.5s ease backwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .product-card:hover {
@@ -471,9 +406,9 @@
 
         .img-container {
             position: relative;
-            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
-            padding: 25px;
-            height: 260px;
+            background: #f8f9fa;
+            padding: 30px;
+            height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -481,145 +416,110 @@
             overflow: hidden;
         }
 
+        .inspiration-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(5px);
+            color: var(--accent);
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
         .view-details-overlay {
             position: absolute;
-            bottom: -50px;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(5px);
-            padding: 10px 0;
-            text-align: center;
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 0.85rem;
-            transition: var(--transition);
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+            inset: 0;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(4px);
             display: flex;
             justify-content: center;
             align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
             gap: 8px;
         }
 
-        .img-container:hover .view-details-overlay {
-            bottom: 0;
-        }
-
-        .inspiration-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background-color: var(--primary);
-            color: var(--accent);
-            font-size: 0.6rem;
-            font-weight: 800;
-            padding: 5px 10px;
-            border-radius: 6px;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            z-index: 2;
-        }
+        .img-container:hover .view-details-overlay { opacity: 1; }
 
         .product-img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.08));
         }
 
-        .img-container:hover .product-img {
-            transform: scale(1.06);
-        }
+        .img-container:hover .product-img { transform: scale(1.1); }
 
         .product-info {
-            padding: 20px 18px;
-            text-align: center;
+            padding: 25px 20px;
+            text-align: left;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
+        .product-tags { margin-bottom: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+
         .product-category {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            color: var(--accent);
-            letter-spacing: 1.2px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            display: inline-block;
+            color: #fff;
+            background: var(--accent);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
         .product-family {
-            font-size: 0.75rem;
-            color: #555;
-            background: #f1f3f5;
-            padding: 3px 10px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 700;
         }
 
         .product-title {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             line-height: 1.3;
             color: var(--primary);
         }
 
-        .price-reference {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-
-        .price-reference span {
-            text-decoration: line-through;
-            opacity: 0.7;
-        }
-
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-
-        .stock-status {
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+        .product-pricing {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
             margin-bottom: 15px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
         }
 
-        .in-stock {
-            background: #ecfdf5;
-            color: #059669;
-            border: 1px solid #d1fae5;
-        }
-
-        .out-stock {
-            background: #fef2f2;
-            color: #dc2626;
-            border: 1px solid #fee2e2;
-        }
+        .price-reference { font-size: 0.75rem; color: #9ca3af; text-decoration: line-through; }
+        .product-price { font-size: 1.4rem; font-weight: 800; color: var(--primary); line-height: 1; }
+        
+        .stock-status { font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+        .in-stock { color: #059669; }
+        .out-stock { color: #dc2626; }
 
         .buy-btn {
-            width: 100%;
+            width: calc(100% - 40px);
+            margin: 0 20px 20px;
             background-color: var(--primary);
             color: #fff;
             border: none;
-            padding: 14px;
+            padding: 15px;
             font-weight: 700;
             font-size: 0.95rem;
             cursor: pointer;
@@ -627,461 +527,162 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            gap: 10px;
+            border-radius: var(--border-radius-sm);
         }
 
-        .buy-btn:hover {
-            background-color: var(--accent);
-        }
+        .buy-btn:hover:not(:disabled) { background-color: var(--accent); transform: translateY(-2px); }
+        .buy-btn:disabled { background-color: #f3f4f6; color: #9ca3af; cursor: not-allowed; }
 
-        .buy-btn:disabled {
-            background-color: #e5e7eb !important;
-            color: #9ca3af;
-            cursor: not-allowed;
-        }
-
-        /* MODAL DE DETALHES DO PRODUTO */
+        /* MODAIS */
         .details-modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
+            position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden;
             transition: var(--transition);
             padding: 15px;
         }
 
-        .details-modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .details-modal-overlay.active { opacity: 1; visibility: visible; }
 
         .details-modal-content {
             background: #fff;
-            width: 100%;
-            max-width: 450px;
-            border-radius: 24px;
-            position: relative;
-            transform: translateY(20px) scale(0.95);
+            width: 100%; max-width: 480px;
+            border-radius: var(--border-radius);
+            transform: translateY(30px) scale(0.95);
             transition: var(--transition);
             box-shadow: 0 25px 50px rgba(0,0,0,0.25);
             overflow: hidden;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
+            max-height: 90vh; display: flex; flex-direction: column;
         }
 
-        .details-modal-overlay.active .details-modal-content {
-            transform: translateY(0) scale(1);
-        }
+        .details-modal-overlay.active .details-modal-content { transform: translateY(0) scale(1); }
 
         .details-modal-header {
             background: #f8f9fa;
-            padding: 25px;
-            text-align: center;
-            position: relative;
+            padding: 30px; text-align: center; position: relative;
         }
 
         .details-modal-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: #fff;
-            border: none;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-dark);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: absolute; top: 15px; right: 15px;
+            background: #fff; border: none;
+            width: 36px; height: 36px; border-radius: 50%;
+            font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            color: var(--text-dark); box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: var(--transition);
-            z-index: 5;
         }
 
-        .details-modal-close:hover {
-            background: var(--primary);
-            color: #fff;
-            transform: rotate(90deg);
-        }
+        .details-modal-close:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
+        .details-modal-img { width: 160px; height: 160px; object-fit: contain; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1)); }
 
-        .details-modal-img {
-            width: 140px;
-            height: 140px;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.15));
-        }
-
-        .details-modal-body {
-            padding: 25px;
-            text-align: center;
-            overflow-y: auto;
-        }
-
-        .details-modal-category {
-            font-size: 0.7rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            margin-bottom: 6px;
-            display: block;
-        }
-
-        .details-modal-family {
-            font-size: 0.8rem;
-            color: #444;
-            background: #f1f3f5;
-            padding: 4px 12px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .details-modal-title {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
+        .details-modal-body { padding: 30px; text-align: left; overflow-y: auto; }
+        .details-modal-title { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin: 15px 0; }
+        
         .details-modal-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 15px;
-            background: #f8f9fa;
-            padding: 12px 15px;
-            border-radius: 10px;
-            border-left: 4px solid var(--accent);
-            text-align: left;
+            font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;
+            margin-bottom: 20px; background: #f8f9fa; padding: 15px;
+            border-radius: var(--border-radius-sm); border-left: 4px solid var(--accent);
         }
 
         .details-modal-ingredients {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            background: #fafbfc;
-            padding: 12px 15px;
-            border-radius: 10px;
+            font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;
+            background: #fff; padding: 15px; border-radius: var(--border-radius-sm);
             border: 1px solid #e5e7eb;
-            text-align: left;
-        }
-
-        .details-modal-ingredients strong {
-            color: var(--primary);
-            display: block;
-            margin-bottom: 4px;
-            font-size: 0.85rem;
         }
 
         .details-modal-btn {
-            width: 100%;
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            width: 100%; background: var(--primary); color: #fff; border: none;
+            padding: 16px; border-radius: var(--border-radius-sm); font-size: 1rem; font-weight: 700;
+            cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px;
         }
+        .details-modal-btn:hover { background: var(--accent); }
 
-        .details-modal-btn:hover {
-            background: var(--accent);
-        }
-
-        /* Cart Drawer */
+        /* Cart Drawer Otimizado */
         .cart-modal {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            max-width: 400px;
-            height: 100%;
-            background-color: #fff;
-            box-shadow: -10px 0 40px rgba(0,0,0,0.15);
-            z-index: 1000;
-            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
+            position: fixed; top: 0; right: -100%;
+            width: 100%; max-width: 420px; height: 100%;
+            background-color: #fff; box-shadow: -15px 0 50px rgba(0,0,0,0.1);
+            z-index: 1000; transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex; flex-direction: column;
         }
 
         .cart-modal.open { right: 0; }
 
         .cart-header {
-            padding: 20px 25px;
-            border-bottom: 1px solid #f1f1f1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--primary);
-            color: #fff;
+            padding: 25px; border-bottom: 1px solid #f1f1f1;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
         }
 
-        .cart-header h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .close-cart {
-            background: rgba(255,255,255,0.1);
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            font-size: 1rem;
-            cursor: pointer;
-            color: #fff;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .close-cart:hover {
-            background: var(--accent);
-            transform: rotate(90deg);
-        }
+        .cart-header h3 { font-size: 1.2rem; font-weight: 800; display: flex; align-items: center; gap: 10px; color: var(--primary); }
+        .close-cart { background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; color: var(--text-dark); transition: var(--transition); }
+        .close-cart:hover { background: #e2e8f0; transform: rotate(90deg); }
 
         .discount-progress {
-            background-color: #fffbeb; 
-            color: #b45309;
-            padding: 14px 20px;
-            text-align: center;
-            font-size: 0.85rem;
-            border-bottom: 1px solid #fef3c7;
-            display: none; 
+            background-color: #fffbeb; color: #b45309; padding: 15px 25px; text-align: center;
+            font-size: 0.9rem; border-bottom: 1px solid #fef3c7; display: none; 
         }
+        .discount-progress.success { background-color: #ecfdf5; color: #059669; border-bottom: 1px solid #d1fae5; }
+        .discount-progress strong { font-weight: 800; }
 
-        .discount-progress.success {
-            background-color: #ecfdf5; 
-            color: #059669;
-            border-bottom: 1px solid #d1fae5;
-        }
+        .cart-items { padding: 15px 25px; flex-grow: 1; overflow-y: auto; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #f8f9fa; }
+        .cart-item-info h4 { font-size: 0.95rem; margin-bottom: 4px; font-weight: 700; color: var(--text-dark); }
+        .cart-item-info p { color: var(--primary); font-weight: 800; font-size: 0.95rem; }
 
-        .discount-progress strong {
-            font-weight: 800;
-        }
+        .cart-item-controls { display: flex; align-items: center; gap: 12px; background: #f8f9fa; padding: 6px; border-radius: 30px; border: 1px solid #e5e7eb; }
+        .qty-btn { background: #fff; border: none; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; color: var(--primary); transition: var(--transition); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .qty-btn:hover { background: var(--primary); color: #fff; }
+        .remove-item { color: #ef4444; background: none; border: none; cursor: pointer; font-size: 1.1rem; margin-left: 5px; padding-right: 5px; }
 
-        .cart-items {
-            padding: 15px 20px;
-            flex-grow: 1;
-            overflow-y: auto;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #f1f1f1;
-        }
-
-        .cart-item-info h4 {
-            font-size: 0.9rem;
-            margin-bottom: 3px;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .cart-item-info p {
-            color: var(--accent);
-            font-weight: 800;
-            font-size: 0.9rem;
-        }
-
-        .cart-item-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #f8f9fa;
-            padding: 4px;
-            border-radius: 30px;
-        }
-
-        .qty-btn {
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            cursor: pointer;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .qty-btn:hover {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-        }
-
-        .remove-item {
-            color: #ef4444;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-left: 6px;
-            transition: var(--transition);
-        }
+        .cart-footer { padding: 25px; border-top: 1px solid #eee; background-color: #fff; }
+        .cart-total { display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 800; margin-bottom: 20px; color: var(--primary); }
         
-        .remove-item:hover {
-            color: #b91c1c;
-            transform: scale(1.1);
-        }
-
-        .cart-footer {
-            padding: 20px 25px;
-            border-top: 1px solid #eee;
-            background-color: #fff;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.02);
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.15rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .checkout-guidance {
-            background: #f8f9fa;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            line-height: 1.4;
-            text-align: center;
-            border: 1px solid #e5e7eb;
-        }
-
-        .checkout-guidance i {
-            color: var(--accent);
-            margin-right: 4px;
-        }
+        .checkout-guidance { background: #f8f9fa; color: var(--text-muted); font-size: 0.85rem; padding: 15px; border-radius: var(--border-radius-sm); margin-bottom: 15px; line-height: 1.5; text-align: center; border: 1px solid #e5e7eb; }
+        .checkout-guidance i { color: var(--accent); margin-right: 5px; }
 
         .whatsapp-checkout {
-            width: 100%;
-            background-color: var(--whatsapp);
-            color: #fff;
-            border: none;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 800;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: var(--transition);
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+            width: 100%; background-color: var(--whatsapp); color: #fff; border: none;
+            padding: 18px; border-radius: var(--border-radius-sm); font-size: 1.05rem; font-weight: 800;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: var(--transition); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
         }
+        .whatsapp-checkout:hover { background-color: #1ebd56; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.3); }
 
-        .whatsapp-checkout:hover {
-            background-color: #1ebd56;
-            transform: translateY(-2px);
-            box-shadow: 0 15px 25px rgba(37, 211, 102, 0.3);
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            backdrop-filter: blur(3px);
-            z-index: 900;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .overlay.active {
-            display: block;
-            opacity: 1;
-        }
+        .overlay { position: fixed; inset: 0; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 900; display: none; opacity: 0; transition: opacity 0.3s; }
+        .overlay.active { display: block; opacity: 1; }
 
         /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: var(--primary);
-            color: #fff;
-            margin-top: 50px;
-        }
+        footer { text-align: center; padding: 60px 20px; background-color: var(--primary); color: #fff; margin-top: 60px; }
+        footer .disclaimer-footer { font-size: 0.8rem; color: #9ca3af; margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 
-        footer p { font-size: 0.9rem; }
-
-        footer .disclaimer-footer {
-            font-size: 0.75rem;
-            color: #9ca3af;
-            margin-top: 15px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        /* Media Queries para 2 colunas no celular */
+        /* Responsivo Otimizado */
         @media(max-width: 768px) {
-            header { padding: 12px 4%; }
-            .logo-title { font-size: 1.35rem; }
-            .logo-subtitle { font-size: 0.6rem; letter-spacing: 2px; }
-            .hero { padding: 50px 15px; }
-            .hero h1 { font-size: 1.75rem; }
-            .hero-sub { font-size: 0.9rem; }
-            .section-title { font-size: 1.6rem; }
-            .filters { gap: 6px; }
-            .filter-btn { padding: 8px 16px; font-size: 0.82rem; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .img-container { height: 180px; padding: 12px; }
-            .product-info { padding: 15px 10px; }
-            .product-title { font-size: 0.9rem; }
-            .product-price { font-size: 1.1rem; }
-            .buy-btn { padding: 12px; font-size: 0.82rem; }
-            .cart-modal { max-width: 100%; }
-            .view-details-overlay { display: none; }
+            .hero { padding: 60px 15px 80px; }
+            .disclaimer-box { flex-direction: column; align-items: center; text-align: center; padding: 20px; }
+            .disclaimer-box p { text-align: center; }
+            .bottle-card { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .img-container { height: 200px; padding: 15px; }
+            .product-info { padding: 15px; }
+            .product-title { font-size: 0.95rem; margin-bottom: 10px; }
+            .product-price { font-size: 1.15rem; }
+            .buy-btn { width: calc(100% - 30px); margin: 0 15px 15px; padding: 12px; font-size: 0.85rem; }
         }
 
         @media(max-width: 480px) {
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .img-container { height: 140px; padding: 8px; }
-            .hero h1 { font-size: 1.5rem; }
-            .product-info { padding: 10px 6px; }
-            .product-title { font-size: 0.8rem; }
-            .product-price { font-size: 0.95rem; }
-            .buy-btn { padding: 10px 4px; font-size: 0.75rem; }
-            .product-category { font-size: 0.6rem; }
-            .product-family { font-size: 0.65rem; padding: 2px 6px; }
-            .price-reference { font-size: 0.7rem; }
+            .product-grid { gap: 12px; }
+            .img-container { height: 160px; padding: 10px; }
+            .inspiration-badge { top: 10px; left: 10px; font-size: 0.55rem; padding: 4px 8px; }
+            .product-tags { flex-direction: column; gap: 4px; align-items: flex-start; }
+            .product-info { padding: 12px 10px; }
+            .product-title { font-size: 0.85rem; }
+            .product-pricing { flex-direction: column; align-items: flex-start; gap: 2px; margin-bottom: 10px; }
+            .buy-btn { width: calc(100% - 20px); margin: 0 10px 10px; font-size: 0.8rem; padding: 10px; }
         }
     </style>
 </head>
@@ -1106,7 +707,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Sua Fragrância Favorita com <span>Alta Fixação</span></h1>
+        <h1>Sua Fragrância Favorita<br>com <span>Alta Fixação</span></h1>
         <p class="hero-sub">Desenvolvemos inspirações olfativas incrivelmente fiéis aos grandes clássicos e lançamentos da perfumaria mundial.</p>
 
         <div class="hero-badges">
@@ -1116,32 +717,25 @@
         </div>
     </section>
 
-    <!-- Aviso e Apresentação do Frasco Padrão Centralizados -->
+    <!-- Aviso e Apresentação do Frasco -->
     <div class="info-section-wrapper">
         <div class="disclaimer-box">
             <i class="fas fa-shield-alt"></i>
             <p>
-                <strong>Aviso de Transparência:</strong> Os produtos comercializados pela <strong>CSE Parfum</strong> são contratipos (fragrâncias inspiradas). Não possuímos nenhum vínculo com as marcas citadas nem comercializamos perfumes originais. As referências visuais e nomes servem estritamente para orientação da família e perfil olfativo.
+                <strong>Aviso de Transparência:</strong> Os produtos comercializados pela CSE Parfum são contratipos (fragrâncias inspiradas). Não possuímos vínculo com as marcas citadas. As referências visuais servem estritamente para orientação da família olfativa.
             </p>
         </div>
 
-        <section class="bottle-section">
-            <div class="bottle-card">
-                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ3A4mZzYUCDMT_v2axNNPVmcP9GhYsBFG5F3XHSZ-RBZ7_J7wBDhyxXvpzDi-JOwFw2dbM9B92lgvkknFkcxo01SF3H3-QflX7qm-zHHMhlnuLxQr04KiuvZWZ6MYcLVwatO8t7Kay&usqp=CAc" alt="Frasco utilizado pela CSE Parfum">
-                <div class="bottle-info">
-                    <h2>Este é o frasco que você receberá</h2>
-                    <p>
-                        Todas as fragrâncias são entregues neste frasco de perfumaria de <strong>50 ml</strong>.
-                    </p>
-                    <p>
-                        As imagens dos perfumes exibidas no catálogo servem apenas como referência da fragrância inspirada.
-                    </p>
-                    <div class="bottle-alert">
-                        ⚠️ O produto será enviado exatamente neste modelo de frasco.
-                    </div>
+        <div class="bottle-card">
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ3A4mZzYUCDMT_v2axNNPVmcP9GhYsBFG5F3XHSZ-RBZ7_J7wBDhyxXvpzDi-JOwFw2dbM9B92lgvkknFkcxo01SF3H3-QflX7qm-zHHMhlnuLxQr04KiuvZWZ6MYcLVwatO8t7Kay&usqp=CAc" alt="Frasco utilizado pela CSE Parfum">
+            <div class="bottle-info">
+                <h2>O frasco que você receberá</h2>
+                <p>Todas as fragrâncias são entregues em nosso frasco padronizado de <strong>50 ml</strong> de alta qualidade.</p>
+                <div class="bottle-alert">
+                    ⚠️ As imagens do catálogo são apenas referência olfativa.
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 
     <!-- Destaque de Qualidade -->
@@ -1149,17 +743,17 @@
         <div class="feature-card">
             <i class="fas fa-vial"></i>
             <h3>Alta Fidelidade</h3>
-            <p>Formulações desenvolvidas meticulosamente para reproduzir os acordes dos perfumes mais desejados do mundo.</p>
+            <p>Formulações meticulosas para reproduzir os acordes dos perfumes mais desejados do mundo.</p>
         </div>
         <div class="feature-card">
             <i class="fas fa-hourglass-half"></i>
             <h3>Fixação Surpreendente</h3>
-            <p>Utilizamos essências de excelente qualidade para garantir alta projeção e longa duração na sua pele.</p>
+            <p>Essências premium para garantir alta projeção e longa duração na sua pele.</p>
         </div>
         <div class="feature-card">
             <i class="fas fa-wallet"></i>
             <h3>Custo-Benefício</h3>
-            <p>A mesma sofisticação, luxo e presença marcante por uma fração do preço de uma marca importada.</p>
+            <p>A mesma sofisticação e presença marcante por uma fração do preço importado.</p>
         </div>
     </section>
 
@@ -1168,17 +762,11 @@
         <h2 class="section-title">Nosso Catálogo</h2>
         <p class="section-subtitle">Encontre a sua nova assinatura olfativa</p>
         
-        <!-- Barra de Pesquisa -->
         <div class="search-container">
             <i class="fas fa-search"></i>
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Qual perfume você procura hoje?"
-                onkeyup="searchProducts()">
+            <input type="text" id="searchInput" placeholder="Qual perfume você procura hoje?" onkeyup="searchProducts()">
         </div>
 
-        <!-- Filters -->
         <div class="filters">
             <button class="filter-btn active" onclick="filterProducts('all')">Todos</button>
             <button class="filter-btn" onclick="filterProducts('masculino')">Masculinos</button>
@@ -1186,30 +774,28 @@
             <button class="filter-btn" onclick="filterProducts('unissex')">Unissex</button>
         </div>
 
-        <!-- Product Grid -->
         <div class="product-grid" id="productGrid">
-            <!-- Inserido via JavaScript -->
+            <!-- Renderizado via JS -->
         </div>
     </div>
 
-    <!-- Modal de Detalhes do Produto -->
+    <!-- Modal de Detalhes -->
     <div class="details-modal-overlay" id="detailsModal" onclick="closeDetailsModal()">
         <div class="details-modal-content" onclick="event.stopPropagation()">
-            <button class="details-modal-close" onclick="closeDetailsModal()">
-                <i class="fas fa-times"></i>
-            </button>
+            <button class="details-modal-close" onclick="closeDetailsModal()"><i class="fas fa-times"></i></button>
             <div class="details-modal-header">
                 <img id="modalProductImg" src="" alt="Perfume" class="details-modal-img">
             </div>
             <div class="details-modal-body">
-                <span id="modalProductCategory" class="details-modal-category"></span>
-                <div><span id="modalProductFamily" class="details-modal-family"></span></div>
+                <div style="display:flex; gap: 8px; margin-bottom:15px;">
+                    <span id="modalProductCategory" class="product-category"></span>
+                    <span id="modalProductFamily" class="product-family"></span>
+                </div>
                 <h3 id="modalProductTitle" class="details-modal-title"></h3>
                 <div id="modalProductDesc" class="details-modal-desc"></div>
                 
                 <div class="details-modal-ingredients">
-                    <strong>Composição / Ingredientes:</strong>
-                    Álcool, Essência, Propilenoglicol e Hexametilindanopirano.
+                    <strong>Composição:</strong> Álcool, Essência, Propilenoglicol e Hexametilindanopirano.
                 </div>
 
                 <button id="modalBuyBtn" class="details-modal-btn">
@@ -1228,18 +814,16 @@
         </div>
         
         <div id="discountProgress" class="discount-progress"></div>
-        
         <div class="cart-items" id="cartItems"></div>
+        
         <div class="cart-footer">
             <div class="cart-total">
                 <span>Total:</span>
                 <span id="cartTotal">R$ 0,00</span>
             </div>
-
             <div class="checkout-guidance">
                 <i class="fas fa-shield-alt"></i>Finalize pelo WhatsApp para checar <strong>disponibilidade</strong> e <strong>prazo de entrega</strong>.
             </div>
-
             <button class="whatsapp-checkout" onclick="checkoutWhatsApp()">
                 <i class="fab fa-whatsapp"></i> Finalizar Pedido Seguro
             </button>
@@ -1248,266 +832,40 @@
 
     <!-- Footer -->
     <footer>
-        <div style="font-size: 2rem; margin-bottom: 15px; color: var(--accent);"><i class="fas fa-gem"></i></div>
+        <div style="font-size: 2.5rem; margin-bottom: 20px; color: var(--accent);"><i class="fas fa-gem"></i></div>
         <p>&copy; 2026 CSE Parfum. Todos os direitos reservados.</p>
         <p class="disclaimer-footer">
             As marcas mencionadas e imagens de referência são de propriedade de seus respectivos fabricantes. A CSE Parfum fabrica e vende fragrâncias inspiradas nestas referências olfativas.
         </p>
     </footer>
 
-    <!-- Script -->
+    <!-- Script Original Intacto -->
     <script>
         const WHATSAPP_NUMBER = "5514996878508";
 
         const products = [
-            { 
-                id: 1, 
-                name: "INSPIRAÇÃO: 212 VIP Black", 
-                category: "masculino", 
-                family: "Aromático • Especiado", 
-                price: 60.00, 
-                originalPrice: "R$ 777", 
-                image: "https://img.lojasrenner.com.br/item/544934750/zoom/1.jpg", 
-                available: true, 
-                description: "Uma explosão energética de absinto, anis e lavanda, finalizada com o toque sedutor e irresistível da baunilha preta. Feito para o homem que domina a noite." 
-            },
-            { 
-                id: 2, 
-                name: "INSPIRAÇÃO: Good Girl", 
-                category: "feminino", 
-                family: "Doce • Oriental Floral", 
-                price: 60.00, 
-                originalPrice: "R$ 939", 
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaXOkj_2yCSyLK_-YoI8dd9yQViIwhpaiceWBIXPmNkA&s", 
-                available: true, 
-                description: "Audacioso e sexy. Mescla a doçura e leveza do jasmim sambac e tuberosa com as notas ricas e misteriosas de cacau e fava tonka. Para a mulher dona de si." 
-            },
-            { 
-                id: 3, 
-                name: "INSPIRAÇÃO: La Vie Est Belle", 
-                category: "feminino", 
-                family: "Doce • Floral Gourmand", 
-                price: 60.00, 
-                originalPrice: "R$ 1.187", 
-                image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw5d8f77a7/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3605533286555.01_1000px.jpg?sw=556&sh=680&sm=fit", 
-                available: true, 
-                description: "Irresistivelmente doce e elegante. Traz a nobreza da íris pallida entrelaçada com a doçura viciante do pralinê, baunilha e patchouli." 
-            },
-            { 
-                id: 4, 
-                name: "INSPIRAÇÃO: Olympéa", 
-                category: "feminino", 
-                family: "Floral • Baunilha Salgada", 
-                price: 60.00, 
-                originalPrice: "R$ 939", 
-                image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/334843-800-800/olympea-eau-de-parfum-paco-rabanne-perfume-feminino-30ml.jpg?v=636924839904430000", 
-                available: true, 
-                description: "Um contraste fascinante e divino entre o frescor do jasmim aquático e a sensualidade viciante da baunilha salgada. O perfume de uma deusa." 
-            },
-            { 
-                id: 5, 
-                name: "INSPIRAÇÃO: Ferrari Black", 
-                category: "masculino", 
-                family: "Amadeirado • Especiado", 
-                price: 60.00, 
-                originalPrice: "R$ 280", 
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBAYPyH6Oge_MTGGMC7qLRUNIoDaxTQ5Gt3QRx-bSz7gqMfBkhJ5kd0udU&s=10", 
-                available: true, 
-                description: "Um clássico absoluto. Notas cítricas de maçã e ameixa na saída evoluem para um coração de canela e jasmim, com um fundo misterioso de cedro e baunilha." 
-            },
-            { 
-                id: 6, 
-                name: "INSPIRAÇÃO: Fakhar Rose", 
-                category: "feminino", 
-                family: "Floral • Frutal Suave", 
-                price: 60.00, 
-                originalPrice: "R$ 350", 
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInkuVyrG-tAAiB4cAm5oJVFogQuPix-iqk68GPu0BtXPTO3Is2tDKzm8&s=10", 
-                available: true, 
-                description: "Exuberante e romântico. Destaca a delicadeza luxuosa das flores brancas, tuberosa e rosas, com uma base levemente amadeirada que exala elegância." 
-            },
-            { 
-                id: 7, 
-                name: "INSPIRAÇÃO: Lady Million", 
-                category: "feminino", 
-                family: "Frutal • Doce Floral", 
-                price: 60.00, 
-                originalPrice: "R$ 939", 
-                image: "https://fimgs.net/mdimg/perfume/o.9045.jpg", 
-                available: true, 
-                description: "Luxuoso e radiante. Inicia com um toque de framboesa, abrindo para um buquê de néroli e jasmim, finalizando com o rastro sensual do mel e patchouli." 
-            },
-            { 
-                id: 8, 
-                name: "INSPIRAÇÃO: Fame", 
-                category: "feminino", 
-                family: "Frutal • Tropical Doce", 
-                price: 60.00, 
-                originalPrice: "R$ 1.240", 
-                image: "https://www.sephora.com.br/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw167b8a94/images/hi-res-BR/3349668594412.1_1500px.jpg", 
-                available: true, 
-                description: "Tropical, vanguardista e irresistível. Traz o frescor exótico da manga, a pureza do jasmim e a sensualidade cremosa do incenso e sândalo." 
-            },
-            { 
-                id: 9, 
-                name: "INSPIRAÇÃO: Green Irish Tweed", 
-                category: "masculino", 
-                family: "Amadeirado • Verde Cítrico", 
-                price: 60.00, 
-                originalPrice: "R$ 2.900", 
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGKM2dBbeDMIwHA97Rt5rQIjjNndxcXEpHTVnDZZhnmA&s=10", 
-                available: true, 
-                description: "Evoca a frescura do campo e a sofisticação da realeza. Notas clássicas de limão, verbena, folhas de violeta e sândalo." 
-            },
-            { 
-                id: 10, 
-                name: "INSPIRAÇÃO: Sauvage Dior Elixir", 
-                category: "masculino", 
-                family: "Amadeirado • Especiado Quente", 
-                price: 60.00, 
-                originalPrice: "R$ 1.943", 
-                image: "https://lojadior.vtexassets.com/arquivos/ids/204561-640-800/3348901786997_0-thumbnew-sauvage-elixir.jpg?v=639131630767970000", 
-                available: true, 
-                description: "Extremamente concentrado e noturno. Uma mistura inebriante de toranja picante, noz-moscada, lavanda e madeiras ricas com um toque de alcaçuz." 
-            },
-            { 
-                id: 11, 
-                name: "INSPIRAÇÃO: Turathi Blue Afnan", 
-                category: "masculino", 
-                family: "Cítrico • Aromático Fresco", 
-                price: 60.00, 
-                originalPrice: "R$ 380", 
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsTliMLtaOaICJcNZRC7iNG5kCO-xV7F1E8ffYjeZWtQ&s=10", 
-                available: true, 
-                description: "Vibrante e fresco. Combina uma explosão de cítricos com notas amadeiradas de fundo, âmbar e especiarias elegantes para o dia a dia." 
-            },
-            { 
-                id: 12, 
-                name: "INSPIRAÇÃO: Scandal By Night", 
-                category: "feminino", 
-                family: "Doce • Mel e Tuberosa", 
-                price: 60.00, 
-                originalPrice: "R$ 1.004", 
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWrEIEVFlqf8kcHCfLNf7zaCuFQ0HD2zILNH1AOv7o9kmyhI09-vbHaVA&s=10", 
-                available: true, 
-                description: "Escandalosamente sedutor. A doçura marcante do mel e tuberosa se misturam à fava tonka e sândalo, criando uma aura noturna irresistível." 
-            },
-            { 
-                id: 13, 
-                name: "INSPIRAÇÃO: Invictus Victory Elixir", 
-                category: "masculino", 
-                family: "Doce • Amadeirado Baunilha", 
-                price: 60.00, 
-                originalPrice: "R$ 971", 
-                image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/551843-800-800/3349668614516.1--1-.jpg?v=638204475026200000", 
-                available: true, 
-                description: "O perfume de um vencedor. Traz o frescor intenso do lavandim colidindo com o calor do incenso, baunilha e fava tonka." 
-            },
-            { 
-                id: 14, 
-                name: "INSPIRAÇÃO: Royal Amber", 
-                category: ["masculino", "feminino", "unissex"], 
-                family: "Doce • Oriental Baunilha", 
-                price: 60.00, 
-                originalPrice: "R$ 1.300", 
-                image: "https://fimgs.net/mdimg/perfume-thumbs/375x500.69362.jpg", 
-                available: true, 
-                description: "Luxo em forma de perfume. Combina notas doces e ricas de âmbar, melão, abacaxi e baunilha, perfeitamente equilibradas em uma base de almíscar." 
-            },
-            { 
-                id: 15, 
-                name: "INSPIRAÇÃO: Asad Lataffa", 
-                category: "masculino", 
-                family: "Amadeirado • Especiado Quente", 
-                price: 60.00, 
-                originalPrice: "R$ 300", 
-                image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1292446-800-800/17581402186111.jpg?v=638998664977700000", 
-                available: true, 
-                description: "Marcante e opulento. Traz pimenta preta, notas frutadas de abacaxi e café, com um fundo intenso de madeiras secas e baunilha." 
-            },
-            { 
-                id: 16, 
-                name: "INSPIRAÇÃO: Sauvage Dior", 
-                category: "masculino", 
-                family: "Aromático • Cítrico Fresco", 
-                price: 60.00, 
-                originalPrice: "R$ 1.115", 
-                image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw86e71062/images/hi-res-BR/p1_100ml_3348901368247_1500px.jpg?sw=1200&sh=1200&sm=fit", 
-                available: true, 
-                description: "Atemporal e selvagem. O frescor radiante da bergamota da Calábria é fortemente contrastado com o rastro amadeirado, poderoso e viril do ambroxan." 
-            },
-            { 
-                id: 17, 
-                name: "INSPIRAÇÃO: Prada Paradoxe", 
-                category: "feminino", 
-                family: "Floral • Âmbar Suave", 
-                price: 60.00, 
-                originalPrice: "1.036", 
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStdYiOP8x3VVT3YMKytMwcY1rf63ULlab4pqWn7DEodQ&s", 
-                available: true, 
-                description: "Moderno, vibrante e feminino. Reinventa os clássicos combinando frescor do néroli, notas de pera e um rastro vibrante de almíscar e âmbar." 
-            },
-
-            {
-                id: 18,
-                name: "INSPIRAÇÂO: Invictus",
-                category: "masculino",
-                family: "Amadeirado • Aquático",
-                price: 60.00,
-                originalPrice: "649", 
-                image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dwbc6f2ceb/images/hi-res-BR/_3BFB9D5A-8F67-4E2E-B35F-8CEC17DAA893__Paco-Rabanne-Invictus_500px.jpg?sw=1200&sh=1200&sm=fit",
-                available: true,
-                description: "Vencedor por natureza. Uma fragrância extremamente fresca e enérgica, que une notas marinhas, casca de toranja e um fundo marcante de madeira de guaiaco e âmbar cinza."
-            },
-
-            {
-                id: 19,
-                name: "INSPIRAÇÂO: Coco Mademoiselle",
-                category: "feminino",
-                family: "Oriental • Fresco",
-                price: 60.00,
-                originalPrice: "1.415",
-                image: "https://www.chanel.com/images/t_one/w_0.51,h_0.51,c_crop/q_auto:good,f_autoplus,fl_lossy,dpr_1.1/w_1240/coco-mademoiselle-eau-de-parfum-spray-3-4fl-oz--packshot-default-116520-9564892495902.jpg",
-                available: false,
-                description: "Um perfume icônico, elegante e marcante. Combina a vivacidade cintilante das laranjas com a transparência do jasmim e a sofisticação moderna do patchouli."
-            },
-
-            {
-                id: 20,
-                name: "INSPIRAÇÂO: Eclaire Lataffa",
-                category: "feminino",
-                family: "Oriental • Gourmand",
-                price: 60.00,
-                originalPrice: "420",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQRGHDrx1fwXg5TVMphvqxcJxqmQvpapbM_7d1maZNvon46ePvJtSdBUbJ&s=10",
-                available: false,
-                description: "Uma verdadeira sobremesa de luxo. Traz notas reconfortantes e deliciosas de caramelo, leite e mel, envolvidas por um toque suave de flores brancas e baunilha."
-            },
-
-            {
-                id: 21, 
-                name: "INSPIRAÇÂO: One Million Rabanne ",
-                category: "masculino",
-                family: "Amadeirado • Especiado",
-                price: 60.00,
-                originalPrice: "560",
-                image: "https://img.lojasrenner.com.br/item/546594103/zoom/1.jpg",
-                available: false,
-                description: "Ousado, marcante e luxuoso. Combina notas de topo frescas de menta e mandarina com um coração quente de canela e especiarias, finalizado com um fundo intenso de couro e âmbar."
-            },
-
-            {
-                id: 22,
-                name: "INSPIRAÇÂO: Hacivat Nishane",
-                category: "masculino",
-                family: "Chipre • Frutado",
-                price: 60.00,
-                originalPrice: "2.200",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcGsMHAHhIMTryj9IVMo7HMtqLr1IrdqTv-E86bOEPL4LEGsGPogu3G344&s=10",
-                available: false,
-                description: "Sofisticado, fresco e imponente. Uma explosão elegante de abacaxi suculento e bergamota na saída, evoluindo para um coração amadeirado com patchouli e jasmim, e um fundo marcante de musgo de carvalho."
-            },
-            
+            { id: 1, name: "INSPIRAÇÃO: 212 VIP Black", category: "masculino", family: "Aromático • Especiado", price: 60.00, originalPrice: "R$ 777", image: "https://img.lojasrenner.com.br/item/544934750/zoom/1.jpg", available: true, description: "Uma explosão energética de absinto, anis e lavanda, finalizada com o toque sedutor e irresistível da baunilha preta. Feito para o homem que domina a noite." },
+            { id: 2, name: "INSPIRAÇÃO: Good Girl", category: "feminino", family: "Doce • Oriental Floral", price: 60.00, originalPrice: "R$ 939", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaXOkj_2yCSyLK_-YoI8dd9yQViIwhpaiceWBIXPmNkA&s", available: true, description: "Audacioso e sexy. Mescla a doçura e leveza do jasmim sambac e tuberosa com as notas ricas e misteriosas de cacau e fava tonka. Para a mulher dona de si." },
+            { id: 3, name: "INSPIRAÇÃO: La Vie Est Belle", category: "feminino", family: "Doce • Floral Gourmand", price: 60.00, originalPrice: "R$ 1.187", image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw5d8f77a7/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3605533286555.01_1000px.jpg?sw=556&sh=680&sm=fit", available: true, description: "Irresistivelmente doce e elegante. Traz a nobreza da íris pallida entrelaçada com a doçura viciante do pralinê, baunilha e patchouli." },
+            { id: 4, name: "INSPIRAÇÃO: Olympéa", category: "feminino", family: "Floral • Baunilha Salgada", price: 60.00, originalPrice: "R$ 939", image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/334843-800-800/olympea-eau-de-parfum-paco-rabanne-perfume-feminino-30ml.jpg?v=636924839904430000", available: true, description: "Um contraste fascinante e divino entre o frescor do jasmim aquático e a sensualidade viciante da baunilha salgada. O perfume de uma deusa." },
+            { id: 5, name: "INSPIRAÇÃO: Ferrari Black", category: "masculino", family: "Amadeirado • Especiado", price: 60.00, originalPrice: "R$ 280", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBAYPyH6Oge_MTGGMC7qLRUNIoDaxTQ5Gt3QRx-bSz7gqMfBkhJ5kd0udU&s=10", available: true, description: "Um clássico absoluto. Notas cítricas de maçã e ameixa na saída evoluem para um coração de canela e jasmim, com um fundo misterioso de cedro e baunilha." },
+            { id: 6, name: "INSPIRAÇÃO: Fakhar Rose", category: "feminino", family: "Floral • Frutal Suave", price: 60.00, originalPrice: "R$ 350", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRInkuVyrG-tAAiB4cAm5oJVFogQuPix-iqk68GPu0BtXPTO3Is2tDKzm8&s=10", available: true, description: "Exuberante e romântico. Destaca a delicadeza luxuosa das flores brancas, tuberosa e rosas, com uma base levemente amadeirada que exala elegância." },
+            { id: 7, name: "INSPIRAÇÃO: Lady Million", category: "feminino", family: "Frutal • Doce Floral", price: 60.00, originalPrice: "R$ 939", image: "https://fimgs.net/mdimg/perfume/o.9045.jpg", available: true, description: "Luxuoso e radiante. Inicia com um toque de framboesa, abrindo para um buquê de néroli e jasmim, finalizando com o rastro sensual do mel e patchouli." },
+            { id: 8, name: "INSPIRAÇÃO: Fame", category: "feminino", family: "Frutal • Tropical Doce", price: 60.00, originalPrice: "R$ 1.240", image: "https://www.sephora.com.br/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw167b8a94/images/hi-res-BR/3349668594412.1_1500px.jpg", available: true, description: "Tropical, vanguardista e irresistível. Traz o frescor exótico da manga, a pureza do jasmim e a sensualidade cremosa do incenso e sândalo." },
+            { id: 9, name: "INSPIRAÇÃO: Green Irish Tweed", category: "masculino", family: "Amadeirado • Verde Cítrico", price: 60.00, originalPrice: "R$ 2.900", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGKM2dBbeDMIwHA97Rt5rQIjjNndxcXEpHTVnDZZhnmA&s=10", available: true, description: "Evoca a frescura do campo e a sofisticação da realeza. Notas clássicas de limão, verbena, folhas de violeta e sândalo." },
+            { id: 10, name: "INSPIRAÇÃO: Sauvage Dior Elixir", category: "masculino", family: "Amadeirado • Especiado Quente", price: 60.00, originalPrice: "R$ 1.943", image: "https://lojadior.vtexassets.com/arquivos/ids/204561-640-800/3348901786997_0-thumbnew-sauvage-elixir.jpg?v=639131630767970000", available: true, description: "Extremamente concentrado e noturno. Uma mistura inebriante de toranja picante, noz-moscada, lavanda e madeiras ricas com um toque de alcaçuz." },
+            { id: 11, name: "INSPIRAÇÃO: Turathi Blue Afnan", category: "masculino", family: "Cítrico • Aromático Fresco", price: 60.00, originalPrice: "R$ 380", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsTliMLtaOaICJcNZRC7iNG5kCO-xV7F1E8ffYjeZWtQ&s=10", available: true, description: "Vibrante e fresco. Combina uma explosão de cítricos com notas amadeiradas de fundo, âmbar e especiarias elegantes para o dia a dia." },
+            { id: 12, name: "INSPIRAÇÃO: Scandal By Night", category: "feminino", family: "Doce • Mel e Tuberosa", price: 60.00, originalPrice: "R$ 1.004", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWrEIEVFlqf8kcHCfLNf7zaCuFQ0HD2zILNH1AOv7o9kmyhI09-vbHaVA&s=10", available: true, description: "Escandalosamente sedutor. A doçura marcante do mel e tuberosa se misturam à fava tonka e sândalo, criando uma aura noturna irresistível." },
+            { id: 13, name: "INSPIRAÇÃO: Invictus Victory Elixir", category: "masculino", family: "Doce • Amadeirado Baunilha", price: 60.00, originalPrice: "R$ 971", image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/551843-800-800/3349668614516.1--1-.jpg?v=638204475026200000", available: true, description: "O perfume de um vencedor. Traz o frescor intenso do lavandim colidindo com o calor do incenso, baunilha e fava tonka." },
+            { id: 14, name: "INSPIRAÇÃO: Royal Amber", category: ["masculino", "feminino", "unissex"], family: "Doce • Oriental Baunilha", price: 60.00, originalPrice: "R$ 1.300", image: "https://fimgs.net/mdimg/perfume-thumbs/375x500.69362.jpg", available: true, description: "Luxo em forma de perfume. Combina notas doces e ricas de âmbar, melão, abacaxi e baunilha, perfeitamente equilibradas em uma base de almíscar." },
+            { id: 15, name: "INSPIRAÇÃO: Asad Lataffa", category: "masculino", family: "Amadeirado • Especiado Quente", price: 60.00, originalPrice: "R$ 300", image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/1292446-800-800/17581402186111.jpg?v=638998664977700000", available: true, description: "Marcante e opulento. Traz pimenta preta, notas frutadas de abacaxi e café, com um fundo intenso de madeiras secas e baunilha." },
+            { id: 16, name: "INSPIRAÇÃO: Sauvage Dior", category: "masculino", family: "Aromático • Cítrico Fresco", price: 60.00, originalPrice: "R$ 1.115", image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw86e71062/images/hi-res-BR/p1_100ml_3348901368247_1500px.jpg?sw=1200&sh=1200&sm=fit", available: true, description: "Atemporal e selvagem. O frescor radiante da bergamota da Calábria é fortemente contrastado com o rastro amadeirado, poderoso e viril do ambroxan." },
+            { id: 17, name: "INSPIRAÇÃO: Prada Paradoxe", category: "feminino", family: "Floral • Âmbar Suave", price: 60.00, originalPrice: "1.036", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStdYiOP8x3VVT3YMKytMwcY1rf63ULlab4pqWn7DEodQ&s", available: true, description: "Moderno, vibrante e feminino. Reinventa os clássicos combinando frescor do néroli, notas de pera e um rastro vibrante de almíscar e âmbar." },
+            { id: 18, name: "INSPIRAÇÂO: Invictus", category: "masculino", family: "Amadeirado • Aquático", price: 60.00, originalPrice: "649", image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dwbc6f2ceb/images/hi-res-BR/_3BFB9D5A-8F67-4E2E-B35F-8CEC17DAA893__Paco-Rabanne-Invictus_500px.jpg?sw=1200&sh=1200&sm=fit", available: true, description: "Vencedor por natureza. Uma fragrância extremamente fresca e enérgica, que une notas marinhas, casca de toranja e um fundo marcante de madeira de guaiaco e âmbar cinza." },
+            { id: 19, name: "INSPIRAÇÂO: Coco Mademoiselle", category: "feminino", family: "Oriental • Fresco", price: 60.00, originalPrice: "1.415", image: "https://www.chanel.com/images/t_one/w_0.51,h_0.51,c_crop/q_auto:good,f_autoplus,fl_lossy,dpr_1.1/w_1240/coco-mademoiselle-eau-de-parfum-spray-3-4fl-oz--packshot-default-116520-9564892495902.jpg", available: false, description: "Um perfume icônico, elegante e marcante. Combina a vivacidade cintilante das laranjas com a transparência do jasmim e a sofisticação moderna do patchouli." },
+            { id: 20, name: "INSPIRAÇÂO: Eclaire Lataffa", category: "feminino", family: "Oriental • Gourmand", price: 60.00, originalPrice: "420", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQRGHDrx1fwXg5TVMphvqxcJxqmQvpapbM_7d1maZNvon46ePvJtSdBUbJ&s=10", available: false, description: "Uma verdadeira sobremesa de luxo. Traz notas reconfortantes e deliciosas de caramelo, leite e mel, envolvidas por um toque suave de flores brancas e baunilha." },
+            { id: 21, name: "INSPIRAÇÂO: One Million Rabanne ", category: "masculino", family: "Amadeirado • Especiado", price: 60.00, originalPrice: "560", image: "https://img.lojasrenner.com.br/item/546594103/zoom/1.jpg", available: false, description: "Ousado, marcante e luxuoso. Combina notas de topo frescas de menta e mandarina com um coração quente de canela e especiarias, finalizado com um fundo intenso de couro e âmbar." },
+            { id: 22, name: "INSPIRAÇÂO: Hacivat Nishane", category: "masculino", family: "Chipre • Frutado", price: 60.00, originalPrice: "2.200", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcGsMHAHhIMTryj9IVMo7HMtqLr1IrdqTv-E86bOEPL4LEGsGPogu3G344&s=10", available: false, description: "Sofisticado, fresco e imponente. Uma explosão elegante de abacaxi suculento e bergamota na saída, evoluindo para um coração amadeirado com patchouli e jasmim, e um fundo marcante de musgo de carvalho." }
         ];
 
         let cart = [];
@@ -1522,10 +880,7 @@
 
             let filtered = products.filter(product => {
                 const categoria = currentCategory === "all" || 
-                    (Array.isArray(product.category) 
-                        ? product.category.includes(currentCategory) 
-                        : product.category === currentCategory);
-                        
+                    (Array.isArray(product.category) ? product.category.includes(currentCategory) : product.category === currentCategory);
                 const nome = product.name.toLowerCase().includes(pesquisa);
                 return categoria && nome;
             });
@@ -1537,45 +892,41 @@
                 return;
             }
 
-            filtered.forEach(product => {
+            filtered.forEach((product, index) => {
                 const displayCategory = Array.isArray(product.category) ? product.category.join(", ") : product.category;
+                
+                // Animação em cascata (delay diferente para cada card)
+                const animationDelay = index * 0.05;
 
                 grid.innerHTML += `
-                    <div class="product-card">
+                    <div class="product-card" style="animation-delay: ${animationDelay}s">
                         <div class="img-container" onclick="openDetailsModal(${product.id})" title="Clique para ver notas olfativas">
                             <div class="inspiration-badge">Inspiração</div>
                             <img src="${product.image}" alt="${product.name}" class="product-img">
-                            <div class="view-details-overlay">
-                                <i class="fas fa-search"></i> Detalhes
-                            </div>
+                            <div class="view-details-overlay"><i class="fas fa-search"></i> Ver Notas</div>
                         </div>
 
                         <div class="product-info">
                             <div>
-                                <span class="product-category">${displayCategory}</span>
-                                <div><span class="product-family">${product.family}</span></div>
+                                <div class="product-tags">
+                                    <span class="product-category">${displayCategory}</span>
+                                    <span class="product-family">${product.family}</span>
+                                </div>
                                 <h3 class="product-title">${product.name}</h3>
                             </div>
 
                             <div>
-                                <div class="price-reference">
-                                    Valor original (ref): <span>${product.originalPrice}</span>
+                                <div class="product-pricing">
+                                    <span class="price-reference">Ref: ${product.originalPrice}</span>
+                                    <span class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
                                 </div>
-
-                                <div class="product-price">
-                                    R$ ${product.price.toFixed(2).replace('.', ',')}
-                                </div>
-
                                 <div class="stock-status ${product.available ? 'in-stock' : 'out-stock'}">
                                     ${product.available ? '<i class="fas fa-check-circle"></i> Disponível' : '<i class="fas fa-times-circle"></i> Esgotado'}
                                 </div>
                             </div>
                         </div>
 
-                        <button
-                            class="buy-btn"
-                            onclick="${product.available ? `addToCart(${product.id})` : ''}"
-                            ${!product.available ? 'disabled' : ''}>
+                        <button class="buy-btn" onclick="${product.available ? `addToCart(${product.id})` : ''}" ${!product.available ? 'disabled' : ''}>
                             <i class="fas fa-shopping-cart"></i>
                             ${product.available ? 'Adicionar' : 'Esgotado'}
                         </button>
@@ -1586,22 +937,17 @@
 
         function filterProducts(category) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            if (event && event.target) {
-                event.target.classList.add('active');
-            }
+            if (event && event.target) { event.target.classList.add('active'); }
             renderProducts(category);
         }
 
-        function searchProducts() {
-            renderProducts(currentCategory);
-        }
+        function searchProducts() { renderProducts(currentCategory); }
 
         function openDetailsModal(productId) {
             const product = products.find(p => p.id === productId);
             if(!product) return;
 
             const displayCategory = Array.isArray(product.category) ? product.category.join(", ") : product.category;
-
             document.getElementById('modalProductImg').src = product.image;
             document.getElementById('modalProductCategory').innerText = displayCategory;
             document.getElementById('modalProductFamily').innerText = product.family;
@@ -1611,45 +957,30 @@
             const btn = document.getElementById('modalBuyBtn');
             if (product.available) {
                 btn.style.display = "flex";
-                btn.onclick = () => {
-                    addToCart(product.id);
-                    closeDetailsModal();
-                };
-            } else {
-                btn.style.display = "none";
-            }
+                btn.onclick = () => { addToCart(product.id); closeDetailsModal(); };
+            } else { btn.style.display = "none"; }
 
             document.getElementById('detailsModal').classList.add('active');
         }
 
-        function closeDetailsModal() {
-            document.getElementById('detailsModal').classList.remove('active');
-        }
+        function closeDetailsModal() { document.getElementById('detailsModal').classList.remove('active'); }
 
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             const existingItem = cart.find(item => item.id === productId);
 
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
+            if (existingItem) existingItem.quantity += 1;
+            else cart.push({ ...product, quantity: 1 });
 
             updateCart();
-            
-            if(!document.getElementById('cartModal').classList.contains('open')) {
-                toggleCart();
-            }
+            if(!document.getElementById('cartModal').classList.contains('open')) toggleCart();
         }
 
         function changeQuantity(productId, delta) {
             const item = cart.find(i => i.id === productId);
             if (item) {
                 item.quantity += delta;
-                if (item.quantity <= 0) {
-                    cart = cart.filter(i => i.id !== productId);
-                }
+                if (item.quantity <= 0) cart = cart.filter(i => i.id !== productId);
                 updateCart();
             }
         }
@@ -1672,7 +1003,7 @@
             cartItems.innerHTML = '';
 
             if (cart.length === 0) {
-                cartItems.innerHTML = '<div style="text-align:center; padding: 40px 20px; color:#9ca3af;"><i class="fas fa-shopping-basket" style="font-size:2.5rem; margin-bottom:12px; opacity:0.5;"></i><p>Seu carrinho está vazio.</p></div>';
+                cartItems.innerHTML = '<div style="text-align:center; padding: 50px 20px; color:#9ca3af;"><i class="fas fa-shopping-basket" style="font-size:3rem; margin-bottom:15px; opacity:0.3;"></i><p>Seu carrinho está vazio.</p></div>';
                 discountProgress.style.display = 'none';
                 if(checkoutGuidance) checkoutGuidance.style.display = 'none';
             }
@@ -1689,11 +1020,9 @@
                         </div>
                         <div class="cart-item-controls">
                             <button class="qty-btn" onclick="changeQuantity(${item.id}, -1)"><i class="fas fa-minus"></i></button>
-                            <span style="font-weight: 800; font-size: 0.9rem; min-width: 18px; text-align: center;">${item.quantity}</span>
+                            <span style="font-weight: 800; font-size: 0.95rem; min-width: 20px; text-align: center;">${item.quantity}</span>
                             <button class="qty-btn" onclick="changeQuantity(${item.id}, 1)"><i class="fas fa-plus"></i></button>
-                            <button class="remove-item" onclick="removeFromCart(${item.id})" title="Remover item">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
+                            <button class="remove-item" onclick="removeFromCart(${item.id})" title="Remover item"><i class="fas fa-trash-alt"></i></button>
                         </div>
                     </div>
                 `;
@@ -1710,12 +1039,12 @@
 
                 if (remainder === 0) {
                     discountProgress.className = 'discount-progress success';
-                    discountProgress.innerHTML = `🎉 <strong>Desconto de R$ ${totalDiscount.toFixed(2).replace('.', ',')} garantido</strong> no seu combo!`;
+                    discountProgress.innerHTML = `🎉 <strong>Desconto de R$ ${totalDiscount.toFixed(2).replace('.', ',')} garantido!</strong>`;
                 } else {
                     let missing = 3 - remainder;
                     let itemWord = missing === 1 ? 'perfume' : 'perfumes';
                     discountProgress.className = 'discount-progress';
-                    discountProgress.innerHTML = `Falta apenas <strong>${missing} ${itemWord}</strong> para ganhar R$ 15,00 de desconto!`;
+                    discountProgress.innerHTML = `Falta <strong>${missing} ${itemWord}</strong> para ganhar R$ 15,00 de desconto!`;
                 }
                 
                 let finalPrice = totalPrice - totalDiscount;
@@ -1738,15 +1067,8 @@
                 return;
             }
 
-            const confirmar = confirm(
-                "⚠️ As imagens do catálogo são referências olfativas.\n\n" +
-                "O produto será entregue em nosso luxuoso frasco padrão de 50ml da CSE Parfum.\n\n" +
-                "Deseja prosseguir para o WhatsApp?"
-            );
-
-            if (!confirmar) {
-                return;
-            }
+            const confirmar = confirm("⚠️ As imagens do catálogo são referências olfativas.\n\nO produto será entregue em nosso luxuoso frasco padrão de 50ml da CSE Parfum.\n\nDeseja prosseguir para o WhatsApp?");
+            if (!confirmar) return;
 
             let message = "Olá, CSE Parfum! Gostaria de fazer o seguinte pedido:%0A%0A";
             let totalPrice = 0;
@@ -1762,14 +1084,10 @@
             let totalDiscount = Math.floor(totalCount / 3) * 15;
             let finalPrice = totalPrice - totalDiscount;
 
-            if (totalDiscount > 0) {
-                message += `%0A🎁 *Desconto do Combo aplicado:* -R$ ${totalDiscount.toFixed(2).replace('.', ',')}%0A`;
-            }
-
+            if (totalDiscount > 0) message += `%0A🎁 *Desconto do Combo:* -R$ ${totalDiscount.toFixed(2).replace('.', ',')}%0A`;
             message += `%0A💰 *Total do Pedido: R$ ${finalPrice.toFixed(2).replace('.', ',')}*%0A%0APode confirmar a disponibilidade e o prazo de entrega para mim?`;
 
-            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
-            window.open(url, '_blank');
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
         }
 
         renderProducts('all');
