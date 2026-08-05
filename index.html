@@ -1097,6 +1097,19 @@
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmSPKyfjyhp6ucycERiql4jAk_m0SFnNkBM65OyjJ5OQ&s",
         available: false,
         description: "Fresco, elegante e festivo. Traz uma combinação cintilante de notas de champagne rosé e pimenta rosa na saída, evoluindo para um coração de flor de pêssego e um fundo sofisticado de madeiras nobres e almíscar.",
+    },
+            
+    {
+        id:24, 
+        name: "INSPIRAÇÂO: Dolce&Gabbana Light Blue",
+        category: "feminino",
+        familty: "Floral • Frutal Fresco",
+        price: 60.00,
+        originalPrice: "1.058",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2U26RBvIkIkMiNTm8g9AJRFGqWv265L8zKvB2aXYdwA&s",
+        available: false,
+        description: "Irresistivelmente fresco e alegre. Evoca o espírito do verão siciliano combinando notas vibrantes de limão siciliano e maçã verde com a suavidade do jasmim e a elegância do cedro.",
+
     }
                 
 ];
@@ -1150,7 +1163,7 @@
 
                             <div>
                                 <div class="product-pricing">
-                                    <span class="price-reference">Ref: ${product.originalPrice}</span>
+                                    <span class="price-reference">Valor de Referência do Mercado: ${product.originalPrice}</span>
                                     <span class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
                                 </div>
                                 <div class="stock-status ${product.available ? 'in-stock' : 'out-stock'}">
