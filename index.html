@@ -564,19 +564,38 @@
 
         .details-modal-header {
             background: #f8f9fa;
-            padding: 30px; text-align: center; position: relative;
+            padding: 30px; 
+            text-align: center; 
+            position: relative;
         }
 
-        .details-modal-close {
-            position: absolute; top: 15px; right: 15px;
-            background: #fff; border: none;
-            width: 36px; height: 36px; border-radius: 50%;
-            font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
-            color: var(--text-dark); box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        /* Botão X modificado para ficar em cima do contêiner da imagem */
+        .details-modal-close-img {
+            position: absolute; 
+            top: 15px; 
+            right: 15px;
+            background: #fff; 
+            border: none;
+            width: 36px; 
+            height: 36px; 
+            border-radius: 50%;
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            color: var(--text-dark); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: var(--transition);
+            z-index: 10;
         }
 
-        .details-modal-close:hover { background: var(--primary); color: #fff; transform: rotate(90deg); }
+        .details-modal-close-img:hover { 
+            background: var(--primary); 
+            color: #fff; 
+            transform: rotate(90deg); 
+        }
+
         .details-modal-img { width: 160px; height: 160px; object-fit: contain; filter: drop-shadow(0 15px 15px rgba(0,0,0,0.1)); }
 
         .details-modal-body { padding: 30px; text-align: left; overflow-y: auto; }
@@ -782,8 +801,8 @@
     <!-- Modal de Detalhes -->
     <div class="details-modal-overlay" id="detailsModal" onclick="closeDetailsModal()">
         <div class="details-modal-content" onclick="event.stopPropagation()">
-            <button class="details-modal-close" onclick="closeDetailsModal()"><i class="fas fa-times"></i></button>
             <div class="details-modal-header">
+                <button class="details-modal-close-img" onclick="closeDetailsModal()"><i class="fas fa-times"></i></button>
                 <img id="modalProductImg" src="" alt="Perfume" class="details-modal-img">
             </div>
             <div class="details-modal-body">
@@ -1086,9 +1105,8 @@
         available: true, 
         description: "Sofisticado, fresco e imponente. Uma explosão elegante de abacaxi suculento e bergamota na saída, evoluindo para um coração amadeirado com patchouli e jasmim, e um fundo marcante de musgo de carvalho." 
     },
-
     {
-        id:23,
+        id: 23,
         name: "INSPIRAÇÃO: 212 Vip Rose",
         category: "feminino",
         family: "Floral • Amadeirado Frutal",
@@ -1096,9 +1114,8 @@
         originalPrice: "740",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmSPKyfjyhp6ucycERiql4jAk_m0SFnNkBM65OyjJ5OQ&s",
         available: true,
-        description: "Fresco, elegante e festivo. Traz uma combinação cintilante de notas de champagne rosé e pimenta rosa na saída, evoluindo para um coração de flor de pêssego e um fundo sofisticado de madeiras nobres e almíscar.",
+        description: "Fresco, elegante e festivo. Traz uma combinação cintilante de notas de champagne rosé e pimenta rosa na saída, evoluindo para um coração de flor de pêssego e um fundo sofisticado de madeiras nobres e almíscar."
     },
-            
     {
         id: 24, 
         name: "INSPIRAÇÃO: Dolce&Gabbana Light Blue",
@@ -1108,10 +1125,8 @@
         originalPrice: "1.058",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2U26RBvIkIkMiNTm8g9AJRFGqWv265L8zKvB2aXYdwA&s",
         available: true,
-        description: "Irresistivelmente fresco e alegre. Evoca o espírito do verão siciliano combinando notas vibrantes de limão siciliano e maçã verde com a suavidade do jasmim e a elegância do cedro.",
-
+        description: "Irresistivelmente fresco e alegre. Evoca o espírito do verão siciliano combinando notas vibrantes de limão siciliano e maçã verde com a suavidade do jasmim e a elegância do cedro."
     },
-
     {
         id: 25,
         name: "INSPIRAÇÃO: Hugo Boss",
@@ -1121,10 +1136,8 @@
         originalPrice: "286",
         image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dwf521ce7e/images/hi-res-BR/PDPs/HB/BBEDT/HBO_BB_EDT_23_50ml.psd-JPG-300dpi-1080px%20(1)_1000px.jpg?sw=556&sh=680&sm=fit",
         available: true,
-        description: "Elegante, moderno e atemporal. Abre com notas frescas e frutadas de maçã e ameixa, evoluindo para um coração quente e especiado de canela e gerânio. Finaliza com um fundo intensamente masculino de sândalo, cedro e vetiver.",
-
+        description: "Elegante, moderno e atemporal. Abre com notas frescas e frutadas de maçã e ameixa, evoluindo para um coração quente e especiado de canela e gerânio. Finaliza com um fundo intensamente masculino de sândalo, cedro e vetiver."
     },
-
     {
         id: 26,
         name: "INSPIRAÇÃO: Club Nuit Intense",
@@ -1134,12 +1147,9 @@
         originalPrice: "320",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbVH6F1kn0IsWs2wX1ztyxm0sGgCdLVRk42PUOPRAkTg&s=10",
         available: true,
-        description: "Marcante e poderoso. Abre com uma explosão fresca de limão, abacaxi e groselha preta, evoluindo para um coração esfumaçado e sofisticado de bétula e jasmim. Finaliza com um fundo intenso e masculino de almíscar, âmbar e baunilha.",
-
+        description: "Marcante e poderoso. Abre com uma explosão fresca de limão, abacaxi e groselha preta, evoluindo para um coração esfumaçado e sofisticado de bétula e jasmim. Finaliza com um fundo intenso e masculino de almíscar, âmbar e baunilha."
     },
-
     {
-
         id: 27,
         name: "INSPIRAÇÃO: Delina La Rosée",
         category: "feminino",
@@ -1149,12 +1159,8 @@
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRumo9tZw0uqy4nlHL8XmuEEjsaeyER5-02FKI5IkB8FA&s=10",
         available: true,
         description: "Uma interpretação mais fresca, radiante e aquática do original. Abre com notas luminosas de lichia, pera e bergamota italiana. No coração, a essência de rosa turca se mistura a peônias e flores aquáticas, finalizando com uma base suave e sofisticada de almíscar branco, madeiras nobres e vetiver."
-        
-
     },
-
     {
-
         id: 28,
         name: "INSPIRAÇÃO: Chloé",
         category: "feminino",
@@ -1163,24 +1169,19 @@
         originalPrice: "1.047",
         image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dwf98def91/images/hi-res-BR/3607346232385_1__1500px.jpg?sw=1200&sh=1200&sm=fit",
         available: true,
-        description: "Um floral romântico, elegante e atemporal. A fragrância abre com a delicadeza da peônia, lichia e frésia. No coração, revela uma rosa rica e sensual combinada com magnólia e lírio-do-vale, finalizando com uma base quente e aconchegante de âmbar e cedro.",
-
+        description: "Um floral romântico, elegante e atemporal. A fragrância abre com a delicadeza da peônia, lichia e frésia. No coração, revela uma rosa rica e sensual combinada com magnólia e lírio-do-vale, finalizando com uma base quente e aconchegante de âmbar e cedro."
     },
-            
     {
-
         id: 29,
-        name: "INSPIRAÇÃO: Creed Aventus ",
+        name: "INSPIRAÇÃO: Creed Aventus",
         category: "masculino",
         family: "Amadeirado • Frutado • Chipre",
         price: 60.00,
         originalPrice: "3.300",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUlGgFXnQvDB2vG5CzwtQiU0Hmp6mQCyB3CAHQa8fALQ&s",
         available: false,
-        description: "Poderoso, sofisticado e marcante. Abre com uma explosão frutada e vibrante de abacaxi, bergamota, maçã e groselha preta. No coração, revela um toque amadeirado de bétula e patchouli com jasmim, finalizando em um fundo intenso de musgo de carvalho, almíscar e âmbar.",
-
+        description: "Poderoso, sofisticado e marcante. Abre com uma explosão frutada e vibrante de abacaxi, bergamota, maçã e groselha preta. No coração, revela um toque amadeirado de bétula e patchouli com jasmim, finalizando em um fundo intenso de musgo de carvalho, almíscar e âmbar."
     },
-
     {
         id: 30,
         name: "INSPIRAÇÃO: Jean Paul Ultra Male",
@@ -1190,10 +1191,8 @@
         originalPrice: "853",
         image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw4df3ee78/images/hi-res-BR/8435415012027.1_1000px.jpg?sw=1200&sh=1200&sm=fit",
         available: false,
-        description: "Intenso, sedutor e levemente adocicado, é a escolha perfeita para a noite. Abre com o contraste vibrante da pera suculenta, lavanda e hortelã. No coração, o calor especiado da canela ganha destaque, finalizando em uma base magnética e viciante de baunilha negra, âmbar e madeiras.",
-
+        description: "Intenso, sedutor e levemente adocicado, é a escolha perfeita para a noite. Abre com o contraste vibrante da pera suculenta, lavanda e hortelã. No coração, o calor especiado da canela ganha destaque, finalizando em uma base magnética e viciante de baunilha negra, âmbar e madeiras."
     },
-
     {
         id: 31,
         name: "Erba Pura Xerjoff",
@@ -1203,24 +1202,19 @@
         originalPrice: "2.500",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHeteDsMlspb2OpsrmV4pRE2pc3z3Jw3w2q0ZANALx7A&s=10",
         available: false,
-        description: "Uma fragrância luxuosa que combina cítricos do Mediterrâneo e frutas doces sobre uma base quente de baunilha de Madagascar, almíscar e âmbar.",
-
+        description: "Uma fragrância luxuosa que combina cítricos do Mediterrâneo e frutas doces sobre uma base quente de baunilha de Madagascar, almíscar e âmbar."
     },
-
     {
         id: 32,
         name: "Delina Exclusif",
-        category: ["masculino", "feminino", "unissex"],
+        category: "feminino",
         family: "Floral • Âmbar • Atalcado",
         price: 60.00,
         originalPrice: "3.200",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx1vgMingO8xTLfHI7759SeTK4_3Zyyaddc1D2RGyhEQ&s=10",
         available: false,
-        description: "Uma fragrância luxuosa e envolvente. Abre com notas frutadas de pera e lichia, evoluindo para um coração marcante de rosa turca e incenso, e finaliza com uma base quente de baunilha, âmbar e notas amadeiradas.",
-
+        description: "Uma fragrância luxuosa e envolvente. Abre com notas frutadas de pera e lichia, evoluindo para um coração marcante de rosa turca e incenso, e finaliza com uma base quente de baunilha, âmbar e notas amadeiradas."
     },
-
-            
     {
         id: 33, 
         name: "212 Vip Men",
@@ -1230,10 +1224,8 @@
         originalPrice: "799",
         image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw8973b35a/images/hi-res-BR/sch-597_copy_1500px.jpg?sw=1200&sh=1200&sm=fit",
         available: false,
-        description: "Uma fragrância vibrante e magnética para a noite. Abre com notas de hortelã e caviar, evoluindo para um coração de vodka e especiarias, com uma base quente de âmbar e couro.",
-
+        description: "Uma fragrância vibrante e magnética para a noite. Abre com notas de hortelã e caviar, evoluindo para um coração de vodka e especiarias, com uma base quente de âmbar e couro."
     },
-
     { 
         id: 34, 
         name: "Bleu De Chanel",
@@ -1243,10 +1235,8 @@
         originalPrice: "1.900",
         image: "https://www.chanel.com/images//t_one/w_0.51,h_0.51,c_crop/q_auto:good,f_auto,fl_lossy,dpr_1.1/w_620/bleu-de-chanel-eau-de-parfum-spray-3-4fl-oz--packshot-default-107360-9564894232606.jpg",
         available: false,
-        description: "Um tributo à liberdade masculina em uma fragrância amadeirada aromática com rastro cativante. Um perfume atemporal que combina o frescor revigorante das frutas cítricas com a força de um acorde aromático e a intensidade de madeiras nobres como o cedro e o sândalo.",
-
+        description: "Um tributo à liberdade masculina em uma fragrância amadeirada aromática com rastro cativante. Um perfume atemporal que combina o frescor revigorante das frutas cítricas com a força de um acorde aromático e a intensidade de madeiras nobres como o cedro e o sândalo."
     },
-
     {
         id: 35,
         name: "j'Adore Dior",
@@ -1256,10 +1246,8 @@
         originalPrice: "1.220",
         image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw0f163a99/images/hi-res-BR/Frag/2026/Dior/JADORE%20EDP/1.3348901738224.jpg?sw=1200&sh=1200&sm=fit",
         available:  false,
-        description: "Um bouquet floral icônico e radiante que celebra a feminilidade. Combina notas de ylang-ylang, a elegância da rosa damascena e a sensualidade do jasmim.",
-
+        description: "Um bouquet floral icônico e radiante que celebra a feminilidade. Combina notas de ylang-ylang, a elegância da rosa damascena e a sensualidade do jasmim."
     },
-
     {
         id: 36,
         name: "Giorgio Armani My Way",
@@ -1269,10 +1257,8 @@
         originalPrice: "1.187",
         image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dwe6c40316/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3614272907690.01_1000px.jpg?sw=1200&sh=1200&sm=fit",
         available: false,
-        description: "Um floral radiante e contemporâneo que convida a ampliar horizontes. Combina notas luminosas de flor de laranjeira e bergamota, um coração elegante de tuberosa e jasmim indiano, e uma base envolvente de baunilha de Madagascar, almíscar branco e cedro.",
-
+        description: "Um floral radiante e contemporâneo que convida a ampliar horizontes. Combina notas luminosas de flor de laranjeira e bergamota, um coração elegante de tuberosa e jasmim indiano, e uma base envolvente de baunilha de Madagascar, almíscar branco e cedro."
     },
-
     {
         id: 37,
         name: "Sabah Al Ward",
@@ -1282,10 +1268,8 @@
         originalPrice: "200",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4KmIPRl62UqoA6u48ixm2NbveB7z7q4neNijZq04stA&s=10",
         available: false,
-        description: "Um perfume árabe oriental floral feminino que desperta mistério e sedução. Abre com notas vibrantes de tangerina e pimenta rosa, evoluindo para um coração envolvente de cacau, flor de laranjeira e jasmim sambac, com um fundo marcante de baunilha, fava tonka e patchouli.",
-
+        description: "Um perfume árabe oriental floral feminino que desperta mistério e sedução. Abre com notas vibrantes de tangerina e pimenta rosa, evoluindo para um coração envolvente de cacau, flor de laranjeira e jasmim sambac, com um fundo marcante de baunilha, fava tonka e patchouli."
     },
-
     {
         id: 38,
         name: "Giorgio Armani Acqua Di Giò",
@@ -1295,12 +1279,8 @@
         originalPrice: "701",
         image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw93daf803/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3614273955553.01_1000px.jpg?sw=1200&sh=1200&sm=fit",
         available: false,
-        description: "Um clássico atemporal que captura a essência do mar Mediterrâneo. Uma fragrância aquática e aromática que combina o frescor das notas marinhas e cítricas, como bergamota e tangerina verde, com um coração de alecrim e um fundo elegante de patchouli e almíscar.",
-
+        description: "Um clássico atemporal que captura a essência do mar Mediterrâneo. Uma fragrância aquática e aromática que combina o frescor das notas marinhas e cítricas, como bergamota e tangerina verde, com um coração de alecrim e um fundo elegante de patchouli e almíscar."
     }
-            
-            
-        
 ];
 
         let cart = [];
