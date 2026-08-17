@@ -501,13 +501,32 @@
 
         .product-pricing {
             display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
             margin-bottom: 15px;
         }
 
-        .price-reference { font-size: 0.75rem; color: #9ca3af; text-decoration: line-through; }
-        .product-price { font-size: 1.4rem; font-weight: 800; color: var(--primary); line-height: 1; }
+        .price-compare-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .price-reference { font-size: 0.95rem; font-weight: 700; color: #9ca3af; text-decoration: line-through; }
+
+        .discount-badge {
+            background: #ecfdf5;
+            color: #059669;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .product-price { font-size: 1.4rem; font-weight: 800; color: var(--primary); line-height: 1.1; }
         
         .stock-status { font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; gap: 5px; }
         .in-stock { color: #059669; }
@@ -700,7 +719,9 @@
             .product-tags { flex-direction: column; gap: 4px; align-items: flex-start; }
             .product-info { padding: 12px 10px; }
             .product-title { font-size: 0.85rem; }
-            .product-pricing { flex-direction: column; align-items: flex-start; gap: 2px; margin-bottom: 10px; }
+            .product-pricing { flex-direction: column; align-items: flex-start; gap: 3px; margin-bottom: 10px; }
+            .price-reference { font-size: 0.8rem; }
+            .discount-badge { font-size: 0.62rem; padding: 2px 7px; }
             .buy-btn { width: calc(100% - 20px); margin: 0 10px 10px; font-size: 0.8rem; padding: 10px; }
         }
     </style>
@@ -863,6 +884,18 @@
     <!-- Script Original Modificado -->
     <script>
         const WHATSAPP_NUMBER = "5514996878508";
+
+        function parseOriginalPrice(value) {
+            if (value === undefined || value === null) return null;
+            let clean = String(value).replace(/R\$\s?/gi, '').trim();
+            clean = clean.replace(/\./g, '').replace(',', '.');
+            const num = parseFloat(clean);
+            return isNaN(num) ? null : num;
+        }
+
+        function formatBRL(num) {
+            return num.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
+        }
 
         const products = [
             {
@@ -1423,6 +1456,13 @@
                 // Animação em cascata (delay diferente para cada card)
                 const animationDelay = index * 0.05;
 
+                const originalNum = parseOriginalPrice(product.originalPrice);
+                const discountPct = (originalNum && originalNum > product.price) ? Math.round((1 - product.price / originalNum) * 100) : null;
+                const compareRowHtml = originalNum ? `<div class="price-compare-row">
+                                        <span class="price-reference">De R$ ${formatBRL(originalNum)}</span>
+                                        ${discountPct ? `<span class="discount-badge">-${discountPct}%</span>` : ''}
+                                    </div>` : '';
+
                 grid.innerHTML += `
                     <div class="product-card" style="animation-delay: ${animationDelay}s">
                         <div class="img-container" onclick="openDetailsModal(${product.id})" title="Clique para ver notas olfativas">
@@ -1442,7 +1482,7 @@
 
                             <div>
                                 <div class="product-pricing">
-                                    ${product.originalPrice ? `<span class="price-reference">Referência: ${product.originalPrice}</span>` : ''}
+                                    ${compareRowHtml}
                                     <span class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
                                 </div>
                                 <div class="stock-status ${product.available ? 'in-stock' : 'out-stock'}">
