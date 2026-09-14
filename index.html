@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0b0b0d">
-<meta name="description" content="CSE Parfum — fragrâncias inspiradas premium corporais e capilares em frascos de 50 ml.">
-<title>CSE Parfum | Fragrâncias Corporais & Capilares Premium</title>
+<meta name="description" content="CSE Parfum — fragrâncias inspiradas premium em frascos de 50 ml.">
+<title>CSE Parfum | Fragrâncias Inspiradas Premium</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -22,12 +22,12 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--ink);line-height:1.55;overflow-x:hidden}
-button,input,select{font:inherit}
+button,input{font:inherit}
 button{cursor:pointer}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 
-/* TOP PROMO */
+/* TOP */
 .promo{background:var(--black);color:#fff;text-align:center;padding:10px 16px;font-size:12px;letter-spacing:.3px}
 .promo strong{color:var(--gold-2)}
 .promo .dot{display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;margin:0 9px 2px}
@@ -132,15 +132,10 @@ img{display:block;max-width:100%}
 .tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
 .tag{font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;border-radius:6px;padding:5px 7px;background:#f4f1e9;color:#8b6b2e}
 .tag.family{background:#f5f5f5;color:#85858a;text-transform:none;letter-spacing:0;font-weight:600}
-.product-title{font-size:14px;line-height:1.35;min-height:38px;font-weight:700;cursor:pointer}
-.product-title:hover{color:var(--gold)}
-
-/* CARD VARIANT SELECTOR */
-.card-type-select{width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:#fafafa;font-size:11px;font-weight:600;color:var(--ink);outline:0;cursor:pointer;transition:.25s;margin-top:6px}
-.card-type-select:focus{border-color:var(--gold);background:#fff}
-
+.product-title{font-size:14px;line-height:1.35;min-height:38px;font-weight:700}
 .price-line{margin-top:auto;padding-top:15px}
 .old-price{font-size:10px;color:#aaa;text-decoration:line-through}
+.discount{font-size:9px;background:#eaf8f0;color:#159a53;padding:3px 6px;border-radius:99px;font-weight:800;margin-left:4px}
 .price{font-family:"Playfair Display";font-size:23px;font-weight:600;margin-top:2px}
 .stock{font-size:9px;font-weight:700;margin-top:6px}
 .stock.ok{color:#159a53}.stock.no{color:#b65b5b}
@@ -152,30 +147,18 @@ img{display:block;max-width:100%}
 .empty{grid-column:1/-1;text-align:center;padding:70px 20px;border:1px dashed #d8d4cb;border-radius:20px;color:var(--muted)}
 .empty i{font-size:32px;color:#c9c3b8;margin-bottom:14px}
 
-/* MODAL VARIANT SELECTOR */
-.variant-selector{margin:16px 0 12px;background:#faf9f6;border:1px solid var(--line);border-radius:16px;padding:14px}
-.variant-label{font-size:10px;font-weight:800;color:var(--muted);display:block;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
-.variant-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.variant-btn{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:10px;text-align:left;transition:.25s;cursor:pointer;color:var(--ink)}
-.variant-btn i{font-size:16px;color:var(--muted);transition:.25s}
-.variant-btn strong{display:block;font-size:12px;line-height:1.2}
-.variant-btn small{display:block;font-size:9.5px;color:var(--muted);margin-top:2px;line-height:1.2}
-.variant-btn:hover{border-color:var(--gold)}
-.variant-btn.active{border-color:var(--gold);background:rgba(202,164,93,.08)}
-.variant-btn.active i{color:var(--gold)}
-
 /* MODAL */
 .modal{position:fixed;inset:0;background:rgba(5,5,6,.68);backdrop-filter:blur(10px);display:grid;place-items:center;padding:18px;opacity:0;visibility:hidden;z-index:500;transition:.3s}
 .modal.active{opacity:1;visibility:visible}
 .modal-card{width:min(560px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:25px;transform:translateY(18px) scale(.98);transition:.35s var(--ease);box-shadow:0 35px 90px rgba(0,0,0,.3)}
 .modal.active .modal-card{transform:none}
-.modal-media{height:260px;background:#f6f4ef;display:grid;place-items:center;position:relative}
-.modal-media img{height:215px;width:80%;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(0,0,0,.12))}
+.modal-media{height:280px;background:#f6f4ef;display:grid;place-items:center;position:relative}
+.modal-media img{height:235px;width:80%;object-fit:contain;filter:drop-shadow(0 18px 18px rgba(0,0,0,.12))}
 .close{position:absolute;right:14px;top:14px;width:38px;height:38px;border:0;border-radius:50%;background:#fff;box-shadow:0 5px 15px rgba(0,0,0,.1);z-index:2}
 .modal-content{padding:28px}
-.modal-title{font-family:"Playfair Display";font-size:27px;line-height:1.1;margin:10px 0}
-.notes{background:#faf9f6;border:1px solid var(--line);border-left:3px solid var(--gold);padding:14px;border-radius:12px;color:#666;font-size:12px;line-height:1.7}
-.composition{font-size:10px;color:#999;margin:14px 0 18px}
+.modal-title{font-family:"Playfair Display";font-size:29px;line-height:1.1;margin:12px 0}
+.notes{background:#faf9f6;border:1px solid var(--line);border-left:3px solid var(--gold);padding:16px;border-radius:12px;color:#666;font-size:12px;line-height:1.8}
+.composition{font-size:10px;color:#999;margin:15px 0 20px}
 
 /* CART */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);opacity:0;visibility:hidden;z-index:600;transition:.3s}
@@ -185,8 +168,8 @@ img{display:block;max-width:100%}
 .cart-head{padding:22px 22px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
 .cart-head h3{font-family:"Playfair Display";font-size:23px}
 .cart-head button{border:0;background:#f4f3f0;width:36px;height:36px;border-radius:50%}
-.discount-progress{padding:12px 22px;background:#fff9eb;color:#936f24;font-size:11px;border-bottom:1px solid #f3e6c6;line-height:1.4}
-.discount-progress.success{background:#effaf4;color:#138a4b;border-color:#c8ebd6}
+.discount-progress{padding:12px 22px;background:#fff9eb;color:#936f24;font-size:11px;border-bottom:1px solid #f3e6c6}
+.discount-progress.success{background:#effaf4;color:#138a4b}
 .cart-items{padding:16px 22px;overflow:auto;flex:1}
 .cart-item{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid #f0eee9}
 .cart-item img{width:48px;height:55px;object-fit:contain;background:#f7f5f0;border-radius:10px}
@@ -199,11 +182,11 @@ img{display:block;max-width:100%}
 .total-row{display:flex;justify-content:space-between;align-items:end;margin-bottom:15px}
 .total-row span{font-size:12px;color:#777}.total-row strong{font-family:"Playfair Display";font-size:27px}
 .checkout-note{font-size:10px;color:#888;background:#f8f7f4;padding:12px;border-radius:10px;margin-bottom:12px;text-align:center}
-.whatsapp{width:100%;border:0;background:var(--green);color:#fff;padding:15px;border-radius:12px;font-size:12px;font-weight:800;display:flex;justify-content:center;gap:8px;align-items:center;transition:.25s}
+.whatsapp{width:100%;border:0;background:var(--green);color:#fff;padding:15px;border-radius:12px;font-size:12px;font-weight:800;display:flex;justify-content:center;gap:8px;align-items:center}
 .whatsapp:hover{filter:brightness(.95);transform:translateY(-1px)}
 
 /* TOAST / FOOTER */
-.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--black);color:#fff;padding:12px 18px;border-radius:12px;font-size:11px;z-index:900;opacity:0;visibility:hidden;transition:.3s;box-shadow:0 15px 35px rgba(0,0,0,.2)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--black);color:#fff;padding:12px 16px;border-radius:12px;font-size:11px;z-index:900;opacity:0;visibility:hidden;transition:.3s;box-shadow:0 15px 35px rgba(0,0,0,.2)}
 .toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
 .footer{background:var(--black);color:#fff;padding:60px 22px 30px}
 .footer-inner{max-width:1240px;margin:auto;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:45px}
@@ -232,7 +215,6 @@ img{display:block;max-width:100%}
   .product-image{height:210px}.product-body{padding:13px}.product-title{font-size:12px;min-height:33px}
   .price{font-size:20px}.buy{padding:11px 8px}
   .footer-inner{grid-template-columns:1fr}
-  .variant-options{grid-template-columns:1fr}
 }
 @media(max-width:430px){
   .promo{font-size:10px}.hero h1{font-size:42px}.hero-copy{font-size:14px}
@@ -241,6 +223,7 @@ img{display:block;max-width:100%}
   .catalog-meta{font-size:10px}
 }
 
+/* ===== REFINAMENTO RESPONSIVO FINAL ===== */
 @media (min-width: 981px){
   .nav{padding-left:28px;padding-right:28px}
   .hero-inner{min-height:620px}
@@ -255,6 +238,229 @@ img{display:block;max-width:100%}
   .product-image{height:255px}
   .product-title{font-size:13px}
 }
+
+@media (max-width: 700px){
+  body{font-size:14px}
+  .promo{
+    padding:9px 12px;
+    line-height:1.45;
+    font-size:10px;
+  }
+
+  .nav{
+    height:64px;
+    padding:0 13px;
+  }
+  .logo{gap:9px}
+  .logo-mark{width:35px;height:35px;font-size:15px}
+  .logo-title{font-size:14px;letter-spacing:1.5px}
+  .header-actions{gap:6px}
+  .header-actions .icon-btn:first-child{display:none}
+  .icon-btn{width:39px;height:39px}
+  .menu-btn{display:grid}
+
+  .hero-inner{
+    display:block;
+    text-align:left;
+    padding:58px 18px 62px;
+  }
+  .hero h1{
+    font-size:43px;
+    line-height:1.03;
+    letter-spacing:-1.5px;
+    max-width:500px;
+  }
+  .hero-copy{
+    font-size:14px;
+    line-height:1.7;
+    margin:19px 0 25px;
+    max-width:500px;
+  }
+  .hero-actions{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+  .hero-actions .btn{width:100%;min-height:48px}
+  .hero-card{display:none}
+
+  .trust-grid{
+    grid-template-columns:1fr 1fr;
+    padding:8px 10px;
+  }
+  .trust-item{
+    min-height:58px;
+    padding:8px 5px;
+    text-align:center;
+    line-height:1.3;
+    font-size:9px;
+    gap:6px;
+  }
+  .trust-item i{font-size:13px}
+
+  .section{
+    padding-top:58px;
+    padding-bottom:58px;
+  }
+  .section-head{margin-bottom:27px}
+  .kicker{font-size:9px;letter-spacing:2.5px}
+  .section-title{font-size:31px}
+  .section-sub{font-size:12px;line-height:1.65}
+
+  .about-grid{gap:12px}
+  .about-card{
+    padding:23px;
+    border-radius:18px;
+  }
+  .about-card h3{font-size:22px}
+  .about-card p{font-size:12px}
+  .bottle-show{gap:14px}
+  .bottle-show img{width:80px;height:100px}
+
+  .catalog-inner{
+    padding-top:58px;
+    padding-bottom:70px;
+  }
+  .catalog .section-head{text-align:left}
+  .catalog .section-sub{margin-left:0}
+  .toolbar{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+  }
+  .search,.sort{width:100%}
+  .search input,.sort{min-height:48px}
+  .filters{
+    gap:7px;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:3px;
+    margin-bottom:22px;
+    scrollbar-width:none;
+  }
+  .filters::-webkit-scrollbar{display:none}
+  .filter-btn{
+    flex:0 0 auto;
+    padding:9px 14px;
+  }
+  .catalog-meta{
+    font-size:9px;
+    margin-bottom:13px;
+  }
+
+  .product-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+  .product-card{
+    border-radius:15px;
+    min-width:0;
+  }
+  .product-image{
+    height:190px;
+  }
+  .product-image img{
+    width:84%;
+    height:84%;
+  }
+  .badge{
+    top:8px;
+    left:8px;
+    padding:5px 7px;
+    font-size:6.5px;
+  }
+  .product-body{
+    padding:11px;
+  }
+  .tags{
+    min-height:18px;
+    margin-bottom:7px;
+    gap:4px;
+  }
+  .tag{
+    font-size:6.5px;
+    padding:4px 5px;
+  }
+  .tag.family{display:none}
+  .product-title{
+    font-size:11px;
+    line-height:1.35;
+    min-height:30px;
+  }
+  .old-price{font-size:8px}
+  .discount{font-size:7px;padding:2px 4px}
+  .price{
+    font-size:18px;
+    margin-top:1px;
+  }
+  .stock{
+    font-size:7.5px;
+    margin-top:4px;
+  }
+  .buy{
+    min-height:40px;
+    margin-top:10px;
+    padding:8px 5px;
+    border-radius:9px;
+    font-size:8.5px;
+  }
+
+  .modal{padding:10px}
+  .modal-card{
+    width:100%;
+    max-height:94vh;
+    border-radius:19px;
+  }
+  .modal-media{height:230px}
+  .modal-media img{height:190px}
+  .modal-content{padding:20px}
+  .modal-title{font-size:25px}
+  .notes{font-size:11px;line-height:1.7}
+
+  .cart{
+    width:100%;
+    max-width:430px;
+  }
+  .cart-head{padding:18px}
+  .cart-items{padding:12px 18px}
+  .cart-foot{padding:16px 18px}
+  .total-row strong{font-size:24px}
+
+  .footer{padding:45px 18px 25px}
+  .footer-inner{gap:25px}
+  .footer h3{font-size:22px}
+  .footer p{font-size:10px}
+
+  .float-wa{
+    width:48px;
+    height:48px;
+    right:14px;
+    bottom:calc(14px + env(safe-area-inset-bottom));
+    font-size:20px;
+  }
+}
+
+@media (max-width: 360px){
+  .hero h1{font-size:38px}
+  .product-image{height:165px}
+  .product-body{padding:9px}
+  .product-title{font-size:10px}
+  .price{font-size:17px}
+  .buy{font-size:8px}
+}
+
+@media (min-width: 361px) and (max-width: 480px){
+  .product-image{height:205px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*:before,*:after{
+    scroll-behavior:auto !important;
+    animation-duration:.01ms !important;
+    transition-duration:.01ms !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -265,14 +471,14 @@ img{display:block;max-width:100%}
   <nav class="nav">
     <a class="logo" href="#" aria-label="CSE Parfum">
       <div class="logo-mark">C</div>
-      <div><div class="logo-title">CSE PARFUM</div><span class="logo-sub">Corporal & Capilar</span></div>
+      <div><div class="logo-title">CSE PARFUM</div><span class="logo-sub">Fragrâncias Inspiradas</span></div>
     </a>
     <div class="nav-links">
       <a href="#catalogo">Catálogo</a><a href="#experiencia">Experiência</a><a href="#sobre">Transparência</a>
     </div>
     <div class="header-actions">
       <button class="icon-btn" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})" title="Buscar perfumes"><i class="fa-solid fa-magnifying-glass"></i></button>
-      <button class="icon-btn" onclick="toggleCart(true)" title="Abrir carrinho"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count" id="cartCount">0</span></button>
+      <button class="icon-btn" onclick="toggleCart()" title="Abrir carrinho"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count" id="cartCount">0</span></button>
       <button class="icon-btn menu-btn" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})"><i class="fa-solid fa-bars"></i></button>
     </div>
   </nav>
@@ -282,9 +488,9 @@ img{display:block;max-width:100%}
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="eyebrow">Perfumaria corporais & capilares premium</div>
+      <div class="eyebrow">Perfumaria inspirada premium</div>
       <h1>Seu próximo <em>perfume favorito</em> começa aqui.</h1>
-      <p class="hero-copy">Inspirados nas fragrâncias mais desejadas do mundo. Escolha entre a versão <strong>Perfume Corporal</strong> (fixação na pele) ou <strong>Perfume Capilar</strong> (brilho e perfumação leve nos fios).</p>
+      <p class="hero-copy">Uma curadoria de fragrâncias inspiradas nos grandes clássicos da perfumaria, com apresentação elegante, alta qualidade e preço acessível.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#catalogo"><i class="fa-solid fa-sparkles"></i> Explorar catálogo</a>
         <a class="btn btn-ghost" href="#experiencia">Conheça a CSE Parfum</a>
@@ -295,16 +501,16 @@ img{display:block;max-width:100%}
       <div class="hero-bottle">
         <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ3A4mZzYUCDMT_v2axNNPVmcP9GhYsBFG5F3XHSZ-RBZ7_J7wBDhyxXvpzDi-JOwFw2dbM9B92lgvkknFkcxo01SF3H3-QflX7qm-zHHMhlnuLxQr04KiuvZWZ6MYcLVwatO8t7Kay&usqp=CAc" alt="Frasco CSE Parfum 50 ml">
       </div>
-      <div class="hero-card-bottom"><strong>50 ml</strong><span>frasco padrão<br>Corporal ou Capilar</span></div>
+      <div class="hero-card-bottom"><strong>50 ml</strong><span>frasco padrão<br>CSE Parfum</span></div>
     </div>
   </div>
 </section>
 
 <section class="trust">
   <div class="trust-grid">
-    <div class="trust-item"><i class="fa-solid fa-spray-can"></i> Corporal & Capilar</div>
+    <div class="trust-item"><i class="fa-solid fa-flask"></i> Frasco de 50 ml</div>
     <div class="trust-item"><i class="fa-solid fa-gem"></i> Qualidade premium</div>
-    <div class="trust-item"><i class="fa-solid fa-tags"></i> R$ 60 • 50 ml</div>
+    <div class="trust-item"><i class="fa-solid fa-tags"></i> Preço acessível</div>
     <div class="trust-item"><i class="fa-brands fa-whatsapp"></i> Pedido pelo WhatsApp</div>
   </div>
 </section>
@@ -313,30 +519,30 @@ img{display:block;max-width:100%}
   <div class="section-head">
     <div class="kicker">A experiência CSE</div>
     <h2 class="section-title">Elegância sem complicação.</h2>
-    <p class="section-sub">Tudo foi pensado para deixar sua escolha mais clara, agradável e personalizada para sua rotina.</p>
+    <p class="section-sub">Tudo foi pensado para deixar sua escolha mais clara, agradável e segura.</p>
   </div>
   <div class="about-grid">
     <article class="about-card dark">
       <div class="about-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-      <h3>Duas opções para a sua fragrância</h3>
-      <p><strong>✨ Perfume Corporal:</strong> Fórmula clássica com alta concentração e fixação intensa na pele.<br><br><strong>💆‍♀️ Perfume Capilar:</strong> Fórmula especial para cabelos, proporciona perfumação prolongada, neutralize odores e confere brilho sem ressecar os fios.</p>
+      <h3>Inspirações para todos os momentos</h3>
+      <p>Encontre perfumes doces, frescos, amadeirados, florais, orientais e muito mais em uma coleção organizada por família olfativa.</p>
     </article>
     <article class="about-card" id="sobre">
       <div class="about-icon"><i class="fa-solid fa-circle-info"></i></div>
       <h3>Transparência em primeiro lugar</h3>
       <p>Os produtos da CSE Parfum são <strong>contratipos (fragrâncias inspiradas)</strong>. Não possuímos vínculo com as marcas citadas. As referências visuais servem somente para orientação da família olfativa.</p>
 
-      <div style="border-left: 3px solid #C5A059; padding: 12px 15px; margin: 15px 0; background-color: rgba(0,0,0,0.02); border-radius: 0 6px 6px 0;">
-        <span style="display: block; color: #C5A059; font-weight: 600; font-size: 13px; margin-bottom: 4px;">
-          * Observação importante:
-        </span>
-        <span style="font-size: 12px; color: #666; line-height: 1.5;">
-          Todas as fragrâncias vão em nosso frasco padrão de 50 ml (com rótulo indicando se é Corporal ou Capilar). Nos <strong>kits</strong>, os frascos seguem a apresentação das imagens.
-        </span>
-      </div>
+<div style="border-left: 3px solid #C5A059; padding: 12px 15px; margin: 15px 0; background-color: rgba(255, 255, 255, 0.03); border-radius: 0 6px 6px 0;">
+  <span style="display: block; color: #C5A059; font-weight: 600; font-size: 13px; margin-bottom: 6px;">
+    * Observação importante:
+  </span>
+  <span style="font-size: 12px; color: #b7b6ba; line-height: 1.5;">
+    As fragrâncias individuais vão no frasco padrão. No entanto, os frascos que compõem os <strong>kits</strong> correspondem exatamente aos mesmos apresentados nas imagens.
+  </span>
+</div>
       <div class="bottle-show">
         <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ3A4mZzYUCDMT_v2axNNPVmcP9GhYsBFG5F3XHSZ-RBZ7_J7wBDhyxXvpzDi-JOwFw2dbM9B92lgvkknFkcxo01SF3H3-QflX7qm-zHHMhlnuLxQr04KiuvZWZ6MYcLVwatO8t7Kay&usqp=CAc" alt="Frasco padrão CSE">
-        <small><strong>O que você recebe:</strong><br>Frasco elegante CSE Parfum de 50 ml na sua versão escolhida.</small>
+        <small><strong>O que você recebe:</strong><br>fragrância CSE Parfum em frasco padrão de 50 ml.</small>
       </div>
     </article>
   </div>
@@ -347,7 +553,7 @@ img{display:block;max-width:100%}
     <div class="section-head">
       <div class="kicker">Escolha sua fragrância</div>
       <h2 class="section-title">Nosso catálogo</h2>
-      <p class="section-sub">Pesquise pelo nome, filtre por categoria e selecione a versão desejada (Corporal ou Capilar).</p>
+      <p class="section-sub">Pesquise pelo nome, explore as categorias e clique em qualquer perfume para ver suas notas olfativas.</p>
     </div>
     <div class="toolbar">
       <div class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="searchInput" type="search" placeholder="Qual fragrância você procura?" oninput="searchProducts()" autocomplete="off"></div>
@@ -380,29 +586,8 @@ img{display:block;max-width:100%}
     <div class="modal-content">
       <div class="tags"><span id="modalProductCategory" class="tag"></span><span id="modalProductFamily" class="tag family"></span></div>
       <h2 id="modalProductTitle" class="modal-title"></h2>
-      
-      <div class="variant-selector" id="modalVariantContainer">
-        <span class="variant-label"><i class="fa-solid fa-sliders"></i> Selecione a Versão Desejada:</span>
-        <div class="variant-options">
-          <button type="button" class="variant-btn active" id="btnTypeCorporal" onclick="selectVariant('Corporal')">
-            <i class="fa-solid fa-spray-can"></i>
-            <div>
-              <strong>Perfume Corporal</strong>
-              <small>Alta fixação na pele</small>
-            </div>
-          </button>
-          <button type="button" class="variant-btn" id="btnTypeCapilar" onclick="selectVariant('Capilar')">
-            <i class="fa-solid fa-pump-soap"></i>
-            <div>
-              <strong>Perfume Capilar</strong>
-              <small>Brilho & Perfume para fios</small>
-            </div>
-          </button>
-        </div>
-      </div>
-
       <div id="modalProductDesc" class="notes"></div>
-      <div class="composition"><strong>Composição Padrão:</strong> Álcool de Cereais, Essência Premium, Propilenoglicol, Fixador e Veículo Capilar/Corporal.</div>
+      <div class="composition"><strong>Composição:</strong> Álcool, Essência, Propilenoglicol e Hexametilindanopirano.</div>
       <button id="modalBuyBtn" class="btn btn-primary" style="width:100%"><i class="fa-solid fa-bag-shopping"></i> Adicionar ao carrinho</button>
     </div>
   </div>
@@ -416,7 +601,7 @@ img{display:block;max-width:100%}
   <div class="cart-foot">
     <div class="total-row"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
     <div class="checkout-note"><i class="fa-solid fa-shield-halved"></i> Finalize pelo WhatsApp para confirmar disponibilidade e prazo de entrega.</div>
-    <button class="whatsapp" onclick="checkoutWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Finalizar pedido no WhatsApp</button>
+    <button class="whatsapp" onclick="checkoutWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Finalizar pedido</button>
   </div>
 </aside>
 
@@ -424,7 +609,7 @@ img{display:block;max-width:100%}
 
 <footer class="footer">
   <div class="footer-inner">
-    <div><h3>CSE Parfum</h3><p>Fragrâncias inspiradas corporais e capilares premium para quem busca elegância, fixação e sofisticação.</p></div>
+    <div><h3>CSE Parfum</h3><p>Fragrâncias inspiradas premium para quem gosta de presença, elegância e variedade.</p></div>
     <div><h3>Atendimento</h3><p>Pedidos e disponibilidade<br>WhatsApp • Atendimento direto</p></div>
     <div><h3>Transparência</h3><p>Somos uma marca de fragrâncias inspiradas. As marcas e imagens citadas pertencem aos seus respectivos fabricantes.</p></div>
   </div>
@@ -435,20 +620,10 @@ img{display:block;max-width:100%}
 
 <script>
 const WHATSAPP_NUMBER = "5514996878508";
-const CART_KEY = "cse_parfum_cart_v3";
-
-let cart = [];
-try {
-  cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
-} catch(e) {
-  cart = [];
-}
-
-let currentCategory = 'all';
-let selectedProductForModal = null;
-let selectedTypeForModal = 'Corporal';
+const CART_KEY = "cse_parfum_cart_v2";
 
 const products = [
+            
   {
     id: 99,
     name: "Kit Discovery: 5 Perfumes (2ml)",
@@ -458,7 +633,7 @@ const products = [
     available: true,
     description: "Monte seu próprio kit! Escolha 5 fragrâncias do nosso catálogo em frascos de 2 ml. Ideal para conhecer nossos perfumes antes de comprar o frasco de 50ml. Após finalizar o pedido, informe os perfumes escolhidos pelo WhatsApp."
   },
-  {
+ {
     id: 100,
     name: "3 perfumes de 50 ml + 5 perfumes de 2 ml (decante)",
     category: "kit",
@@ -1134,345 +1309,619 @@ const products = [
     family: "Amadeirado • Oriental",
     price: 60.00,
     originalPrice: "3.600",
-    available: true,
-    image: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ3A4mZzYUCDMT_v2axNNPVmcP9GhYsBFG5F3XHSZ-RBZ7_J7wBDhyxXvpzDi-JOwFw2dbM9B92lgvkknFkcxo01SF3H3-QflX7qm-zHHMhlnuLxQr04KiuvZWZ6MYcLVwatO8t7Kay&usqp=CAc",
-    description: "<strong>Saída:</strong> Pimenta Rosa, Bergamota e Cardamomo.<br><strong>Corpo:</strong> Amêndoa Amarga, Lavanda e Jasmim.<br><strong>Base:</strong> Baunilha, Âmbar, Madeira de Guaiaco e Oud."
-  }
-];
+    available: false,
+    image: "https://img-product.sephora.me/dw/image/v2/BKWK_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw6414ab92/images/hi-res/SKU/SKU_4200/692695_swatch.jpg?sw=1320&sm=fit&q=85&fmt=webp",
+    description: "<strong>Saída:</strong> Pimenta Rosa, Bergamota, Cardamomo e Heliotrópio.<br><strong>Corpo:</strong> Amêndoa Amarga, Lavanda, Jasmim e Gerânio.<br><strong>Base:</strong> Baunilha, Oud, Madeira Guaiac, Sândalo e Âmbar."
+  },
+  {
+    id: 62,
+    name: "INSPIRAÇÃO: Tom Ford Oud Wood",
+    category: "masculino",
+    family: "Amadeirado • Especiado",
+    price: 60.00,
+    originalPrice: "2.995",
+    available: false,
+    image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dwaa2c4fa5/images/hi-res-BR/perfume_tom_ford_oud_wood_eau_de_parfum_frasco_50ml.jpg?sw=1200&sh=1200&sm=fit",
+    description: "<strong>Saída:</strong> Pau-Rosa, Cardamomo e Pimenta Chinesa.<br><strong>Corpo:</strong> Madeira de Oud, Sândalo e Vetiver.<br><strong>Base:</strong> Fava Tonka, Baunilha e Âmbar."
+  },
+  {
+    id: 63,
+    name: "INSPIRAÇÃO: Vibrato Sospiro",
+    category: "masculino",
+    family: "Cítrico • Floral • Amadeirado",
+    price: 60.00,
+    originalPrice: "2.700",
+    available: false,
+    image: "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.75930.avif",
+    description: "<strong>Saída:</strong> Toranja, Bergamota, Jasmim e Magnólia.<br><strong>Corpo:</strong> Gengibre, Notas Herbais e Notas Atalcadas.<br><strong>Base:</strong> Almíscar, Cedro, Âmbar, Patchouli e Raiz de Orris."
+  },
+  {
+    id: 64,
+    name: "INSPIRAÇÃO: The Noir 29",
+    category: "masculino",
+    family: "Aromático • Amadeirado",
+    price: 60.00,
+    originalPrice: "2.872",
+    available: false,
+    image: "https://n.nordstrommedia.com/it/f7986e1d-d24a-4dc0-b811-e883bc9142c2.jpeg?w=780&h=1170&crop=pad",
+    description: "<strong>Saída:</strong> Bergamota, Figo e Folha de Louro.<br><strong>Corpo:</strong> Cedro, Vetiver e Almíscar.<br><strong>Base:</strong> Chá Preto e Tabaco."
+  },
+  {
+    id: 65,
+    name: "INSPIRAÇÃO: Allure",
+    category: "masculino",
+    family: "Amadeirado • Especiado",
+    price: 60.00,
+    originalPrice: "1.230",
+    available: false,
+    image: "https://media.sephora.eu/content/dam/gdam/europe/digital/massivpimupload/C/CHANEL/95915/50313-media_swatch.jpg?scaleWidth=750&scaleHeight=750&scaleMode=fit",
+    description: "<strong>Saída:</strong> Limão, Bergamota, Mandarina e Pêssego.<br><strong>Corpo:</strong> Pimenta, Cedro, Patchouli e Vetiver.<br><strong>Base:</strong> Baunilha, Fava Tonka, Sândalo e Âmbar."
+  },
+  {
+    id: 66,
+    name: "INSPIRAÇÃO: Azzaro Wanted",
+    category: "masculino",
+    family: "Amadeirado • Especiado",
+    price: 60.00,
+    originalPrice: "646",
+    available: false,
+    image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw6cdc8282/images/hi-res-BR/Frag/Nova%20pasta/3351500016617.03%20(9).png?sw=1200&sh=1200&sm=fit",
+    description: "<strong>Saída:</strong> Limão Siciliano, Gengibre, Lavanda e Hortelã.<br><strong>Corpo:</strong> Cardamomo da Guatemala, Zimbro, Maçã e Gerânio.<br><strong>Base:</strong> Vetiver do Haiti, Fava Tonka e Madeira de Âmbar."
+  },
+  {
+    id: 67,
+    name: "INSPIRAÇÃO: Lancôme La Nuit Trésor",
+    category: "feminino",
+    family: "Oriental • Baunilha",
+    price: 60.00,
+    originalPrice: "1.035",
+    available: false,
+    image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw374804b3/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3614270754074.01_1000px.jpg?sw=1200&sh=1200&sm=fit",
+    description: "<strong>Saída:</strong> Pera, Tangerina e Bergamota.<br><strong>Corpo:</strong> Orquídea Baunilha, Morango, Rosa Negra e Maracujá.<br><strong>Base:</strong> Pralinê, Caramelo, Lichia, Patchouli, Baunilha e Incenso."
+  },
+  
+  {
+    id: 68,
+    name: "INSPIRAÇÃO: Armani Code",
+    category: "feminino",
+    family: "Floral • Oriental",
+    price: 60.00,
+    originalPrice: "941",
+    available: false,
+    image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw892c9681/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3360375004056.01_1000px.jpg?sw=1200&sh=1200&sm=fit",
+    description: "<strong>Saída:</strong> Laranja Italiana, Laranja Amarga e Jasmim.<br><strong>Corpo:</strong> Flor de Laranjeira, Jasmim e Gengibre.<br><strong>Base:</strong> Mel, Baunilha e Sândalo."
+  },
+  
+  {
+    id: 69,
+    name: "INSPIRAÇÃO: Tygar",
+    category: "masculino",
+    family: "Cítrico • Amadeirado",
+    price: 60.00,
+    originalPrice: "3.850",
+    available: false,
+    image: "https://neeche.vteximg.com.br/arquivos/ids/164776-1000-1000/1.jpg.jpg?v=638775780835300000",
+    description: "<strong>Saída:</strong> Toranja (Grapefruit).<br><strong>Corpo:</strong> Notas Amadeiradas.<br><strong>Base:</strong> Ambroxan."
+  },
+  
+  {
+    id: 70,
+    name: "INSPIRAÇÃO: One Million Privé",
+    category: "masculino",
+    family: "Oriental • Amadeirado",
+    price: 60.00,
+    originalPrice: "769",
+    available: false,
+    image: "https://static.riachuelo.com.br/RCHLO/11445394001/portrait/7cae6bac0aeea0c8d942151ddfc2574ee69439da.jpg",
+    description: "<strong>Saída:</strong> Canela e Tangerina Sanguínea.<br><strong>Corpo:</strong> Tabaco e Mirra.<br><strong>Base:</strong> Fava Tonka e Patchouli."
+  },
+   {
+    id: 71,
+    name: "INSPIRAÇÃO: Jo Malone Velvet Rose E Oud",
+    category: "feminino",
+    family: "Floral • Amadeirado",
+    price: 60.00,
+    originalPrice: "1.596",
+    available: false,
+    image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/2669872-800-800/velvet-rose-e-oud-cologne-intense-jo-malone-perfume-unissex.jpg?v=639192817893070000",
+    description: "<strong>Saída:</strong> Cravo-da-Índia.<br><strong>Corpo:</strong> Rosa Damascena.<br><strong>Base:</strong> Madeira de Oud e Pralinê."
+  },
+  
+   {
+    id: 72,
+    name: "INSPIRAÇÃO: Carolina Herrera La Bomba",
+    category: "feminino",
+    family: "Âmbar • Floral",
+    price: 60.00,
+    originalPrice: "983",
+    available: false,
+    image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw836d6e86/images/hi-res-BR/Frag/Nova%20pasta/Maria%20Helena%202.0/New%20Folder/MA%202.0/_8411061077160_0065195954_0_1000px.jpg?sw=1200&sh=1200&sm=fit",
+    description: "<strong>Saída:</strong> Amêndoa e Café.<br><strong>Corpo:</strong> Jasmim Sambac e Tuberosa.<br><strong>Base:</strong> Fava Tonka e Cacau."
+  },
+  
+   {
+    id: 73,
+    name: "INSPIRAÇÃO: Azzaro Pour Homme",
+    category: "masculino",
+    family: "Fougère • Aromático",
+    price: 60.00,
+    originalPrice: "559",
+    available: false,
+    image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw038fe915/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3351500011469.01_1000px.jpg?sw=1200&sh=1200&sm=fit",
+    description: "<strong>Saída:</strong> Anis, Lavanda e Limão.<br><strong>Corpo:</strong> Vetiver, Sândalo e Patchouli.<br><strong>Base:</strong> Musgo de Carvalho, Couro e Âmbar."
+  },
+  
+   {
+    id: 74,
+    name: "INSPIRAÇÃO: Dior Fahrenheit",
+    category: "masculino",
+    family: "Amadeirado • Couro",
+    price: 60.00,
+    originalPrice: "869",
+    available: false,
+    image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw3ae9f5a6/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/DIOR/1.%203348900012189_1000px.jpg?sw=1200&sh=1200&sm=fit",
+    description: "<strong>Saída:</strong> Bergamota, Limão e Mandarina.<br><strong>Corpo:</strong> Folhas de Violeta, Noz-Moscada e Cravo.<br><strong>Base:</strong> Couro, Vetiver e Patchouli."
+  },
+  {
+    id: 75,
+    name: "INSPIRAÇÃO: Lancôme La Vie Est Belle Elixir",
+    category: "feminino",
+    family: "Floral • Frutado",
+    price: 60.00,
+    originalPrice: "850",
+    available: false,
+    image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw6b3561df/images/hi-res-BR/Frag/QUELE/3614274169706.01_1000px.jpg?sw=1200&sh=1200&sm=fit",
+    description: "<strong>Saída:</strong> Framboesa, Licor e Bergamota.<br><strong>Corpo:</strong> Folhas de Violeta e Rosa.<br><strong>Base:</strong> Manteiga de Cacau, Couro e Cedro."
+  },
+  
+  {
+    id: 76,
+    name: "INSPIRAÇÃO: Rouge Royal",
+    category: "feminino",
+    family: "Floral • Frutado",
+    price: 60.00,
+    originalPrice: "350",
+    available: false,
+    image: "https://epocacosmeticos.vteximg.com.br/arquivos/ids/383661/rouge-royal-marina-de-bourbon-perfume-feminino-eau-de-parfum-100ml.jpg?v=637221332620630000",
+    description: "<strong>Saída:</strong> Morango, Groselha Preta e Limão.<br><strong>Corpo:</strong> Ylang-Ylang, Jasmim e Lírio-do-Vale.<br><strong>Base:</strong> Musgo de Carvalho e Opoponax."
+  },
+  
+  {
+    id: 77,
+    name: "INSPIRAÇÃO: Carolina Herrera Very Good Girl",
+    category: "feminino",
+    family: "Floral • Frutado",
+    price: 60.00,
+    originalPrice: "897",
+    available: false,
+    image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dwfe1a0310/images/hi-res-BR/Frag/Nova%20pasta/Maria%20Helena/8411061106228_01.png?sw=1200&sh=1200&sm=fit",
+    description: "<strong>Saída:</strong> Lichia e Groselha Vermelha.<br><strong>Corpo:</strong> Rosa.<br><strong>Base:</strong> Baunilha e Vetiver."
+  },
+  
+  {
+    id: 78,
+    name: "INSPIRAÇÃO: Club De Nuit Elite",
+    category: "masculino",
+    family: "Cítrico • Aromático",
+    price: 60.00,
+    originalPrice: "699",
+    available: false,
+    image: "https://armaf.com/cdn/shop/files/CDN-Elite-105-ml-edp-bottle-Front-png.jpg?v=1787352870&width=2100",
+    description: "<strong>Saída:</strong> Bergamota, Maçã, Chá Verde e Pimentas.<br><strong>Corpo:</strong> Rosa, Groselha Preta e Gerânio.<br><strong>Base:</strong> Vetiver, Cedro, Cashmeran e Âmbar."
+  },
+  
+  {
+    id: 79,
+    name: "INSPIRAÇÃO: Animale For Men",
+    category: "masculino",
+    family: "Aromático • Cítrico",
+    price: 60.00,
+    originalPrice: "399",
+    available: false,
+    image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw9178a83c/images/hi-res-BR/_3788FE7E-536E-45C7-BD2D-6A79A088CD0C__animale-for-men-zoom_500px_1.jpg?sw=556&sh=680&sm=fit",
+    description: "<strong>Saída:</strong> Limão, Menta, Bergamota e Lavanda.<br><strong>Corpo:</strong> Muguet, Gerânio e Noz-Moscada.<br><strong>Base:</strong> Sândalo, Cedro, Couro e Musgo de Carvalho."
+  },
+  
+  {
+    id: 80,
+    name: "INSPIRAÇÃO: Haltane For Men",
+    category: "masculino",
+    family: "Amadeirado • Aromático",
+    price: 60.00,
+    originalPrice: "4.300",
+    available: false,
+    image: "https://img-product.sephora.me/dw/image/v2/BKWK_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw7ffc4d64/images/hi-res/SKU/SKU_4200/692685_swatch.jpg?sw=1320&sm=fit&q=85&fmt=webp",
+    description: "<strong>Saída:</strong> Lavanda, Sálvia Esclaréia e Bergamota.<br><strong>Corpo:</strong> Açafrão e Pralinê.<br><strong>Base:</strong> Agarwood (Oud) e Cedro."
+  },
+  {
+    id: 81,
+    name: "INSPIRAÇÃO: Calvin Klein Euphoria",
+    category: "feminino",
+    family: "Oriental • Floral",
+    price: 60.00,
+    originalPrice: "682",
+    available: false,
+    image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw1c227b41/images/hi-res-BR/88300162505_100ml%20(01)_1500px.jpg?sw=1200&sh=1200&sm=fit",
+    description: "<strong>Saída:</strong> Romã, Caqui e Notas Verdes.<br><strong>Corpo:</strong> Orquídea Negra, Flor de Lótus e Flores de Champaca.<br><strong>Base:</strong> Madeira de Mogno, Âmbar, Violeta Negra e Acorde de Chantilly."
+  },
+  
+  {
+    id: 82,
+    name: "INSPIRAÇÃO: Tiziana Terenzi Poggia",
+    category: "feminino",
+    family: "Floral • Frutado",
+    price: 60.00,
+    originalPrice: "5.890",
+    available: false,
+    image: "https://neeche.vteximg.com.br/arquivos/ids/164653-1000-1000/2.jpg.jpg?v=638756543271230000",
+    description: "<strong>Saída:</strong> Bergamota, Limão, Laranja e Pêssego.<br><strong>Corpo:</strong> Maracujá, Maçã Verde, Ylang Ylang, Rosa Turca e Alecrim.<br><strong>Base:</strong> Almíscar, Baunilha e Âmbar Cinzento."
+  },
+  
+  {
+    id: 83,
+    name: "INSPIRAÇÃO: DolceEGabbana Red",
+    category: "feminino",
+    family: "Floral • Aldeídico",
+    price: 60.00,
+    originalPrice: "749",
+    available: false,
+    image: "https://www.perfumesimportados.com/imagem/produtos/e/75766-1.webp",
+    description: "<strong>Saída:</strong> Aldeídos, Manjericão, Cítricos, Hera e Frésia.<br><strong>Corpo:</strong> Cravo, Coentro, Flor de Laranjeira, Lírio e Jasmim.<br><strong>Base:</strong> Sândalo, Fava Tonka, Baunilha e Almíscar."
+  },
+  
+  {
+    id: 84,
+    name: "INSPIRAÇÃO: Layton - Parfums De Marly",
+    category: "masculino",
+    family: "Oriental • Fougère",
+    price: 60.00,
+    originalPrice: "2.890",
+    available: false,
+    image: "https://img-product.sephora.me/dw/image/v2/BKWK_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw36bfc00d/images/hi-res/SKU/SKU_4200/692688_swatch.jpg?sw=1320&sm=fit&q=85&fmt=webp",
+    description: "<strong>Saída:</strong> Maçã, Lavanda, Bergamota e Tangerina.<br><strong>Corpo:</strong> Gerânio, Violeta e Jasmim.<br><strong>Base:</strong> Baunilha, Cardamomo, Sândalo, Pimenta, Patchouli e Madeira Guaiac."
+  },
 
-function init() {
-  renderProducts();
-  updateCartUI();
+  {
+    id: 85,
+    name: "INSPIRAÇÃO: Niche Emarati Al Dana - Lattafa",
+    category: "compartilhável",
+    family: "Amadeirado • Cítrico",
+    price: 60.00,
+    originalPrice: "499",
+    available: false,
+    image: "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.93903.avif",
+    description: "<strong>Saída:</strong> Bergamota, Limão, Abacaxi e Pimenta Preta.<br><strong>Corpo:</strong> Jasmim, Lírio-do-vale (Muguet) e Olíbano.<br><strong>Base:</strong> Notas Amadeiradas, Patchouli, Âmbar e Notas Esfumadas."
+  },
+
+  {
+    id: 86,
+    name: "INSPIRAÇÃO: L'Homme Libre Yves Saint Laurent",
+    category: "masculino",
+    family: "Amadeirado • Especiado",
+    price: 60.00,
+    originalPrice: "699",
+    available: false,
+    image: "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.12602.avif",
+    description: "<strong>Saída:</strong> Bergamota, Folha de Violeta, Manjericão e Anis Estrelado.<br><strong>Corpo:</strong> Noz-moscada e Pimenta Rosa.<br><strong>Base:</strong> Vetiver e Patchouli."
+  },
+
+  {
+    id: 87,
+    name: "INSPIRAÇÃO: Club De Nuit Women",
+    category: "feminino",
+    family: "Chipre • Floral",
+    price: 60.00,
+    originalPrice: "399",
+    available: false,
+    image: "https://img.lojasrenner.com.br/item/929314041/original/1.jpg",
+    description: "<strong>Saída:</strong> Laranja, Toranja, Bergamota e Pêssego.<br><strong>Corpo:</strong> Rosa, Jasmim, Gerânio e Lichia.<br><strong>Base:</strong> Patchouli, Baunilha, Almíscar e Vetiver."
+  },
+
+  {
+  id: 88,
+  name: "INSPIRAÇÃO: Metallique Tom Ford",
+  category: "feminino",
+  family: "Floral • Aldeídico",
+  price: 60.00,
+  originalPrice: "1.590",
+  available: false,
+  image: "https://fimgs.net/mdimg/perfume/o.55766.jpg",
+  description: "<strong>Saída:</strong> Aldeídos, Bergamota e Pimenta Rosa.<br><strong>Corpo:</strong> Espinheiro Branco, Lírio-do-vale e Heliotrópio.<br><strong>Base:</strong> Ambreta, Bálsamo do Peru, Baunilha e Sândalo."
+},
+
+  {
+  id: 89,
+  name: "INSPIRAÇÃO: Oriana By Parfums De Marly",
+  category: "feminino",
+  family: "Floral • Frutado • Gourmand",
+  price: 60.00,
+  originalPrice: "2.890",
+  available: false,
+  image: "https://neeche.vteximg.com.br/arquivos/ids/160608-1000-1000/3700578502407.1.jpg?v=637844079235370000",
+  description: "<strong>Saída:</strong> Tangerina, Bergamota e Toranja.<br><strong>Corpo:</strong> Flor de Laranjeira, Framboesa e Groselha Preta.<br><strong>Base:</strong> Chantilly, Marshmallow, Almíscar e Ambreta."
+},
+  
+  {
+  id: 90,
+  name: "INSPIRAÇÃO: Silver Black Azzaro",
+  category: "masculino",
+  family: "Amadeirado • Aromático",
+  price: 60.00,
+  originalPrice: "299",
+  available: false,
+  image: "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.3089.avif",
+  description: "<strong>Saída:</strong> Maçã, Limão, Anis e Bergamota.<br><strong>Corpo:</strong> Coentro, Zimbro (Juniper) e Cardamomo.<br><strong>Base:</strong> Patchouli, Vetiver, Sândalo e Almíscar Branco."
+},
+
+  {
+  id: 91,
+  name: "INSPIRAÇÃO: Ralph Lauren Polo Sport",
+  category: "masculino",
+  family: "Aromático • Verde",
+  price: 60.00,
+  originalPrice: "499",
+  available: false,
+  image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw7fa260dd/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3360372055402.01_1000px.jpg?sw=1200&sh=1200&sm=fit",
+  description: "<strong>Saída:</strong> Hortelã, Aldeídos, Lavanda, Bergamota e Mandarina.<br><strong>Corpo:</strong> Alga Marinha, Gengibre, Jasmim e Gerânio.<br><strong>Base:</strong> Almíscar, Sândalo, Cedro e Âmbar."
+},
+
+  {
+  id: 92,
+  name: "INSPIRAÇÃO: Spicebomb",
+  category: "masculino",
+  family: "Amadeirado • Especiado",
+  price: 60.00,
+  originalPrice: "699",
+  available: false,
+  image: "https://fimgs.net/mdimg/perfume-thumbs/375x500.30499.jpg",
+  description: "<strong>Saída:</strong> Bergamota, Toranja, Pimenta Rosa e Elemi.<br><strong>Corpo:</strong> Açafrão, Canela e Páprica.<br><strong>Base:</strong> Vetiver, Tabaco e Couro."
+},
+
+  {
+  id: 93,
+  name: "INSPIRAÇÃO: Cacharel Amor Amor",
+  category: "feminino",
+  family: "Floral • Frutado",
+  price: 60.00,
+  originalPrice: "443",
+  available: false,
+  image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw41caf8b8/images/hi-res-BR/Frag/Nova%20pasta/Wesley/3360373063680.01.jpg?sw=1200&sh=1200&sm=fit",
+  description: "<strong>Saída:</strong> Groselha Preta, Laranja, Mandarina e Toranja.<br><strong>Corpo:</strong> Rosa, Damasco, Jasmim e Lírio-do-vale.<br><strong>Base:</strong> Baunilha, Fava Tonka, Almíscar e Âmbar."
+},
+
+  {
+  id: 94,
+  name: "INSPIRAÇÃO: Chanel N°5",
+  category: "feminino",
+  family: "Floral • Aldeídico",
+  price: 60.00,
+  originalPrice: "1.250",
+  available: false,
+  image: "https://fimgs.net/mdimg/perfume/o.28711.jpg",
+  description: "<strong>Saída:</strong> Aldeídos, Ylang-Ylang, Néroli, Bergamota e Pêssego.<br><strong>Corpo:</strong> Íris, Jasmim, Rosa e Lírio-do-Vale.<br><strong>Base:</strong> Sândalo, Baunilha, Musgo de Carvalho, Vetiver e Patchouli."
+},
+
+  {
+  id: 95,
+  name: "INSPIRAÇÃO: Reyna Maison Alhambra",
+  category: "feminino",
+  family: "Floral • Frutado • Gourmand",
+  price: 60.00,
+  originalPrice: "299",
+  available: false,
+  image: "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.89732.avif",
+  description: "<strong>Saída:</strong> Tangerina, Bergamota e Toranja.<br><strong>Corpo:</strong> Flor de Laranjeira, Framboesa e Groselha Preta.<br><strong>Base:</strong> Chantilly, Marshmallow, Almíscar e Ambreta."
+},
+
+  {
+  id: 96,
+  name: "INSPIRAÇÃO: Bvlgari Man In Black",
+  category: "masculino",
+  family: "Oriental • Especiado",
+  price: 60.00,
+  originalPrice: "999",
+  available: false,
+  image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dwf5aa1703/images/hi-res-BR/Man-In-Black%20-%20100%20ml_783320971563_1000px.jpg?sw=1200&sh=1200&sm=fit",
+  description: "<strong>Saída:</strong> Especiarias, Rum e Tabaco.<br><strong>Corpo:</strong> Couro, Íris e Tuberosa.<br><strong>Base:</strong> Fava Tonka, Madeira Guaiac e Benjoim."
+},
+
+  {
+  id: 97,
+  name: "INSPIRAÇÃO: Ralph Lauren Polo Black",
+  category: "masculino",
+  family: "Amadeirado • Aromático",
+  price: 60.00,
+  originalPrice: "549",
+  available: false,
+  image: "https://www.sephora.com.br/dw/image/v2/BFJC_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/pt_BR/dw1ecbdd3d/images/hi-res-BR/Frag/Nova%20pasta/Quele/LANCOME/3360377032767.01_1000px.jpg?sw=1200&sh=1200&sm=fit",
+  description: "<strong>Saída:</strong> Manga, Tangerina e Limão.<br><strong>Corpo:</strong> Sálvia e Absinto.<br><strong>Base:</strong> Sândalo, Fava Tonka e Patchouli."
+},
+
+  {
+  id: 98,
+  name: "INSPIRAÇÃO: Wild Vetiver Creed",
+  category: ["unissex", "masculino", "feminino"],
+  family: "Cítrico • Aromático",
+  price: 60.00,
+  originalPrice: "4.082",
+  available: false,
+  image: "https://fimgs.net/mdimg/perfume-thumbs/dark-375x500.125485.avif",
+  description: "<strong>Saída:</strong> Pimenta Timur, Bergamota e Pimenta Rosa.<br><strong>Corpo:</strong> Rosa Centifolia, Gerânio e Groselha Preta.<br><strong>Base:</strong> Vetiver, Cedro e Madeira de Âmbar."
+},
+
+  
+                
+                    
+        ];
+
+let cart = [];
+let currentCategory = "all";
+
+try {
+  const saved = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+  if (Array.isArray(saved)) cart = saved;
+} catch(e) { cart = []; }
+
+function parseOriginalPrice(value){
+  if(value===undefined || value===null) return null;
+  const clean=String(value).replace(/R\$\s?/gi,"").replace(/\./g,"").replace(",",".").trim();
+  const n=parseFloat(clean); return Number.isFinite(n)?n:null;
 }
+function brl(n){ return Number(n||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:2}); }
+function productImage(p){ return p.image || p.imagem || ""; }
+function categories(p){ return Array.isArray(p.category)?p.category:[p.category]; }
+function esc(s){ return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m])); }
 
-function renderProducts(category = currentCategory) {
-  currentCategory = category;
-  const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
-  const sortVal = document.getElementById('sortSelect').value;
+function renderProducts(category=currentCategory){
+  currentCategory=category;
+  const grid=document.getElementById("productGrid");
+  const search=(document.getElementById("searchInput")?.value||"").toLowerCase().trim();
+  const sort=document.getElementById("sortSelect")?.value||"featured";
 
-  let filtered = products.filter(p => {
-    const matchesCategory = category === 'all' || p.category === category;
-    const matchesSearch = p.name.toLowerCase().includes(searchVal) || 
-                          (p.family && p.family.toLowerCase().includes(searchVal)) ||
-                          (p.description && p.description.toLowerCase().includes(searchVal));
-    return matchesCategory && matchesSearch;
+  let filtered=products.filter(p=>{
+    const cat=category==="all" || categories(p).includes(category);
+    const text=(p.name+" "+(p.family||"")).toLowerCase();
+    return cat && text.includes(search);
   });
 
-  if (sortVal === 'priceAsc') {
-    filtered.sort((a, b) => a.price - b.price);
-  } else if (sortVal === 'name') {
-    filtered.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (sortVal === 'available') {
-    filtered.sort((a, b) => (b.available ? 1 : 0) - (a.available ? 1 : 0));
-  }
+  if(sort==="priceAsc") filtered.sort((a,b)=>a.price-b.price);
+  else if(sort==="name") filtered.sort((a,b)=>a.name.localeCompare(b.name,"pt-BR"));
+  else if(sort==="available") filtered.sort((a,b)=>Number(b.available)-Number(a.available));
+  else filtered.sort((a,b)=>Number(b.available)-Number(a.available));
 
-  const grid = document.getElementById('productGrid');
-  const countEl = document.getElementById('resultCount');
+  document.getElementById("resultCount").innerHTML=`<strong>${filtered.length}</strong> fragrância${filtered.length===1?"":"s"} encontrada${filtered.length===1?"":"s"}`;
 
-  if (countEl) {
-    countEl.innerHTML = `Mostrando <strong>${filtered.length}</strong> produto(s)`;
-  }
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `
-      <div class="empty">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <p>Nenhuma fragrância encontrada para sua busca.</p>
-      </div>`;
+  if(!filtered.length){
+    grid.innerHTML='<div class="empty"><i class="fa-solid fa-magnifying-glass"></i><p>Nenhuma fragrância encontrada.</p><small>Tente outro nome ou categoria.</small></div>';
     return;
   }
 
-  grid.innerHTML = filtered.map(p => {
-    const isKit = p.category === 'kit';
-    return `
-      <article class="product-card">
-        <div class="product-image" onclick="openDetailsModal(${p.id})">
-          <span class="badge ${p.available ? '' : 'sold'}">${p.available ? (isKit ? 'KIT ESPECIAL' : 'DISPONÍVEL') : 'ESGOTADO'}</span>
-          <img src="${p.image}" alt="${p.name}" loading="lazy">
-          <div class="product-overlay"><i class="fa-solid fa-eye"></i> &nbsp; Ver notas e detalhes</div>
+  grid.innerHTML=filtered.map((p,i)=>{
+    const image=productImage(p);
+    const original=parseOriginalPrice(p.originalPrice);
+    const pct=original&&original>p.price?Math.round((1-p.price/original)*100):null;
+    const cats=categories(p).filter(Boolean);
+    const catLabel=cats[0]||"";
+    return `<article class="product-card" style="animation-delay:${Math.min(i*0.035,.5)}s">
+      <div class="product-image" onclick="openDetailsModal(${p.id})">
+        <span class="badge ${p.available?"":"sold"}">${p.available?"Inspiração":"Esgotado"}</span>
+        <img src="${image}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.opacity='.2'">
+        <div class="product-overlay"><i class="fa-regular fa-eye"></i>&nbsp; Ver notas</div>
+      </div>
+      <div class="product-body">
+        <div class="tags"><span class="tag">${esc(catLabel)}</span>${p.family?`<span class="tag family">${esc(p.family)}</span>`:""}</div>
+        <h3 class="product-title">${esc(p.name)}</h3>
+        <div class="price-line">
+          ${original?`<div><span class="old-price">${brl(original)}</span>${pct?`<span class="discount">-${pct}%</span>`:""}</div>`:""}
+          <div class="price">${brl(p.price)}</div>
+          <div class="stock ${p.available?"ok":"no"}"><i class="fa-solid ${p.available?"fa-circle-check":"fa-circle-xmark"}"></i> ${p.available?"Disponível":"Esgotado"}</div>
         </div>
-        <div class="product-body">
-          <div class="tags">
-            <span class="tag">${p.category}</span>
-            ${p.family ? `<span class="tag family">${p.family}</span>` : ''}
-          </div>
-          <h3 class="product-title" onclick="openDetailsModal(${p.id})">${p.name}</h3>
-          
-          ${!isKit ? `
-          <div style="margin-top:6px;">
-            <select id="type_select_${p.id}" class="card-type-select" onclick="event.stopPropagation()">
-              <option value="Corporal">✨ Perfume Corporal (50ml)</option>
-              <option value="Capilar">💆‍♀️ Perfume Capilar (50ml)</option>
-            </select>
-          </div>
-          ` : ''}
-
-          <div class="price-line">
-            ${p.originalPrice ? `<span class="old-price">De R$ ${p.originalPrice}</span>` : ''}
-            <div class="price">R$ ${p.price.toFixed(2).replace('.', ',')}</div>
-            <div class="stock ${p.available ? 'ok' : 'no'}">
-              ${p.available ? '<i class="fa-solid fa-check"></i> Em estoque' : '<i class="fa-solid fa-xmark"></i> Esgotado'}
-            </div>
-          </div>
-
-          <button class="buy" ${!p.available ? 'disabled' : ''} onclick="quickAddToCart(${p.id})">
-            <i class="fa-solid fa-bag-shopping"></i> ${p.available ? 'Adicionar ao carrinho' : 'Indisponível'}
-          </button>
-        </div>
-      </article>
-    `;
-  }).join('');
+        <button class="buy" onclick="${p.available?`addToCart(${p.id})`:"return false"}" ${p.available?"":"disabled"}>
+          <i class="fa-solid fa-bag-shopping"></i> ${p.available?"Adicionar ao carrinho":"Indisponível"}
+        </button>
+      </div>
+    </article>`;
+  }).join("");
 }
 
-function filterProducts(category, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
+function filterProducts(category,button){
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+  if(button) button.classList.add("active");
   renderProducts(category);
+  document.getElementById("catalogo").scrollIntoView({behavior:"smooth",block:"start"});
 }
+function searchProducts(){ renderProducts(currentCategory); }
 
-function searchProducts() {
-  renderProducts(currentCategory);
+function openDetailsModal(id){
+  const p=products.find(x=>x.id===id); if(!p)return;
+  document.getElementById("modalProductImg").src=productImage(p);
+  document.getElementById("modalProductImg").alt=p.name;
+  const cat=document.getElementById("modalProductCategory");
+  cat.textContent=categories(p).join(" • "); cat.style.display=categories(p).length?"inline-block":"none";
+  const fam=document.getElementById("modalProductFamily");
+  fam.textContent=p.family||""; fam.style.display=p.family?"inline-block":"none";
+  document.getElementById("modalProductTitle").textContent=p.name;
+  document.getElementById("modalProductDesc").innerHTML=p.description||"Notas olfativas não informadas.";
+  const btn=document.getElementById("modalBuyBtn");
+  btn.style.display=p.available?"flex":"none";
+  btn.onclick=()=>{addToCart(p.id);closeDetailsModal();};
+  document.getElementById("detailsModal").classList.add("active");
+  document.body.style.overflow="hidden";
 }
+function closeDetailsModal(){document.getElementById("detailsModal").classList.remove("active");document.body.style.overflow="";}
 
-function selectVariant(type) {
-  selectedTypeForModal = type;
-  const btnCorp = document.getElementById('btnTypeCorporal');
-  const btnCap = document.getElementById('btnTypeCapilar');
-  if (btnCorp && btnCap) {
-    if (type === 'Corporal') {
-      btnCorp.classList.add('active');
-      btnCap.classList.remove('active');
-    } else {
-      btnCap.classList.add('active');
-      btnCorp.classList.remove('active');
-    }
-  }
+function saveCart(){try{localStorage.setItem(CART_KEY,JSON.stringify(cart));}catch(e){}}
+function toast(msg){
+  const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(window.__toast); window.__toast=setTimeout(()=>t.classList.remove("show"),2200);
 }
-
-function openDetailsModal(id) {
-  const p = products.find(prod => prod.id === id);
-  if (!p) return;
-  
-  selectedProductForModal = p;
-  selectedTypeForModal = 'Corporal';
-
-  document.getElementById('modalProductImg').src = p.image;
-  document.getElementById('modalProductCategory').innerText = p.category.toUpperCase();
-  document.getElementById('modalProductFamily').innerText = p.family || '';
-  document.getElementById('modalProductTitle').innerText = p.name;
-  document.getElementById('modalProductDesc').innerHTML = p.description;
-
-  const selectorContainer = document.getElementById('modalVariantContainer');
-  if (p.category === 'kit') {
-    selectorContainer.style.display = 'none';
-  } else {
-    selectorContainer.style.display = 'block';
-    selectVariant('Corporal');
-  }
-
-  const buyBtn = document.getElementById('modalBuyBtn');
-  buyBtn.disabled = !p.available;
-  buyBtn.innerHTML = p.available 
-    ? '<i class="fa-solid fa-bag-shopping"></i> Adicionar ao carrinho' 
-    : 'Produto Esgotado';
-  buyBtn.onclick = () => {
-    if (p.available) {
-      addToCart(p.id, p.category === 'kit' ? 'Padrão' : selectedTypeForModal);
-      closeDetailsModal();
-    }
-  };
-
-  document.getElementById('detailsModal').classList.add('active');
+function addToCart(id){
+  const p=products.find(x=>x.id===id); if(!p||!p.available)return;
+  const item=cart.find(x=>x.id===id);
+  if(item)item.quantity++; else cart.push({...p,quantity:1});
+  saveCart(); updateCart(); toggleCart(true); toast("Adicionado ao carrinho");
 }
-
-function closeDetailsModal() {
-  document.getElementById('detailsModal').classList.remove('active');
+function changeQuantity(id,delta){
+  const item=cart.find(x=>x.id===id); if(!item)return;
+  item.quantity+=delta;
+  if(item.quantity<=0) cart=cart.filter(x=>x.id!==id);
+  saveCart(); updateCart();
 }
+function removeFromCart(id){cart=cart.filter(x=>x.id!==id);saveCart();updateCart();}
 
-function quickAddToCart(productId) {
-  const p = products.find(prod => prod.id === productId);
-  if (!p) return;
+function updateCart(){
+  const items=document.getElementById("cartItems");
+  const count=cart.reduce((s,x)=>s+x.quantity,0);
+  const total=cart.reduce((s,x)=>s+x.price*x.quantity,0);
+  const discount=Math.floor(count/3)*15;
+  const final=Math.max(0,total-discount);
+  document.getElementById("cartCount").textContent=count;
 
-  let type = 'Corporal';
-  if (p.category !== 'kit') {
-    const selectEl = document.getElementById(`type_select_${productId}`);
-    if (selectEl) type = selectEl.value;
-  } else {
-    type = 'Padrão';
-  }
-
-  addToCart(productId, type);
-}
-
-function addToCart(productId, type = 'Corporal') {
-  const p = products.find(prod => prod.id === productId);
-  if (!p) return;
-
-  const cartItemId = `${productId}_${type.toLowerCase()}`;
-  const existing = cart.find(item => item.cartItemId === cartItemId);
-
-  if (existing) {
-    existing.qty += 1;
-  } else {
-    cart.push({
-      cartItemId: cartItemId,
-      id: p.id,
-      name: p.name,
-      price: p.price,
-      image: p.image,
-      type: type,
-      qty: 1
-    });
-  }
-
-  saveCart();
-  updateCartUI();
-  showToast(`Adicionado: ${p.name} (${type})`);
-  toggleCart(true);
-}
-
-function changeQty(cartItemId, delta) {
-  const item = cart.find(i => i.cartItemId === cartItemId);
-  if (!item) return;
-
-  item.qty += delta;
-  if (item.qty <= 0) {
-    cart = cart.filter(i => i.cartItemId !== cartItemId);
-  }
-
-  saveCart();
-  updateCartUI();
-}
-
-function removeFromCart(cartItemId) {
-  cart = cart.filter(i => i.cartItemId !== cartItemId);
-  saveCart();
-  updateCartUI();
-}
-
-function saveCart() {
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
-}
-
-function updateCartUI() {
-  const cartCountEl = document.getElementById('cartCount');
-  const cartItemsEl = document.getElementById('cartItems');
-  const cartTotalEl = document.getElementById('cartTotal');
-  const discountProgressEl = document.getElementById('discountProgress');
-
-  const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
-  if (cartCountEl) cartCountEl.innerText = totalItems;
-
-  if (cart.length === 0) {
-    cartItemsEl.innerHTML = `
-      <div style="text-align:center; padding: 40px 10px; color: var(--muted);">
-        <i class="fa-solid fa-bag-shopping" style="font-size:32px; margin-bottom:10px; color:#d0ccc3;"></i>
-        <p>Seu carrinho está vazio.</p>
-      </div>`;
-    cartTotalEl.innerText = 'R$ 0,00';
-    if (discountProgressEl) discountProgressEl.style.display = 'none';
-    return;
-  }
-
-  const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-  const promoSets = Math.floor(totalItems / 3);
-  const discount = promoSets * 15;
-  const finalTotal = subtotal - discount;
-
-  if (discountProgressEl) {
-    discountProgressEl.style.display = 'block';
-    if (promoSets > 0) {
-      discountProgressEl.className = 'discount-progress success';
-      discountProgressEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>Oferta Aplicada!</strong> R$ ${discount},00 de desconto garantidos (${promoSets}x combo 3º por R$ 45).`;
-    } else {
-      discountProgressEl.className = 'discount-progress';
-      const remaining = 3 - totalItems;
-      discountProgressEl.innerHTML = `<i class="fa-solid fa-sparkles"></i> Adicione mais <strong>${remaining} perfume(s)</strong> para ganhar R$ 15,00 de desconto no 3º frasco!`;
-    }
-  }
-
-  cartTotalEl.innerText = `R$ ${finalTotal.toFixed(2).replace('.', ',')}`;
-
-  cartItemsEl.innerHTML = cart.map(item => `
-    <div class="cart-item">
-      <img src="${item.image}" alt="${item.name}">
+  if(!cart.length){
+    items.innerHTML='<div class="empty" style="border:0;padding:60px 10px"><i class="fa-solid fa-bag-shopping"></i><p>Seu carrinho está vazio.</p><small>Escolha uma fragrância para começar.</small></div>';
+    document.getElementById("discountProgress").style.display="none";
+  }else{
+    items.innerHTML=cart.map(item=>`<div class="cart-item">
+      <img src="${productImage(item)}" alt="">
+      <div><h4>${esc(item.name)}</h4><p>${brl(item.price)} cada</p></div>
       <div>
-        <h4 style="font-size:12px; font-weight:700;">${item.name}</h4>
-        <div style="font-size:10px; color:var(--gold); font-weight:700; margin-top:2px; display:inline-flex; align-items:center; gap:4px;">
-          <i class="${item.type === 'Capilar' ? 'fa-solid fa-pump-soap' : 'fa-solid fa-spray-can'}"></i>
-          Versão: Perfume ${item.type}
-        </div>
-        <div style="font-weight:600; font-size:11px; margin-top:2px;">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+        <div class="qty"><button onclick="changeQuantity(${item.id},-1)">−</button><strong>${item.quantity}</strong><button onclick="changeQuantity(${item.id},1)">+</button></div>
+        <button class="remove" onclick="removeFromCart(${item.id})">remover</button>
       </div>
-      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
-        <div class="qty">
-          <button onclick="changeQty('${item.cartItemId}', -1)">-</button>
-          <span style="font-size:11px; font-weight:700; min-width:14px; text-align:center;">${item.qty}</span>
-          <button onclick="changeQty('${item.cartItemId}', 1)">+</button>
-        </div>
-        <button class="remove" onclick="removeFromCart('${item.cartItemId}')" title="Remover"><i class="fa-solid fa-trash-can"></i></button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function toggleCart(open) {
-  const cartModal = document.getElementById('cartModal');
-  const overlay = document.getElementById('overlay');
-  
-  const shouldOpen = open !== undefined ? open : !cartModal.classList.contains('open');
-  
-  if (shouldOpen) {
-    cartModal.classList.add('open');
-    overlay.classList.add('active');
-  } else {
-    cartModal.classList.remove('open');
-    overlay.classList.remove('active');
+    </div>`).join("");
+    const prog=document.getElementById("discountProgress");
+    prog.style.display="block";
+    if(count%3===0){
+      prog.className="discount-progress success";
+      prog.innerHTML=`🎉 <strong>${brl(discount)}</strong> de desconto garantido no seu pedido.`;
+    }else{
+      const missing=3-(count%3);
+      prog.className="discount-progress";
+      prog.innerHTML=`Faltam <strong>${missing} perfume${missing>1?"s":""}</strong> para ganhar R$ 15 de desconto.`;
+    }
   }
+  document.getElementById("cartTotal").textContent=brl(final);
+}
+function toggleCart(force){
+  const cartEl=document.getElementById("cartModal"), overlay=document.getElementById("overlay");
+  const open=force===undefined?!cartEl.classList.contains("open"):force;
+  cartEl.classList.toggle("open",open); overlay.classList.toggle("active",open);
+  document.body.style.overflow=open?"hidden":"";
+}
+function checkoutWhatsApp(){
+  if(!cart.length){toast("Seu carrinho está vazio");return;}
+  let total=cart.reduce((s,x)=>s+x.price*x.quantity,0);
+  const count=cart.reduce((s,x)=>s+x.quantity,0), discount=Math.floor(count/3)*15, final=total-discount;
+  let message="Olá, CSE Parfum! Gostaria de fazer um pedido:%0A%0A";
+  cart.forEach(x=>message+=`▪️ ${x.quantity}x ${x.name} — ${brl(x.price*x.quantity)}%0A`);
+  if(discount)message+=`%0A🎁 Desconto do combo: -${brl(discount)}%0A`;
+  message+=`%0A💰 Total: ${brl(final)}%0A%0APode confirmar a disponibilidade e o prazo de entrega?`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,"_blank","noopener");
 }
 
-function checkoutWhatsApp() {
-  if (cart.length === 0) return;
-
-  const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
-  const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-  const promoSets = Math.floor(totalItems / 3);
-  const discount = promoSets * 15;
-  const finalTotal = subtotal - discount;
-
-  let message = "✨ *NOVO PEDIDO - CSE PARFUM* ✨\n\n";
-  message += "Olá! Gostaria de encomendar os seguintes itens:\n\n";
-
-  cart.forEach((item, index) => {
-    const itemTotal = item.price * item.qty;
-    message += `*${index + 1}. ${item.name}*\n`;
-    message += `   • *Versão:* Perfume ${item.type}\n`;
-    message += `   • *Qtd:* ${item.qty}x (R$ ${item.price.toFixed(2).replace('.', ',')} un.)\n`;
-    message += `   • *Subtotal:* R$ ${itemTotal.toFixed(2).replace('.', ',')}\n\n`;
-  });
-
-  if (discount > 0) {
-    message += `💰 *Subtotal:* R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
-    message += `🎁 *Desconto Combo (3º por R$45):* -R$ ${discount.toFixed(2).replace('.', ',')}\n`;
-  }
-
-  message += `💳 *TOTAL FINAL: R$ ${finalTotal.toFixed(2).replace('.', ',')}*\n\n`;
-  message += "Aguardando confirmação de disponibilidade e instruções para pagamento!";
-
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank');
-}
-
-function showToast(msg) {
-  const toast = document.getElementById('toast');
-  toast.innerText = msg;
-  toast.classList.add('show');
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 2800);
-}
-
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeDetailsModal();toggleCart(false)}});
+renderProducts("all");
+updateCart();
 </script>
 </body>
 </html>
