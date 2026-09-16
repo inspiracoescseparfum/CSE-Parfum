@@ -143,6 +143,10 @@ img{display:block;max-width:100%}
 .buy:hover:not(:disabled){background:var(--gold);color:#111;transform:translateY(-1px)}
 .buy:disabled{background:#f0efec;color:#aaa;cursor:not-allowed}
 
+
+.type-select{width:100%;margin-top:12px;border:1px solid var(--line);background:#fafafa;border-radius:10px;padding:9px 10px;font-size:11px;outline:0;color:#555}
+.type-select:focus{border-color:var(--gold);background:#fff}
+
 /* EMPTY */
 .empty{grid-column:1/-1;text-align:center;padding:70px 20px;border:1px dashed #d8d4cb;border-radius:20px;color:var(--muted)}
 .empty i{font-size:32px;color:#c9c3b8;margin-bottom:14px}
@@ -462,10 +466,11 @@ img{display:block;max-width:100%}
 }
 
 </style>
+<base target="_blank">
 </head>
 <body>
 
-<div class="promo">⚡ <strong>OFERTA ESPECIAL</strong><span class="dot"></span>Todos os perfumes por <strong>R$ 60</strong> <span class="dot"></span>Leve 3 e o 3º sai por <strong>R$ 45</strong></div>
+<div class="promo">⚡ <strong>OFERTA ESPECIAL</strong><span class="dot"></span>Fragrâncias a partir de <strong>R$ 35</strong> <span class="dot"></span>Leve 3 e ganhe <strong>R$ 15 off</strong></div>
 
 <header class="header">
   <nav class="nav">
@@ -571,7 +576,7 @@ img{display:block;max-width:100%}
       <button class="filter-btn" onclick="filterProducts('unissex',this)">Unissex</button>
       <button class="filter-btn" onclick="filterProducts('kit',this)">Kits</button>
     </div>
-    <div class="catalog-meta"><span id="resultCount">Carregando...</span><span><strong>R$ 60</strong> • 50 ml</span></div>
+    <div class="catalog-meta"><span id="resultCount">Carregando...</span><span>a partir de <strong>R$ 35</strong></span></div>
     <div class="product-grid" id="productGrid"></div>
   </div>
 </section>
@@ -588,7 +593,8 @@ img{display:block;max-width:100%}
       <h2 id="modalProductTitle" class="modal-title"></h2>
       <div id="modalProductDesc" class="notes"></div>
       <div class="composition"><strong>Composição:</strong> Álcool, Essência, Propilenoglicol e Hexametilindanopirano.</div>
-      <button id="modalBuyBtn" class="btn btn-primary" style="width:100%"><i class="fa-solid fa-bag-shopping"></i> Adicionar ao carrinho</button>
+      <select id="modalTypeSelect" class="type-select"></select>
+      <button id="modalBuyBtn" class="btn btn-primary" style="width:100%;margin-top:12px"><i class="fa-solid fa-bag-shopping"></i> Adicionar ao carrinho</button>
     </div>
   </div>
 </div>
@@ -620,7 +626,7 @@ img{display:block;max-width:100%}
 
 <script>
 const WHATSAPP_NUMBER = "5514996878508";
-const CART_KEY = "cse_parfum_cart_v2";
+const CART_KEY = "cse_parfum_cart_v3";
 
 const products = [
             
@@ -1730,7 +1736,7 @@ const products = [
 },
 
  {
-  id: 99,
+  id: 103,
   name: "INSPIRAÇÃO: Valentino Born In Roma Donna Extradose",
   category: "feminino",
   family: "Âmbar Floral",
@@ -1742,7 +1748,7 @@ const products = [
 },
 
 {
-  id: 100,
+  id: 104,
   name: "INSPIRAÇÃO: Kenzo Flower By Kenzo",
   category: "feminino",
   family: "Âmbar Floral",
@@ -1780,12 +1786,43 @@ const products = [
                     
         ];
 
+
+
+/* ============================================================
+   CONFIGURE AQUI OS PREÇOS DE CADA TIPO DE PRODUTO
+   ============================================================ */
+const DISCOUNT_PER_TRIO = 15; // desconto (R$) a cada 3 itens no carrinho
+
+const PRODUCT_TYPES = [
+  { key: "perfume",    label: "Perfume 50 ml",    price: 60.00 },
+  { key: "bodySplash", label: "Body Splash 50 ml",      price: 45.00 },
+  { key: "capilar",    label: "Perfume Capilar 50 ml",  price: 35.00 },
+
+];
+/* ============================================================ */
+
+function categories(p){ return Array.isArray(p.category)?p.category:[p.category]; }
+function isKit(p){ return categories(p).includes("kit"); }
+function typesFor(p){
+  if(isKit(p)) return [{ key:"kit", label:"Kit", price:p.price }];
+  return PRODUCT_TYPES;
+}
+function priceFor(p,type){
+  const t=typesFor(p).find(t=>t.key===type);
+  return t?t.price:p.price;
+}
+function typeLabel(p,type){
+  const t=typesFor(p).find(t=>t.key===type);
+  return t?t.label:(type||"");
+}
+
 let cart = [];
 let currentCategory = "all";
+let selectedTypes = {}; // id do produto -> tipo escolhido no card
 
 try {
   const saved = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
-  if (Array.isArray(saved)) cart = saved;
+  if (Array.isArray(saved)) cart = saved.map(x=>({...x, type:x.type || (isKit(x)?"kit":"perfume")}));
 } catch(e) { cart = []; }
 
 function parseOriginalPrice(value){
@@ -1795,7 +1832,6 @@ function parseOriginalPrice(value){
 }
 function brl(n){ return Number(n||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:2}); }
 function productImage(p){ return p.image || p.imagem || ""; }
-function categories(p){ return Array.isArray(p.category)?p.category:[p.category]; }
 function esc(s){ return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m])); }
 
 function renderProducts(category=currentCategory){
@@ -1812,7 +1848,6 @@ function renderProducts(category=currentCategory){
 
   if(sort==="priceAsc") filtered.sort((a,b)=>a.price-b.price);
   else if(sort==="name") filtered.sort((a,b)=>a.name.localeCompare(b.name,"pt-BR"));
-  else if(sort==="available") filtered.sort((a,b)=>Number(b.available)-Number(a.available));
   else filtered.sort((a,b)=>Number(b.available)-Number(a.available));
 
   document.getElementById("resultCount").innerHTML=`<strong>${filtered.length}</strong> fragrância${filtered.length===1?"":"s"} encontrada${filtered.length===1?"":"s"}`;
@@ -1828,6 +1863,7 @@ function renderProducts(category=currentCategory){
     const pct=original&&original>p.price?Math.round((1-p.price/original)*100):null;
     const cats=categories(p).filter(Boolean);
     const catLabel=cats[0]||"";
+    const selType=selectedTypes[p.id]||typesFor(p)[0].key;
     return `<article class="product-card" style="animation-delay:${Math.min(i*0.035,.5)}s">
       <div class="product-image" onclick="openDetailsModal(${p.id})">
         <span class="badge ${p.available?"":"sold"}">${p.available?"Inspiração":"Esgotado"}</span>
@@ -1839,9 +1875,12 @@ function renderProducts(category=currentCategory){
         <h3 class="product-title">${esc(p.name)}</h3>
         <div class="price-line">
           ${original?`<div><span class="old-price">${brl(original)}</span>${pct?`<span class="discount">-${pct}%</span>`:""}</div>`:""}
-          <div class="price">${brl(p.price)}</div>
+          <div class="price">${isKit(p)?brl(p.price):("a partir de "+brl(Math.min(...PRODUCT_TYPES.map(t=>t.price))))}</div>
           <div class="stock ${p.available?"ok":"no"}"><i class="fa-solid ${p.available?"fa-circle-check":"fa-circle-xmark"}"></i> ${p.available?"Disponível":"Esgotado"}</div>
         </div>
+        <select class="type-select" onchange="selectedTypes[${p.id}]=this.value" ${p.available?"":"disabled"}>
+          ${typesFor(p).map(t=>`<option value="${t.key}" ${t.key===selType?"selected":""}>${t.label} — ${brl(t.price)}</option>`).join("")}
+        </select>
         <button class="buy" onclick="${p.available?`addToCart(${p.id})`:"return false"}" ${p.available?"":"disabled"}>
           <i class="fa-solid fa-bag-shopping"></i> ${p.available?"Adicionar ao carrinho":"Indisponível"}
         </button>
@@ -1868,9 +1907,13 @@ function openDetailsModal(id){
   fam.textContent=p.family||""; fam.style.display=p.family?"inline-block":"none";
   document.getElementById("modalProductTitle").textContent=p.name;
   document.getElementById("modalProductDesc").innerHTML=p.description||"Notas olfativas não informadas.";
+  const sel=document.getElementById("modalTypeSelect");
+  const selType=selectedTypes[p.id]||typesFor(p)[0].key;
+  sel.innerHTML=typesFor(p).map(t=>`<option value="${t.key}" ${t.key===selType?"selected":""}>${t.label} — ${brl(t.price)}</option>`).join("");
+  sel.onchange=()=>{selectedTypes[p.id]=sel.value;};
   const btn=document.getElementById("modalBuyBtn");
   btn.style.display=p.available?"flex":"none";
-  btn.onclick=()=>{addToCart(p.id);closeDetailsModal();};
+  btn.onclick=()=>{addToCart(p.id, sel.value); closeDetailsModal();};
   document.getElementById("detailsModal").classList.add("active");
   document.body.style.overflow="hidden";
 }
@@ -1881,25 +1924,29 @@ function toast(msg){
   const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show");
   clearTimeout(window.__toast); window.__toast=setTimeout(()=>t.classList.remove("show"),2200);
 }
-function addToCart(id){
+
+function addToCart(id,type){
   const p=products.find(x=>x.id===id); if(!p||!p.available)return;
-  const item=cart.find(x=>x.id===id);
-  if(item)item.quantity++; else cart.push({...p,quantity:1});
+  type=type || selectedTypes[id] || (isKit(p)?"kit":"perfume");
+  const item=cart.find(x=>x.id===id && x.type===type);
+  if(item)item.quantity++; else cart.push({id:p.id, type, quantity:1});
   saveCart(); updateCart(); toggleCart(true); toast("Adicionado ao carrinho");
 }
-function changeQuantity(id,delta){
-  const item=cart.find(x=>x.id===id); if(!item)return;
+function changeQuantity(id,type,delta){
+  const item=cart.find(x=>x.id===id && x.type===type); if(!item)return;
   item.quantity+=delta;
-  if(item.quantity<=0) cart=cart.filter(x=>x.id!==id);
+  if(item.quantity<=0) cart=cart.filter(x=>!(x.id===id && x.type===type));
   saveCart(); updateCart();
 }
-function removeFromCart(id){cart=cart.filter(x=>x.id!==id);saveCart();updateCart();}
+function removeFromCart(id,type){cart=cart.filter(x=>!(x.id===id && x.type===type));saveCart();updateCart();}
 
 function updateCart(){
   const items=document.getElementById("cartItems");
   const count=cart.reduce((s,x)=>s+x.quantity,0);
-  const total=cart.reduce((s,x)=>s+x.price*x.quantity,0);
-  const discount=Math.floor(count/3)*15;
+  const total=cart.reduce((s,x)=>{
+    const p=products.find(y=>y.id===x.id); return s+(p?priceFor(p,x.type):0)*x.quantity;
+  },0);
+  const discount=Math.floor(count/3)*DISCOUNT_PER_TRIO;
   const final=Math.max(0,total-discount);
   document.getElementById("cartCount").textContent=count;
 
@@ -1907,14 +1954,17 @@ function updateCart(){
     items.innerHTML='<div class="empty" style="border:0;padding:60px 10px"><i class="fa-solid fa-bag-shopping"></i><p>Seu carrinho está vazio.</p><small>Escolha uma fragrância para começar.</small></div>';
     document.getElementById("discountProgress").style.display="none";
   }else{
-    items.innerHTML=cart.map(item=>`<div class="cart-item">
-      <img src="${productImage(item)}" alt="">
-      <div><h4>${esc(item.name)}</h4><p>${brl(item.price)} cada</p></div>
+    items.innerHTML=cart.map(item=>{
+      const p=products.find(y=>y.id===item.id); if(!p)return"";
+      const unit=priceFor(p,item.type);
+      return `<div class="cart-item">
+      <img src="${productImage(p)}" alt="">
+      <div><h4>${esc(p.name)}</h4><p>${esc(typeLabel(p,item.type))} • ${brl(unit)} cada</p></div>
       <div>
-        <div class="qty"><button onclick="changeQuantity(${item.id},-1)">−</button><strong>${item.quantity}</strong><button onclick="changeQuantity(${item.id},1)">+</button></div>
-        <button class="remove" onclick="removeFromCart(${item.id})">remover</button>
+        <div class="qty"><button onclick="changeQuantity(${item.id},'${item.type}',-1)">−</button><strong>${item.quantity}</strong><button onclick="changeQuantity(${item.id},'${item.type}',1)">+</button></div>
+        <button class="remove" onclick="removeFromCart(${item.id},'${item.type}')">remover</button>
       </div>
-    </div>`).join("");
+    </div>`;}).join("");
     const prog=document.getElementById("discountProgress");
     prog.style.display="block";
     if(count%3===0){
@@ -1923,7 +1973,7 @@ function updateCart(){
     }else{
       const missing=3-(count%3);
       prog.className="discount-progress";
-      prog.innerHTML=`Faltam <strong>${missing} perfume${missing>1?"s":""}</strong> para ganhar R$ 15 de desconto.`;
+      prog.innerHTML=`Faltam <strong>${missing} perfume${missing>1?"s":""}</strong> para ganhar ${brl(DISCOUNT_PER_TRIO)} de desconto.`;
     }
   }
   document.getElementById("cartTotal").textContent=brl(final);
@@ -1936,10 +1986,15 @@ function toggleCart(force){
 }
 function checkoutWhatsApp(){
   if(!cart.length){toast("Seu carrinho está vazio");return;}
-  let total=cart.reduce((s,x)=>s+x.price*x.quantity,0);
-  const count=cart.reduce((s,x)=>s+x.quantity,0), discount=Math.floor(count/3)*15, final=total-discount;
+  const count=cart.reduce((s,x)=>s+x.quantity,0), discount=Math.floor(count/3)*DISCOUNT_PER_TRIO;
+  let total=0;
   let message="Olá, CSE Parfum! Gostaria de fazer um pedido:%0A%0A";
-  cart.forEach(x=>message+=`▪️ ${x.quantity}x ${x.name} — ${brl(x.price*x.quantity)}%0A`);
+  cart.forEach(x=>{
+    const p=products.find(y=>y.id===x.id); if(!p)return;
+    const unit=priceFor(p,x.type); total+=unit*x.quantity;
+    message+=`▪️ ${x.quantity}x ${p.name} (${typeLabel(p,x.type)}) — ${brl(unit*x.quantity)}%0A`;
+  });
+  const final=Math.max(0,total-discount);
   if(discount)message+=`%0A🎁 Desconto do combo: -${brl(discount)}%0A`;
   message+=`%0A💰 Total: ${brl(final)}%0A%0APode confirmar a disponibilidade e o prazo de entrega?`;
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,"_blank","noopener");
