@@ -474,12 +474,12 @@ img{display:block;max-width:100%}
 
 <header class="header">
   <nav class="nav">
-    <a class="logo" href="#" aria-label="CSE Parfum">
+    <a class="logo" href="#" onclick="return goTo('catalogo')" aria-label="CSE Parfum">
       <div class="logo-mark">C</div>
       <div><div class="logo-title">CSE PARFUM</div><span class="logo-sub">Fragrâncias Inspiradas</span></div>
     </a>
     <div class="nav-links">
-      <a href="#catalogo">Catálogo</a><a href="#experiencia">Experiência</a><a href="#sobre">Transparência</a>
+      <a href="#catalogo" onclick="return goTo('catalogo')">Catálogo</a><a href="#experiencia" onclick="return goTo('experiencia')">Experiência</a><a href="#sobre" onclick="return goTo('sobre')">Transparência</a>
     </div>
     <div class="header-actions">
       <button class="icon-btn" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})" title="Buscar perfumes"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -497,8 +497,8 @@ img{display:block;max-width:100%}
       <h1>Seu próximo <em>perfume favorito</em> começa aqui.</h1>
       <p class="hero-copy">Uma curadoria de fragrâncias inspiradas nos grandes clássicos da perfumaria, com apresentação elegante, alta qualidade e preço acessível.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#catalogo"><i class="fa-solid fa-sparkles"></i> Explorar catálogo</a>
-        <a class="btn btn-ghost" href="#experiencia">Conheça a CSE Parfum</a>
+        <a class="btn btn-primary" href="#catalogo" onclick="return goTo('catalogo')"><i class="fa-solid fa-sparkles"></i> Explorar catálogo</a>
+        <a class="btn btn-ghost" href="#experiencia" onclick="return goTo('experiencia')">Conheça a CSE Parfum</a>
       </div>
     </div>
     <div class="hero-card">
@@ -1795,9 +1795,9 @@ const DISCOUNT_PER_TRIO = 15; // desconto (R$) a cada 3 itens no carrinho
 
 const PRODUCT_TYPES = [
   { key: "perfume",    label: "Perfume 50 ml",    price: 60.00 },
-  { key: "bodySplash", label: "Body Splash 50 ml",      price: 45.00 },
-  { key: "capilar",    label: "Perfume Capilar 50 ml",  price: 35.00 },
-
+  { key: "bodySplash", label: "Body Splash",      price: 45.00 },
+  { key: "capilar",    label: "Perfume Capilar",  price: 35.00 },
+  { key: "corporal",   label: "Perfume Corporal", price: 40.00 }
 ];
 /* ============================================================ */
 
@@ -1825,6 +1825,12 @@ try {
   if (Array.isArray(saved)) cart = saved.map(x=>({...x, type:x.type || (isKit(x)?"kit":"perfume")}));
 } catch(e) { cart = []; }
 
+
+function goTo(id){
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  return false;
+}
 function parseOriginalPrice(value){
   if(value===undefined || value===null) return null;
   const clean=String(value).replace(/R\$\s?/gi,"").replace(/\./g,"").replace(",",".").trim();
