@@ -1878,7 +1878,7 @@ function renderProducts(category=currentCategory){
         <h3 class="product-title">${esc(p.name)}</h3>
         <div class="price-line">
           ${original?`<div><span class="old-price">${brl(original)}</span>${pct?`<span class="discount">-${pct}%</span>`:""}</div>`:""}
-          <div class="price">${isKit(p)?brl(p.price):("a partir de "+brl(Math.min(...PRODUCT_TYPES.map(t=>t.price))))}</div>
+          <div class="price">${isKit(p)?brl(p.price):("valor de "+brl(Math.min(...PRODUCT_TYPES.map(t=>t.price))))}</div>
           <div class="stock ${p.available?"ok":"no"}"><i class="fa-solid ${p.available?"fa-circle-check":"fa-circle-xmark"}"></i> ${p.available?"Disponível":"Esgotado"}</div>
         </div>
         <select class="type-select" onchange="selectedTypes[${p.id}]=this.value" ${p.available?"":"disabled"}>
