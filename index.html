@@ -227,6 +227,54 @@ img{display:block;max-width:100%}
   .catalog-meta{font-size:10px}
 }
 
+
+/* ===== VITRINE DE LINHAS (corporal / capilar / body splash) ===== */
+::selection{background:var(--gold);color:#111}
+.hero-mini{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
+.hero-mini span{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:700;letter-spacing:.6px;color:#d8d7da;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);padding:8px 13px;border-radius:99px;backdrop-filter:blur(4px)}
+.hero-mini i{color:var(--gold-2);font-size:9px}
+
+.linhas{background:linear-gradient(180deg,#0c0c0e,#161416 58%,#0c0c0e);color:#fff;position:relative;overflow:hidden}
+.linhas:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 10%,rgba(202,164,93,.13),transparent 32%),radial-gradient(circle at 88% 92%,rgba(202,164,93,.09),transparent 30%)}
+.linhas-inner{max-width:1240px;margin:auto;padding:92px 22px;position:relative}
+.linhas .kicker{color:var(--gold-2)}
+.linhas .section-sub{color:#a7a6ab}
+.linhas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
+.linha-card{position:relative;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:32px 27px 27px;backdrop-filter:blur(6px);transition:.4s var(--ease);display:flex;flex-direction:column}
+.linha-card:hover{transform:translateY(-7px);border-color:rgba(202,164,93,.5);background:rgba(255,255,255,.06);box-shadow:0 25px 60px rgba(0,0,0,.35)}
+.linha-card.destaque{border-color:rgba(202,164,93,.42);background:linear-gradient(160deg,rgba(202,164,93,.14),rgba(255,255,255,.03))}
+.linha-tag{position:absolute;top:20px;right:20px;font-size:8px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-2);border:1px solid rgba(202,164,93,.4);padding:5px 9px;border-radius:99px}
+.linha-icon{width:54px;height:54px;border-radius:16px;background:rgba(202,164,93,.14);border:1px solid rgba(202,164,93,.35);display:grid;place-items:center;color:var(--gold-2);font-size:20px;margin-bottom:18px}
+.linha-card h3{font-family:"Playfair Display";font-size:24px;font-weight:600}
+.linha-price{font-family:"Playfair Display";font-size:33px;color:var(--gold-2);margin:8px 0 12px}
+.linha-price small{font-family:"DM Sans";font-size:11px;color:#9c9ba0;font-weight:500}
+.linha-card>p{font-size:12.5px;color:#a7a6ab;line-height:1.65;margin-bottom:16px}
+.linha-card ul{list-style:none;margin-bottom:24px}
+.linha-card li{font-size:11.5px;color:#c9c8cc;padding:6.5px 0;border-bottom:1px dashed rgba(255,255,255,.08);display:flex;gap:9px;align-items:center}
+.linha-card li:last-child{border:0}
+.linha-card li i{color:var(--gold);font-size:10px}
+.btn-linha{margin-top:auto;width:100%;background:rgba(202,164,93,.12);border:1px solid rgba(202,164,93,.45);color:var(--gold-2);border-radius:12px;padding:13px;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;gap:8px;transition:.3s var(--ease)}
+.btn-linha:hover{background:var(--gold);color:#111;border-color:var(--gold);transform:translateY(-2px);box-shadow:0 12px 28px rgba(202,164,93,.25)}
+.linhas-note{margin-top:28px;text-align:center;font-size:11px;color:#8f8e93}
+.linhas-note i{color:var(--gold);margin-right:6px}
+
+/* ===== POLIMENTO VISUAL ===== */
+.header{box-shadow:0 1px 0 rgba(202,164,93,.18)}
+.nav-links a{position:relative;padding:4px 0}
+.nav-links a:after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--gold);transition:width .3s var(--ease)}
+.nav-links a:hover:after{width:100%}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#151515}
+.btn-primary:hover{box-shadow:0 14px 34px rgba(202,164,93,.32)}
+.product-card{border-radius:24px}
+.product-image{background:radial-gradient(circle at 50% 28%,#fffdf8,#f2efe7)}
+.kicker{display:inline-flex;align-items:center;gap:10px}
+.kicker:after{content:"";width:26px;height:1px;background:var(--gold)}
+.linhas .kicker:after{background:var(--gold-2)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:980px){.linhas-grid{grid-template-columns:1fr}.linhas-inner{padding:66px 18px}}
+@media(max-width:700px){.linhas-inner{padding:58px 16px}.hero-mini{gap:7px}.hero-mini span{font-size:9px;padding:7px 11px}}
+
 /* ===== REFINAMENTO RESPONSIVO FINAL ===== */
 @media (min-width: 981px){
   .nav{padding-left:28px;padding-right:28px}
@@ -470,7 +518,7 @@ img{display:block;max-width:100%}
 </head>
 <body>
 
-<div class="promo">⚡ <strong>OFERTA ESPECIAL</strong><span class="dot"></span>Fragrâncias a partir de <strong>R$ 35</strong> <span class="dot"></span>Leve 3 e ganhe <strong>R$ 15 off</strong></div>
+<div class="promo">⚡ <strong>OFERTA ESPECIAL</strong><span class="dot"></span>Perfume Corporal <strong>R$ 60</strong> · Capilar <strong>R$ 40</strong> · Body Splash <strong>R$ 25</strong> <span class="dot"></span>Leve 3 e ganhe <strong>R$ 15 off</strong></div>
 
 <header class="header">
   <nav class="nav">
@@ -479,7 +527,7 @@ img{display:block;max-width:100%}
       <div><div class="logo-title">CSE PARFUM</div><span class="logo-sub">Fragrâncias Inspiradas</span></div>
     </a>
     <div class="nav-links">
-      <a href="#catalogo" onclick="return goTo('catalogo')">Catálogo</a><a href="#experiencia" onclick="return goTo('experiencia')">Experiência</a><a href="#sobre" onclick="return goTo('sobre')">Transparência</a>
+      <a href="#catalogo" onclick="return goTo('catalogo')">Catálogo</a><a href="#linhas" onclick="return goTo('linhas')">Nossas linhas</a><a href="#experiencia" onclick="return goTo('experiencia')">Experiência</a><a href="#sobre" onclick="return goTo('sobre')">Transparência</a>
     </div>
     <div class="header-actions">
       <button class="icon-btn" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})" title="Buscar perfumes"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -495,10 +543,15 @@ img{display:block;max-width:100%}
     <div>
       <div class="eyebrow">Perfumaria inspirada </div>
       <h1>Seu próximo <em>perfume favorito</em> começa aqui.</h1>
-      <p class="hero-copy">Uma curadoria de fragrâncias inspiradas nos grandes clássicos da perfumaria, com apresentação elegante, alta qualidade e preço acessível.</p>
+      <p class="hero-copy">Uma curadoria de fragrâncias inspiradas nos grandes clássicos da perfumaria. Cada essência está disponível em três formatos — perfume corporal, perfume capilar e body splash — para você escolher como quer se perfumar.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#catalogo" onclick="return goTo('catalogo')"><i class="fa-solid fa-sparkles"></i> Explorar catálogo</a>
-        <a class="btn btn-ghost" href="#experiencia" onclick="return goTo('experiencia')">Conheça a CSE Parfum</a>
+        <a class="btn btn-ghost" href="#linhas" onclick="return goTo('linhas')">Conheça as linhas</a>
+      </div>
+      <div class="hero-mini">
+        <span><i class="fa-solid fa-droplet"></i> Perfume Corporal — R$ 60</span>
+        <span><i class="fa-solid fa-wand-magic-sparkles"></i> Perfume Capilar — R$ 40</span>
+        <span><i class="fa-solid fa-pump-soap"></i> Body Splash — R$ 25</span>
       </div>
     </div>
     <div class="hero-card">
@@ -513,10 +566,63 @@ img{display:block;max-width:100%}
 
 <section class="trust">
   <div class="trust-grid">
-    <div class="trust-item"><i class="fa-solid fa-flask"></i> Frasco de 50 ml</div>
+    <div class="trust-item"><i class="fa-solid fa-flask"></i> Corporal, capilar &amp; body splash</div>
     <div class="trust-item"><i class="fa-solid fa-gem"></i> Qualidade premium</div>
     <div class="trust-item"><i class="fa-solid fa-tags"></i> Preço acessível</div>
     <div class="trust-item"><i class="fa-brands fa-whatsapp"></i> Pedido pelo WhatsApp</div>
+  </div>
+</section>
+
+
+<section class="linhas" id="linhas">
+  <div class="linhas-inner">
+    <div class="section-head">
+      <div class="kicker">Muito além do perfume</div>
+      <h2 class="section-title">Uma fragrância, três experiências</h2>
+      <p class="section-sub">Cada essência do nosso catálogo está disponível nos formatos abaixo. Escolha o ideal para cada momento — ou combine os três.</p>
+    </div>
+    <div class="linhas-grid">
+      <article class="linha-card destaque">
+        <span class="linha-tag">Mais pedido</span>
+        <div class="linha-icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+        <h3>Perfume Corporal</h3>
+        <div class="linha-price">R$ 60 <small>/ 50 ml</small></div>
+        <p>Alta concentração de essência para uma presença marcante do início ao fim do dia.</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> Fixação prolongada</li>
+          <li><i class="fa-solid fa-check"></i> Frasco de 50 ml</li>
+          <li><i class="fa-solid fa-check"></i> Ideal para sair e ocasiões especiais</li>
+        </ul>
+        <button class="btn-linha" onclick="goTo('catalogo')">Escolher meu perfume <i class="fa-solid fa-arrow-right"></i></button>
+      </article>
+      <article class="linha-card">
+        <span class="linha-tag">Cuidado diário</span>
+        <div class="linha-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3>Perfume Capilar</h3>
+        <div class="linha-price">R$ 40 <small>/ 50 ml</small></div>
+        <p>Fórmula suave desenvolvida para perfumar os fios sem ressecar.</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> Cabelos perfumados por horas</li>
+          <li><i class="fa-solid fa-check"></i> Frasco de 50 ml</li>
+          <li><i class="fa-solid fa-check"></i> Perfeito para o dia a dia</li>
+        </ul>
+        <button class="btn-linha" onclick="goTo('catalogo')">Escolher meu perfume <i class="fa-solid fa-arrow-right"></i></button>
+      </article>
+      <article class="linha-card">
+        <span class="linha-tag">Refresque-se</span>
+        <div class="linha-icon"><i class="fa-solid fa-pump-soap"></i></div>
+        <h3>Body Splash</h3>
+        <div class="linha-price">R$ 25 <small>/ 100 ml</small></div>
+        <p>Leve e refrescante, para reaplicar sempre que quiser se sentir perfumado(a).</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> Frescor imediato</li>
+          <li><i class="fa-solid fa-check"></i> Frasco de 100 ml</li>
+          <li><i class="fa-solid fa-check"></i> Ótimo para pós-banho e academia</li>
+        </ul>
+        <button class="btn-linha" onclick="goTo('catalogo')">Escolher meu body splash <i class="fa-solid fa-arrow-right"></i></button>
+      </article>
+    </div>
+    <div class="linhas-note"><i class="fa-solid fa-circle-info"></i> Na página de cada fragrância, basta trocar a opção no seletor antes de adicionar ao carrinho.</div>
   </div>
 </section>
 
@@ -547,7 +653,7 @@ img{display:block;max-width:100%}
 </div>
       <div class="bottle-show">
         <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ3A4mZzYUCDMT_v2axNNPVmcP9GhYsBFG5F3XHSZ-RBZ7_J7wBDhyxXvpzDi-JOwFw2dbM9B92lgvkknFkcxo01SF3H3-QflX7qm-zHHMhlnuLxQr04KiuvZWZ6MYcLVwatO8t7Kay&usqp=CAc" alt="Frasco padrão CSE">
-        <small><strong>O que você recebe:</strong><br>fragrância CSE Parfum em frasco padrão de 50 ml.</small>
+        <small><strong>O que você recebe:</strong><br>sua fragrância CSE Parfum no formato escolhido: corporal ou capilar (50 ml) ou body splash (100 ml).</small>
       </div>
     </article>
   </div>
@@ -558,7 +664,7 @@ img{display:block;max-width:100%}
     <div class="section-head">
       <div class="kicker">Escolha sua fragrância</div>
       <h2 class="section-title">Nosso catálogo</h2>
-      <p class="section-sub">Pesquise pelo nome, explore as categorias e clique em qualquer perfume para ver suas notas olfativas.</p>
+      <p class="section-sub">Pesquise pelo nome, explore as categorias e clique em qualquer perfume para ver suas notas olfativas. Toda fragrância está disponível em três formatos: <strong>Perfume Corporal (R$ 60)</strong>, <strong>Perfume Capilar (R$ 40)</strong> e <strong>Body Splash (R$ 25)</strong> — basta escolher no seletor antes de adicionar ao carrinho.</p>
     </div>
     <div class="toolbar">
       <div class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="searchInput" type="search" placeholder="Qual fragrância você procura?" oninput="searchProducts()" autocomplete="off"></div>
@@ -615,7 +721,7 @@ img{display:block;max-width:100%}
 
 <footer class="footer">
   <div class="footer-inner">
-    <div><h3>CSE Parfum</h3><p>Fragrâncias inspiradas para quem gosta de presença, elegância e variedade.</p></div>
+    <div><h3>CSE Parfum</h3><p>Fragrâncias inspiradas para quem gosta de presença, elegância e variedade.</p><p style="margin-top:12px"><strong style="color:#d9d8dc">Nossas linhas:</strong><br>Perfume Corporal 50 ml — R$ 60<br>Perfume Capilar 50 ml — R$ 40<br>Body Splash 100 ml — R$ 25</p></div>
     <div><h3>Atendimento</h3><p>Pedidos e disponibilidade<br>WhatsApp • Atendimento direto</p></div>
     <div><h3>Transparência</h3><p>Somos uma marca de fragrâncias inspiradas. As marcas e imagens citadas pertencem aos seus respectivos fabricantes.</p></div>
   </div>
@@ -2035,23 +2141,11 @@ function checkoutWhatsApp(){
   message+=`%0A💰 Total: ${brl(final)}%0A%0APode confirmar a disponibilidade e o prazo de entrega?`;
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,"_blank","noopener");
 }
-function checkoutWhatsApp(){
-  if(!cart.length){toast("Seu carrinho está vazio");return;}
-  const count=cart.reduce((s,x)=>s+x.quantity,0), discount=Math.floor(count/3)*DISCOUNT_PER_TRIO;
-  let total=0;
-  let message="Olá, CSE Parfum! Gostaria de fazer um pedido:%0A%0A";
-  cart.forEach(x=>{
-    const p=products.find(y=>y.id===x.id); if(!p)return;
-    const unit=priceFor(p,x.type); total+=unit*x.quantity;
-    message+=`▪️ ${x.quantity}x ${p.name} (${typeLabel(p,x.type)}) — ${brl(unit*x.quantity)}%0A`;
-  });
-  const final=Math.max(0,total-discount);
-  if(discount)message+=`%0A🎁 Desconto do combo: -${brl(discount)}%0A`;
-  message+=`%0A💰 Total: ${brl(final)}%0A%0APode confirmar a disponibilidade e o prazo de entrega?`;
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,"_blank","noopener");
-}
-
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeDetailsModal();toggleCart(false)}});
+try{
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll(".section-head,.about-card,.trust-item,.linha-card").forEach(el=>{el.classList.add("reveal");io.observe(el);});
+}catch(e){}
 renderProducts("all");
 updateCart();
 </script>
