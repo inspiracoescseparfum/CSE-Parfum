@@ -275,6 +275,45 @@ img{display:block;max-width:100%}
 @media(max-width:980px){.linhas-grid{grid-template-columns:1fr}.linhas-inner{padding:66px 18px}}
 @media(max-width:700px){.linhas-inner{padding:58px 16px}.hero-mini{gap:7px}.hero-mini span{font-size:9px;padding:7px 11px}}
 
+
+/* ===== FLUXO PROFISSIONAL: MENU / MODAL / CARRINHO / EXTRAS ===== */
+.mobile-menu{position:fixed;z-index:750;left:0;top:0;height:100%;width:min(320px,85%);background:#fff;transform:translateX(-100%);transition:.45s var(--ease);display:flex;flex-direction:column;box-shadow:25px 0 70px rgba(0,0,0,.12)}
+.mobile-menu.open{transform:none}
+.mm-head{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:"Playfair Display";font-size:20px}
+.mm-head button{border:0;background:#f4f3f0;width:36px;height:36px;border-radius:50%;cursor:pointer}
+a.mm-link{display:flex;align-items:center;gap:12px;padding:16px 24px;font-size:13px;font-weight:600;color:#444;border-bottom:1px solid #f4f3ee;transition:.25s;cursor:pointer}
+a.mm-link i{color:var(--gold);width:16px;text-align:center}
+a.mm-link:hover{background:#faf9f5;color:var(--gold);padding-left:28px}
+.mm-foot{margin-top:auto;padding:20px 22px}
+.mm-foot .whatsapp{width:100%;border:0;background:var(--green);color:#fff;padding:14px;border-radius:12px;font-size:12px;font-weight:800;display:flex;justify-content:center;gap:8px;align-items:center}
+
+.modal-price-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:2px 0 16px}
+.modal-price{font-family:"Playfair Display";font-size:31px;font-weight:600}
+.modal-stock{font-size:10px;font-weight:800;margin-left:auto}
+.modal-stock.ok{color:#159a53}.modal-stock.no{color:#b65b5b}
+.notes strong{color:#8b6b2e}
+
+.alt-prices{font-size:9px;color:#999;margin-top:3px}
+
+.totals{margin-bottom:14px}
+.t-row{display:flex;justify-content:space-between;font-size:12px;color:#777;padding:4px 0}
+.discount-row span:last-child{color:#138a4b;font-weight:800}
+.t-row.total-row{border-top:1px dashed var(--line);margin-top:6px;padding-top:10px;align-items:end}
+.t-row.total-row>span{color:var(--ink);font-weight:600}
+.t-row.total-row strong{font-family:"Playfair Display";font-size:26px}
+.continue{width:100%;margin-top:10px;border:1px solid var(--line);background:#fff;color:#666;padding:12px;border-radius:12px;font-size:11px;font-weight:700;transition:.25s}
+.continue:hover{border-color:var(--gold);color:var(--gold)}
+
+.to-top{position:fixed;left:22px;bottom:22px;width:46px;height:46px;border-radius:50%;background:var(--black);color:var(--gold-2);display:grid;place-items:center;z-index:85;opacity:0;visibility:hidden;transition:.3s;box-shadow:0 12px 28px rgba(0,0,0,.22);font-size:15px;border:1px solid rgba(202,164,93,.4);cursor:pointer}
+.to-top.show{opacity:1;visibility:visible}
+.to-top:hover{transform:translateY(-3px)}
+
+.footer-inner{grid-template-columns:1.2fr 1fr 1fr 1.2fr}
+.footer .steps li{margin-bottom:7px}
+.toast i{color:var(--gold-2);margin-right:7px}
+@media(max-width:980px){.footer-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.to-top{left:14px;bottom:calc(14px + env(safe-area-inset-bottom));width:42px;height:42px}}
+
 /* ===== REFINAMENTO RESPONSIVO FINAL ===== */
 @media (min-width: 981px){
   .nav{padding-left:28px;padding-right:28px}
@@ -532,7 +571,7 @@ img{display:block;max-width:100%}
     <div class="header-actions">
       <button class="icon-btn" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})" title="Buscar perfumes"><i class="fa-solid fa-magnifying-glass"></i></button>
       <button class="icon-btn" onclick="toggleCart()" title="Abrir carrinho"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count" id="cartCount">0</span></button>
-      <button class="icon-btn menu-btn" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})"><i class="fa-solid fa-bars"></i></button>
+      <button class="icon-btn menu-btn" onclick="toggleMenu()" aria-label="Abrir menu"><i class="fa-solid fa-bars"></i></button>
     </div>
   </nav>
 </header>
@@ -682,7 +721,7 @@ img{display:block;max-width:100%}
       <button class="filter-btn" onclick="filterProducts('unissex',this)">Unissex</button>
       <button class="filter-btn" onclick="filterProducts('kit',this)">Kits</button>
     </div>
-    <div class="catalog-meta"><span id="resultCount">Carregando...</span><span> <strong>R$ 60</strong></span></div>
+    <div class="catalog-meta"><span id="resultCount">Carregando...</span><span><i class="fa-solid fa-droplet" style="color:var(--gold)"></i> 3 formatos: corporal · capilar · body splash</span></div>
     <div class="product-grid" id="productGrid"></div>
   </div>
 </section>
@@ -697,6 +736,12 @@ img{display:block;max-width:100%}
     <div class="modal-content">
       <div class="tags"><span id="modalProductCategory" class="tag"></span><span id="modalProductFamily" class="tag family"></span></div>
       <h2 id="modalProductTitle" class="modal-title"></h2>
+      <div class="modal-price-row">
+        <span class="modal-price" id="modalProductPrice"></span>
+        <span class="old-price" id="modalProductOldPrice" style="display:none"></span>
+        <span class="discount" id="modalProductDiscount" style="display:none"></span>
+        <span class="modal-stock" id="modalProductStock"></span>
+      </div>
       <div id="modalProductDesc" class="notes"></div>
       <div class="composition"><strong>Composição Perfume Corporal:</strong> Álcool, Essência, Propilenoglicol e Hexametilindanopirano.</div>
       <select id="modalTypeSelect" class="type-select"></select>
@@ -705,23 +750,38 @@ img{display:block;max-width:100%}
   </div>
 </div>
 
-<div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
+<div class="overlay" id="overlay" onclick="closeAllPanels()"></div>
 <aside class="cart" id="cartModal" aria-label="Carrinho">
   <div class="cart-head"><h3>Seu carrinho</h3><button onclick="toggleCart(false)" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button></div>
   <div id="discountProgress" class="discount-progress" style="display:none"></div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-foot">
-    <div class="total-row"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
+    <div class="totals">
+      <div class="t-row"><span>Subtotal</span><span id="cartSubtotal">R$ 0,00</span></div>
+      <div class="t-row discount-row" id="discountRow" style="display:none"><span><i class="fa-solid fa-gift"></i> Desconto "leve 3"</span><span id="cartDiscount">-R$ 0,00</span></div>
+      <div class="t-row total-row"><span>Total do pedido</span><strong id="cartTotal">R$ 0,00</strong></div>
+    </div>
     <div class="checkout-note"><i class="fa-solid fa-shield-halved"></i> Finalize pelo WhatsApp para confirmar disponibilidade e prazo de entrega.</div>
-    <button class="whatsapp" onclick="checkoutWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Finalizar pedido</button>
+    <button class="whatsapp" onclick="checkoutWhatsApp()"><i class="fa-brands fa-whatsapp"></i> Finalizar pedido no WhatsApp</button>
+    <button class="continue" onclick="toggleCart(false);goTo('catalogo')"><i class="fa-solid fa-arrow-left"></i> Continuar comprando</button>
   </div>
 </aside>
+
+<div class="mobile-menu" id="mobileMenu" aria-label="Menu">
+  <div class="mm-head"><span>CSE Parfum</span><button onclick="toggleMenu(false)" aria-label="Fechar menu"><i class="fa-solid fa-xmark"></i></button></div>
+  <a class="mm-link" onclick="menuGo('catalogo')"><i class="fa-solid fa-bag-shopping"></i> Catálogo</a>
+  <a class="mm-link" onclick="menuGo('linhas')"><i class="fa-solid fa-layer-group"></i> Nossas linhas</a>
+  <a class="mm-link" onclick="menuGo('experiencia')"><i class="fa-solid fa-star"></i> A experiência</a>
+  <a class="mm-link" onclick="menuGo('sobre')"><i class="fa-solid fa-circle-info"></i> Transparência</a>
+  <div class="mm-foot"><button class="whatsapp" onclick="window.open('https://wa.me/5514996878508','_blank')"><i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp</button></div>
+</div>
 
 <div class="toast" id="toast"></div>
 
 <footer class="footer">
   <div class="footer-inner">
     <div><h3>CSE Parfum</h3><p>Fragrâncias inspiradas para quem gosta de presença, elegância e variedade.</p><p style="margin-top:12px"><strong style="color:#d9d8dc">Nossas linhas:</strong><br>Perfume Corporal 50 ml — R$ 60<br>Perfume Capilar 50 ml — R$ 40<br>Body Splash 100 ml — R$ 25</p></div>
+    <div><h3>Como comprar</h3><ul class="steps"><li>1. Escolha suas fragrâncias no catálogo</li><li>2. Selecione o formato: corporal, capilar ou splash</li><li>3. Finalize o pedido pelo WhatsApp</li></ul></div>
     <div><h3>Atendimento</h3><p>Pedidos e disponibilidade<br>WhatsApp • Atendimento direto</p></div>
     <div><h3>Transparência</h3><p>Somos uma marca de fragrâncias inspiradas. As marcas e imagens citadas pertencem aos seus respectivos fabricantes.</p></div>
   </div>
@@ -729,6 +789,7 @@ img{display:block;max-width:100%}
 </footer>
 
 <a class="float-wa" href="https://wa.me/5514996878508" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
 
 <script>
 const WHATSAPP_NUMBER = "5514996878508";
@@ -1962,7 +2023,7 @@ function renderProducts(category=currentCategory){
   const sort=document.getElementById("sortSelect")?.value||"featured";
 
   let filtered=products.filter(p=>{
-    const cat=category==="all" || categories(p).includes(category);
+    const cat=category==="all" || categories(p).includes(category) || (category==="unissex" && categories(p).includes("compartilhável"));
     const text=(p.name+" "+(p.family||"")).toLowerCase();
     return cat && text.includes(search);
   });
@@ -1996,7 +2057,8 @@ function renderProducts(category=currentCategory){
         <h3 class="product-title">${esc(p.name)}</h3>
         <div class="price-line">
           ${original?`<div><span class="old-price">${brl(original)}</span>${pct?`<span class="discount">-${pct}%</span>`:""}</div>`:""}
-          <div class="price">${isKit(p)?brl(p.price):(" "+brl(priceFor(p, 'perfume')))}</div>
+          <div class="price">${isKit(p)?brl(p.price):brl(priceFor(p,'perfume'))}</div>
+          ${(!isKit(p)&&p.available)?`<div class="alt-prices">também capilar ${brl(40)} · splash ${brl(25)}</div>`:""}
           <div class="stock ${p.available?"ok":"no"}"><i class="fa-solid ${p.available?"fa-circle-check":"fa-circle-xmark"}"></i> ${p.available?"Disponível":"Esgotado"}</div>
         </div>
         <select class="type-select" onchange="selectedTypes[${p.id}]=this.value" ${p.available?"":"disabled"}>
@@ -2028,10 +2090,16 @@ function openDetailsModal(id){
   fam.textContent=p.family||""; fam.style.display=p.family?"inline-block":"none";
   document.getElementById("modalProductTitle").textContent=p.name;
   document.getElementById("modalProductDesc").innerHTML=p.description||"Notas olfativas não informadas.";
+  const original=parseOriginalPrice(p.originalPrice);
+  const pct=original&&original>p.price?Math.round((1-p.price/original)*100):null;
+  const mo=document.getElementById("modalProductOldPrice");mo.textContent=original?brl(original):"";mo.style.display=original?"inline":"none";
+  const md=document.getElementById("modalProductDiscount");md.textContent=pct?`-${pct}%`:"";md.style.display=pct?"inline":"none";
+  const mst=document.getElementById("modalProductStock");mst.innerHTML=p.available?'<i class="fa-solid fa-circle-check"></i> Em estoque':'<i class="fa-solid fa-circle-xmark"></i> Esgotado';mst.className="modal-stock "+(p.available?"ok":"no");
   const sel=document.getElementById("modalTypeSelect");
   const selType=selectedTypes[p.id]||typesFor(p)[0].key;
   sel.innerHTML=typesFor(p).map(t=>`<option value="${t.key}" ${t.key===selType?"selected":""}>${t.label} — ${brl(t.price)}</option>`).join("");
-  sel.onchange=()=>{selectedTypes[p.id]=sel.value;};
+  const updModalPrice=()=>document.getElementById("modalProductPrice").textContent=brl(priceFor(p,sel.value));
+  sel.onchange=()=>{selectedTypes[p.id]=sel.value;updModalPrice();};updModalPrice();
   const btn=document.getElementById("modalBuyBtn");
   btn.style.display=p.available?"flex":"none";
   btn.onclick=()=>{addToCart(p.id, sel.value); closeDetailsModal();};
@@ -2042,7 +2110,7 @@ function closeDetailsModal(){document.getElementById("detailsModal").classList.r
 
 function saveCart(){try{localStorage.setItem(CART_KEY,JSON.stringify(cart));}catch(e){}}
 function toast(msg){
-  const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show");
+  const t=document.getElementById("toast"); t.innerHTML='<i class="fa-solid fa-circle-check"></i> '+msg; t.classList.add("show");
   clearTimeout(window.__toast); window.__toast=setTimeout(()=>t.classList.remove("show"),2200);
 }
 
@@ -2082,7 +2150,7 @@ function updateCart(){
   document.getElementById("cartCount").textContent=countTotal;
 
   if(!cart.length){
-    items.innerHTML='<div class="empty" style="border:0;padding:60px 10px"><i class="fa-solid fa-bag-shopping"></i><p>Seu carrinho está vazio.</p><small>Escolha uma fragrância para começar.</small></div>';
+    items.innerHTML='<div class="empty" style="border:0;padding:60px 10px"><i class="fa-solid fa-bag-shopping"></i><p>Seu carrinho está vazio.</p><small>Escolha uma fragrância para começar.</small><button class="btn btn-primary" style="margin-top:18px" onclick="toggleCart(false);goTo(\'catalogo\')"><i class="fa-solid fa-sparkles"></i> Ver catálogo</button></div>';
     document.getElementById("discountProgress").style.display="none";
   }else{
     items.innerHTML=cart.map(item=>{
@@ -2090,7 +2158,7 @@ function updateCart(){
       const unit=priceFor(p,item.type);
       return `<div class="cart-item">
       <img src="${productImage(p)}" alt="">
-      <div><h4>${esc(p.name)}</h4><p>${esc(typeLabel(p,item.type))} • ${brl(unit)} cada</p></div>
+      <div><h4>${esc(p.name)}</h4><p>${esc(typeLabel(p,item.type))} • ${brl(unit)} cada — <strong>${brl(unit*item.quantity)}</strong></p></div>
       <div>
         <div class="qty"><button onclick="changeQuantity(${item.id},'${item.type}',-1)">−</button><strong>${item.quantity}</strong><button onclick="changeQuantity(${item.id},'${item.type}',1)">+</button></div>
         <button class="remove" onclick="removeFromCart(${item.id},'${item.type}')">remover</button>
@@ -2111,37 +2179,51 @@ function updateCart(){
     }
   }
   document.getElementById("cartTotal").textContent=brl(final);
+  const subEl=document.getElementById("cartSubtotal"),dRow=document.getElementById("discountRow");
+  if(subEl)subEl.textContent=brl(total);
+  if(dRow){dRow.style.display=discount?"flex":"none";document.getElementById("cartDiscount").textContent="-"+brl(discount);}
 }
 
 // A FUNÇÃO QUE FALTAVA PARA ABRIR O CARRINHO ESTÁ AQUI:
 function toggleCart(force){
   const cartEl=document.getElementById("cartModal"), overlay=document.getElementById("overlay");
   const open=force===undefined?!cartEl.classList.contains("open"):force;
+  if(open)document.getElementById("mobileMenu").classList.remove("open");
   cartEl.classList.toggle("open",open); overlay.classList.toggle("active",open);
   document.body.style.overflow=open?"hidden":"";
 }
+function toggleMenu(force){
+  const m=document.getElementById("mobileMenu"), overlay=document.getElementById("overlay");
+  const open=force===undefined?!m.classList.contains("open"):force;
+  if(open)document.getElementById("cartModal").classList.remove("open");
+  m.classList.toggle("open",open); overlay.classList.toggle("active",open);
+  document.body.style.overflow=open?"hidden":"";
+}
+function menuGo(id){toggleMenu(false);setTimeout(()=>goTo(id),120);return false;}
+function closeAllPanels(){toggleCart(false);toggleMenu(false);}
 
 function checkoutWhatsApp(){
   if(!cart.length){toast("Seu carrinho está vazio");return;}
-  
-  // Mesma regra: conta apenas a chave "perfume" para enviar pro WhatsApp
   const countPerfumes = cart.reduce((s,x)=> s + (x.type === "perfume" ? x.quantity : 0), 0);
   const discount = Math.floor(countPerfumes/3) * DISCOUNT_PER_TRIO;
-  
-  let total=0;
-  let message="Olá, CSE Parfum! Gostaria de fazer um pedido:%0A%0A";
+  let total=0, items="";
   cart.forEach(x=>{
     const p=products.find(y=>y.id===x.id); if(!p)return;
     const unit=priceFor(p,x.type); total+=unit*x.quantity;
-    message+=`▪️ ${x.quantity}x ${p.name} (${typeLabel(p,x.type)}) — ${brl(unit*x.quantity)}%0A`;
+    items+=`\n▪ ${x.quantity}x ${p.name}\n   ${typeLabel(p,x.type)} — ${brl(unit*x.quantity)}`;
   });
-  
   const final=Math.max(0,total-discount);
-  if(discount)message+=`%0A🎁 Desconto do combo (Perfumes Corporais): -${brl(discount)}%0A`;
-  message+=`%0A💰 Total: ${brl(final)}%0A%0APode confirmar a disponibilidade e o prazo de entrega?`;
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,"_blank","noopener");
+  let msg=`Olá, CSE Parfum! Gostaria de fazer um pedido:${items}\n\nSubtotal: ${brl(total)}`;
+  if(discount)msg+=`\n🎁 Desconto "leve 3": -${brl(discount)}`;
+  msg+=`\n💰 *Total: ${brl(final)}*\n\nPode confirmar disponibilidade e prazo de entrega? Obrigado(a)!`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
 }
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeDetailsModal();toggleCart(false)}});
+
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeDetailsModal();toggleCart(false);toggleMenu(false);}});
+try{
+  const toTop=document.getElementById("toTop");
+  window.addEventListener("scroll",()=>toTop.classList.toggle("show",window.scrollY>600),{passive:true});
+}catch(e){}
 try{
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.1});
   document.querySelectorAll(".section-head,.about-card,.trust-item,.linha-card").forEach(el=>{el.classList.add("reveal");io.observe(el);});
