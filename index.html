@@ -1831,7 +1831,7 @@ const DISCOUNT_PER_TRIO = 15; // desconto (R$) a cada 3 itens no carrinho
 const PRODUCT_TYPES = [
   { key: "perfume",    label: "Perfume Corporal 50 ml",    price: 60.00 },
   { key: "capilar",    label: "Perfume Capilar 100 ml",    price: 40.00 },
-  { key: "Body",    label: "Body Splash 100 ml",    price: 25.00 }
+  { key: "Body",       label: "Body Splash 100 ml",        price: 25.00 }
 ];
 /* ============================================================ */
 
@@ -1865,14 +1865,10 @@ function goTo(id){
   if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
   return false;
 }
-function parseOriginalPrice(value){
-  if(value===undefined || value===null) return null;
-  const clean=String(value).replace(/R\$\s?/gi,"").replace(/\./g,"").replace(",",".").trim();
-  const n=parseFloat(clean); return Number.isFinite(n)?n:null;
-}
+
 function brl(n){ return Number(n||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:2}); }
 function productImage(p){ return p.image || p.imagem || ""; }
-function esc(s){ return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m])); }
+function esc(s){ return String(s??"").replace(/[&<>"']/g,m=>({"&":"&","<":"<",">":">",'"':""","'":"'"}[m])); }
 
 function renderProducts(category=currentCategory){
   currentCategory=category;
@@ -1899,8 +1895,6 @@ function renderProducts(category=currentCategory){
 
   grid.innerHTML=filtered.map((p,i)=>{
     const image=productImage(p);
-    const original=parseOriginalPrice(p.originalPrice);
-    const pct=original&&original>p.price?Math.round((1-p.price/original)*100):null;
     const cats=categories(p).filter(Boolean);
     const catLabel=cats[0]||"";
     const selType=selectedTypes[p.id]||typesFor(p)[0].key;
@@ -1908,13 +1902,12 @@ function renderProducts(category=currentCategory){
       <div class="product-image" onclick="openDetailsModal(${p.id})">
         <span class="badge ${p.available?"":"sold"}">${p.available?"Inspiração":"Esgotado"}</span>
         <img src="${image}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.opacity='.2'">
-        <div class="product-overlay"><i class="fa-regular fa-eye"></i>&nbsp; Ver notas</div>
+        <div class="product-overlay"><i class="fa-regular fa-eye"></i>  Ver notas</div>
       </div>
       <div class="product-body">
         <div class="tags"><span class="tag">${esc(catLabel)}</span>${p.family?`<span class="tag family">${esc(p.family)}</span>`:""}</div>
         <h3 class="product-title">${esc(p.name)}</h3>
         <div class="price-line">
-          ${original?`<div><span class="old-price">${brl(original)}</span>${pct?`<span class="discount">-${pct}%</span>`:""}</div>`:""}
           <div class="price">${isKit(p)?brl(p.price):brl(priceFor(p,'perfume'))}</div>
           ${(!isKit(p)&&p.available)?`<div class="alt-prices">também capilar ${brl(40)} · splash ${brl(25)}</div>`:""}
           <div class="stock ${p.available?"ok":"no"}"><i class="fa-solid ${p.available?"fa-circle-check":"fa-circle-xmark"}"></i> ${p.available?"Disponível":"Esgotado"}</div>
@@ -1948,10 +1941,6 @@ function openDetailsModal(id){
   fam.textContent=p.family||""; fam.style.display=p.family?"inline-block":"none";
   document.getElementById("modalProductTitle").textContent=p.name;
   document.getElementById("modalProductDesc").innerHTML=p.description||"Notas olfativas não informadas.";
-  const original=parseOriginalPrice(p.originalPrice);
-  const pct=original&&original>p.price?Math.round((1-p.price/original)*100):null;
-  const mo=document.getElementById("modalProductOldPrice");mo.textContent=original?brl(original):"";mo.style.display=original?"inline":"none";
-  const md=document.getElementById("modalProductDiscount");md.textContent=pct?`-${pct}%`:"";md.style.display=pct?"inline":"none";
   const mst=document.getElementById("modalProductStock");mst.innerHTML=p.available?'<i class="fa-solid fa-circle-check"></i> Em estoque':'<i class="fa-solid fa-circle-xmark"></i> Esgotado';mst.className="modal-stock "+(p.available?"ok":"no");
   const sel=document.getElementById("modalTypeSelect");
   const selType=selectedTypes[p.id]||typesFor(p)[0].key;
@@ -1989,19 +1978,11 @@ function removeFromCart(id,type){cart=cart.filter(x=>!(x.id===id && x.type===typ
 
 function updateCart(){
   const items=document.getElementById("cartItems");
-  
-  // 1. Conta a quantidade total de itens (para o ícone do carrinho)
   const countTotal = cart.reduce((s,x)=>s+x.quantity,0);
-  
-  // 2. Conta ESTREITAMENTE os itens que são "perfume" (Perfume Corporal)
   const countPerfumes = cart.reduce((s,x)=> s + (x.type === "perfume" ? x.quantity : 0), 0);
-
-  // 3. Calcula o valor financeiro total de tudo
   const total=cart.reduce((s,x)=>{
     const p=products.find(y=>y.id===x.id); return s+(p?priceFor(p,x.type):0)*x.quantity;
   },0);
-  
-  // 4. Aplica o desconto usando apenas a contagem de Perfumes Corporais
   const discount=Math.floor(countPerfumes/3)*DISCOUNT_PER_TRIO;
   const final=Math.max(0,total-discount);
   
@@ -2026,7 +2007,6 @@ function updateCart(){
     const prog=document.getElementById("discountProgress");
     prog.style.display="block";
     
-    // 5. Exibe a barra de desconto baseada apenas nos Perfumes Corporais
     if(countPerfumes >= 3){
       prog.className="discount-progress success";
       prog.innerHTML=`🎉 <strong>${brl(discount)}</strong> de desconto no combo (Aplicado a ${countPerfumes} Perfume(s) Corporal).`;
@@ -2042,7 +2022,6 @@ function updateCart(){
   if(dRow){dRow.style.display=discount?"flex":"none";document.getElementById("cartDiscount").textContent="-"+brl(discount);}
 }
 
-// A FUNÇÃO QUE FALTAVA PARA ABRIR O CARRINHO ESTÁ AQUI:
 function toggleCart(force){
   const cartEl=document.getElementById("cartModal"), overlay=document.getElementById("overlay");
   const open=force===undefined?!cartEl.classList.contains("open"):force;
@@ -2088,6 +2067,3 @@ try{
 }catch(e){}
 renderProducts("all");
 updateCart();
-</script>
-</body>
-</html>
