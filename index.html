@@ -134,8 +134,6 @@ img{display:block;max-width:100%}
 .tag.family{background:#f5f5f5;color:#85858a;text-transform:none;letter-spacing:0;font-weight:600}
 .product-title{font-size:14px;line-height:1.35;min-height:38px;font-weight:700}
 .price-line{margin-top:auto;padding-top:15px}
-.old-price{font-size:10px;color:#aaa;text-decoration:line-through}
-.discount{font-size:9px;background:#eaf8f0;color:#159a53;padding:3px 6px;border-radius:99px;font-weight:800;margin-left:4px}
 .price{font-family:"Playfair Display";font-size:23px;font-weight:600;margin-top:2px}
 .stock{font-size:9px;font-weight:700;margin-top:6px}
 .stock.ok{color:#159a53}.stock.no{color:#b65b5b}
@@ -478,8 +476,6 @@ a.mm-link:hover{background:#faf9f5;color:var(--gold);padding-left:28px}
     line-height:1.35;
     min-height:30px;
   }
-  .old-price{font-size:8px}
-  .discount{font-size:7px;padding:2px 4px}
   .price{
     font-size:18px;
     margin-top:1px;
@@ -738,8 +734,6 @@ a.mm-link:hover{background:#faf9f5;color:var(--gold);padding-left:28px}
       <h2 id="modalProductTitle" class="modal-title"></h2>
       <div class="modal-price-row">
         <span class="modal-price" id="modalProductPrice"></span>
-        <span class="old-price" id="modalProductOldPrice" style="display:none"></span>
-        <span class="discount" id="modalProductDiscount" style="display:none"></span>
         <span class="modal-stock" id="modalProductStock"></span>
       </div>
       <div id="modalProductDesc" class="notes"></div>
@@ -2031,8 +2025,6 @@ function renderProducts(category=currentCategory){
 
   grid.innerHTML=filtered.map((p,i)=>{
     const image=productImage(p);
-    const original=parseOriginalPrice(p.originalPrice);
-    const pct=original&&original>p.price?Math.round((1-p.price/original)*100):null;
     const cats=categories(p).filter(Boolean);
     const catLabel=cats[0]||"";
     const selType=selectedTypes[p.id]||typesFor(p)[0].key;
@@ -2046,7 +2038,6 @@ function renderProducts(category=currentCategory){
         <div class="tags"><span class="tag">${esc(catLabel)}</span>${p.family?`<span class="tag family">${esc(p.family)}</span>`:""}</div>
         <h3 class="product-title">${esc(p.name)}</h3>
         <div class="price-line">
-          ${original?`<div><span class="old-price">${brl(original)}</span>${pct?`<span class="discount">-${pct}%</span>`:""}</div>`:""}
           <div class="price">${isKit(p)?brl(p.price):brl(priceFor(p,'perfume'))}</div>
           ${(!isKit(p)&&p.available)?`<div class="alt-prices">também capilar ${brl(40)} · splash ${brl(25)}</div>`:""}
           <div class="stock ${p.available?"ok":"no"}"><i class="fa-solid ${p.available?"fa-circle-check":"fa-circle-xmark"}"></i> ${p.available?"Disponível":"Esgotado"}</div>
@@ -2080,10 +2071,6 @@ function openDetailsModal(id){
   fam.textContent=p.family||""; fam.style.display=p.family?"inline-block":"none";
   document.getElementById("modalProductTitle").textContent=p.name;
   document.getElementById("modalProductDesc").innerHTML=p.description||"Notas olfativas não informadas.";
-  const original=parseOriginalPrice(p.originalPrice);
-  const pct=original&&original>p.price?Math.round((1-p.price/original)*100):null;
-  const mo=document.getElementById("modalProductOldPrice");mo.textContent=original?brl(original):"";mo.style.display=original?"inline":"none";
-  const md=document.getElementById("modalProductDiscount");md.textContent=pct?`-${pct}%`:"";md.style.display=pct?"inline":"none";
   const mst=document.getElementById("modalProductStock");mst.innerHTML=p.available?'<i class="fa-solid fa-circle-check"></i> Em estoque':'<i class="fa-solid fa-circle-xmark"></i> Esgotado';mst.className="modal-stock "+(p.available?"ok":"no");
   const sel=document.getElementById("modalTypeSelect");
   const selType=selectedTypes[p.id]||typesFor(p)[0].key;
